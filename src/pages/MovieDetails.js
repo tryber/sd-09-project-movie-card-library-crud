@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
@@ -13,6 +14,7 @@ class MovieDetails extends Component {
       storyline: '',
       genre: '',
       rating: 0,
+      id: '',
     };
   }
 
@@ -28,24 +30,28 @@ class MovieDetails extends Component {
         imagePath: movie.imagePath,
         genre: movie.genre,
         rating: movie.rating,
+        id: movie.id,
       }));
   }
 
   render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
-    const { title, storyline, imagePath, genre, rating, subtitle, loading } = this.state;
+    const { title, storyline, imagePath, genre, rating, subtitle, loading, id } = this.state;
     if (loading) return <Loading />;
-
     return (
-      <div data-testid="movie-details">
-        <img alt="Movie Cover" src={ `../${imagePath}` } />
-        <p>{ `Title: ${title}` }</p>
-        <p>{ `Subtitle: ${subtitle}` }</p>
-        <p>{ `Storyline: ${storyline}` }</p>
-        <p>{ `Genre: ${genre}` }</p>
-        <p>{ `Rating: ${rating}` }</p>
-      </div>
+      <section>
+        <div data-testid="movie-details">
+          <img alt="Movie Cover" src={ `../${imagePath}` } />
+          <p>{ `Title: ${title}` }</p>
+          <p>{ `Subtitle: ${subtitle}` }</p>
+          <p>{ `Storyline: ${storyline}` }</p>
+          <p>{ `Genre: ${genre}` }</p>
+          <p>{ `Rating: ${rating}` }</p>
+        </div>
+        <div>
+          <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+          <Link to="/">VOLTAR</Link>
+        </div>
+      </section>
     );
   }
 }
