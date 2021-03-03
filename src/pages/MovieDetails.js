@@ -6,16 +6,16 @@ import { Loading } from '../components';
 class MovieDetails extends Component {
   constructor(props) {
     super(props);
-      this.state = {
-        id: 0,
-        title: '',
-        storyline: '',
-        subtitle: '',
-        imagePath: '',
-        genre: '',
-        rating: 0,
-        loading: true,
-      };
+    this.state = {
+      id: 0,
+      title: '',
+      storyline: '',
+      subtitle: '',
+      imagePath: '',
+      genre: '',
+      rating: 0,
+      load: true,
+    };
   }
 
   componentDidMount() {
@@ -29,13 +29,13 @@ class MovieDetails extends Component {
       imagePath: movie.imagePath,
       genre: movie.genre,
       rating: movie.rating,
-      loading: false,
+      load: false,
     }));
   }
-  
+
   render() {
-    const { title, storyline, imagePath, genre, rating, subtitle, id, loading } = this.state;
-    if (loading) return <Loading />;
+    const { title, storyline, imagePath, genre, rating, subtitle, id, load } = this.state;
+    if (load) return <Loading />;
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />

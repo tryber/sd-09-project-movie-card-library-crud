@@ -173,6 +173,6 @@ MovieForm.propTypes = {
     rating: PropTypes.number,
   }).isRequired,
   onSubmit: PropTypes.func.isRequired,
-}
+};
 
 export default MovieForm;
