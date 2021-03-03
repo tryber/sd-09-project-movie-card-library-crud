@@ -170,7 +170,14 @@ MovieForm.propTypes = {
 };
 
 MovieForm.defaultProps = {
-  movie: undefined,
+  movie: {
+    title: '',
+    subtitle: '',
+    storyline: '',
+    imagePath: '',
+    genre: '',
+    rating: 0,
+  },
 };
 
 export default MovieForm;
