@@ -14,7 +14,6 @@ class MovieDetails extends Component {
     this.apagaMovie = this.apagaMovie.bind(this);
 
   }
-
   componentDidMount() {
     const { match: { params: { id } } } = this.props;
     movieAPI.getMovie(id).then((data) => {
@@ -30,7 +29,6 @@ class MovieDetails extends Component {
     movieAPI.deleteMovie(id);
   }
 
-
   render() {
     const { movie: { title, storyline, imagePath, genre, rating, subtitle, id },
       loading } = this.state;
@@ -44,7 +42,6 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
-        <button></button>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/" onClick={ this.apagaMovie }>DELETAR</Link>
         <Link to="/">VOLTAR</Link>
