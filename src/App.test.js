@@ -92,13 +92,13 @@ const renderPath = (path) => {
 };
 
 describe('1 - Renderize `BrowserRouter` no componente `App` usando rotas', () => {
-  test.skip('a rota "/" deve renderizar MovieList', async () => {
+  test('a rota "/" deve renderizar MovieList', async () => {
     const { unmount, getByTestId } = renderPath('/');
     await waitFor(() => movieAPI.getMovies());
     expect.anything(getByTestId('movie-list'));
     unmount();
   })
-  test.skip('a rota "/movies/:id" deve renderizar MovieDetails', async () => {
+  test('a rota "/movies/:id" deve renderizar MovieDetails', async () => {
     for (const movie of readMovies()) {
       const { unmount, getByTestId } = renderPath('/movies/' + movie.id);
       await waitFor(() => movieAPI.getMovies());
@@ -106,12 +106,12 @@ describe('1 - Renderize `BrowserRouter` no componente `App` usando rotas', () =>
       unmount();
     }
   })
-  test.skip('a rota "/movies/new" deve renderizar NewMovie', () => {
+  test('a rota "/movies/new" deve renderizar NewMovie', () => {
     const { unmount, getByTestId } = renderPath('/movies/new');
     expect.anything(getByTestId('new-movie'));
     unmount();
   })
-  test.skip('a rota "/movies/:id/edit" deve renderizar EditMovie', async () => {
+  test('a rota "/movies/:id/edit" deve renderizar EditMovie', async () => {
     for (const movie of readMovies()) {
       const { unmount, getByTestId } = renderPath('/movies/' + movie.id + '/edit');
       await waitFor(() => movieAPI.getMovies());
@@ -119,7 +119,7 @@ describe('1 - Renderize `BrowserRouter` no componente `App` usando rotas', () =>
       unmount();
     }
   })
-  test.skip('qualquer rota não declarada deve renderizar NotFound', () => {
+  test('qualquer rota não declarada deve renderizar NotFound', () => {
     const { unmount, getByTestId } = renderPath('/' + Math.random());
     expect.anything(getByTestId('404-error'));
     unmount();
