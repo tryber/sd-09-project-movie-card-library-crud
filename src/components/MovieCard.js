@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 class MovieCard extends React.Component {
   render() {
-    const { movie: { title, storyline, imagePath } } = this.props;
+    const { movie: { title, storyline, imagePath, id } } = this.props;
     return (
       <div data-testid="movie-card">
         <img alt="Movie Cover" src={ imagePath } />
@@ -13,7 +13,7 @@ class MovieCard extends React.Component {
           <p>{storyline}</p>
         </div>
         <div>
-          <Link to="/movies/:id">VER DETALHES</Link>
+          <Link to={ `/movies/${id}` }>VER DETALHES</Link>
         </div>
       </div>
     );
@@ -25,6 +25,7 @@ MovieCard.propTypes = {
     title: PropTypes.string,
     storyline: PropTypes.string,
     imagePath: PropTypes.string,
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   }).isRequired,
 };
 
