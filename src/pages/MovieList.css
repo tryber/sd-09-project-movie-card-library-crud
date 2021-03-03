@@ -1,0 +1,5 @@
+.card-list {
+  background-color: lightgrey;
+  display: flex;
+  flex-wrap: wrap;
+}
