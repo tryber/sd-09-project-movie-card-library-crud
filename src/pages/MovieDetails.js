@@ -7,6 +7,9 @@ import { Loading } from '../components';
 class MovieDetails extends Component {
   constructor() {
     super();
+
+    this.deleteMovie = this.deleteMovie.bind(this);
+
     this.state = {
       check: false,
       movie: {},
@@ -26,6 +29,12 @@ class MovieDetails extends Component {
     });
   }
 
+  deleteMovie() {
+    const { movie: { id } } = this.state;
+    movieAPI.deleteMovie(id);
+  }
+
+
   render() {
     // Change the condition to check the state
     // if (true) return <Loading />;
@@ -41,6 +50,7 @@ class MovieDetails extends Component {
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
         <Link to="/">VOLTAR</Link>
+        <Link to="/" onClick={ this.deleteMovie }>DELETAR</Link>
       </div>
     );
   }
