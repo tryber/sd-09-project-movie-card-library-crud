@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom';
 import { getMovie } from '../services/movieAPI';
 import { Loading } from '../components';
 
@@ -33,6 +33,7 @@ class MovieDetails extends Component {
       return <Loading />;
     }
     const { movie: { title, storyline, imagePath, genre, rating, subtitle } } = this.state;
+    const { match: { params } } = this.props;
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
@@ -40,6 +41,8 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
+        <Link to={ `/movies/${params.id}/edit` }>Editar</Link>
+        <Link to="/">Voltar</Link>
       </div>
     );
   }
