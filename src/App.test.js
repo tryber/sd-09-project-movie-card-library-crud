@@ -141,7 +141,7 @@ describe('2 - Faça uma requisição para buscar e mostrar a lista de filmes qua
   })
 });
 
-describe.skip('3 - Insira um link para a página de detalhes de um filme dentro de `MovieCard`', () => {
+describe('3 - Insira um link para a página de detalhes de um filme dentro de `MovieCard`', () => {
   test('deve exibir pelo menos o título e a sinopse de seu respectivo filme', async () => {
     const { unmount, getAllByText } = renderPath('/');
     await waitFor(() => movieAPI.getMovies());
