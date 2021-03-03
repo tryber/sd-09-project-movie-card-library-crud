@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { shape, string, number } from 'prop-types';
 
 class MovieCard extends React.Component {
   render() {
@@ -13,5 +14,13 @@ class MovieCard extends React.Component {
     );
   }
 }
+
+MovieCard.propTypes = {
+  movie: shape({
+    title: string,
+    storyline: string,
+    id: number,
+  }).isRequired,
+};
 
 export default MovieCard;
