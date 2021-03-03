@@ -16,6 +16,7 @@ class NewMovie extends Component {
     return (
       <div data-testid="new-movie">
         <MovieForm onSubmit={ this.handleSubmit } />
+        <p>Você está em New Movie</p>
       </div>
     );
   }
