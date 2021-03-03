@@ -20,21 +20,22 @@ class MovieList extends Component {
   }
 
   async fetchMovies() {
-    this.setState(
-      { movies: [] },
-      async () => {
-        const moviesList = await movieAPI.getMovies();
-        this.setState({ movies: moviesList });
-      },
-    );
-    // const moviesList = await movieAPI.getMovies();
-    // this.setState({ movies: moviesList });
+    // this.setState(
+    //   { movies: [] },
+    //   async () => {
+    //     const moviesList = await movieAPI.getMovies();
+    //     this.setState({ movies: moviesList });
+    //   },
+    // );
+    const moviesList = await movieAPI.getMovies();
+    this.setState({ movies: moviesList });
   }
 
   render() {
     const { movies } = this.state;
 
     if (movies.length === 0) return <Loading />;
+
     return (
       <div data-testid="movie-list">
         {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
