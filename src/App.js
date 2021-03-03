@@ -1,8 +1,10 @@
 import React from 'react';
 
 function App() {
-  return (
+  return (>
+  <Router>
     <div>Movie Card Library CRUD</div>
+  </Router>
   );
 }
 
