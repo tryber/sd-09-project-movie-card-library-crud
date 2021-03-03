@@ -9,7 +9,6 @@ class MovieDetails extends Component {
     // if (true) return <Loading />;
 
     const { storyline, imagePath, genre, rating, subtitle } = this.props;
-
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
@@ -21,5 +20,13 @@ class MovieDetails extends Component {
     );
   }
 }
+
+MovieDetails.propTypes = ({
+  storyline: PropTypes.string,
+  imagePath: PropTypes.string,
+  genre: PropTypes.string,
+  rating: PropTypes.number,
+  subtitle: PropTypes.string,
+}).isRequired;
 
 export default MovieDetails;
