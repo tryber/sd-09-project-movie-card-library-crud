@@ -4,7 +4,18 @@ import PropTypes from 'prop-types';
 class MovieForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { ...props.movie };
+    if (Object.keys(props.movie).length > 0) {
+      this.state = { ...props.movie };
+    } else {
+      this.state = {
+        title: '',
+        subtitle: '',
+        imagePath: '',
+        storyline: '',
+        genre: '',
+        rating: 0,
+      };
+    }
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -165,8 +176,12 @@ class MovieForm extends React.Component {
 }
 
 MovieForm.propTypes = {
-  movie: PropTypes.arrayOf(PropTypes.object).isRequired,
+  movie: PropTypes.arrayOf(PropTypes.object),
   onSubmit: PropTypes.func.isRequired,
+};
+
+MovieForm.defaultProps = {
+  movie: [],
 };
 
 export default MovieForm;
