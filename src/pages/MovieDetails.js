@@ -11,6 +11,8 @@ class MovieDetails extends Component {
       movie: {},
       loading: true,
     };
+    this.apagaMovie = this.apagaMovie.bind(this);
+
   }
 
   componentDidMount() {
@@ -22,6 +24,12 @@ class MovieDetails extends Component {
       });
     });
   }
+
+  apagaMovie() {
+    const { movie: { id } } = this.state;
+    movieAPI.deleteMovie(id);
+  }
+
 
   render() {
     const { movie: { title, storyline, imagePath, genre, rating, subtitle, id },
@@ -36,7 +44,9 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
+        <button></button>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link to="/" onClick={ this.apagaMovie }>DELETAR</Link>
         <Link to="/">VOLTAR</Link>
       </div>
     );
