@@ -12,8 +12,8 @@ class MovieDetails extends Component {
       loading: true,
     };
     this.apagaMovie = this.apagaMovie.bind(this);
-
   }
+
   componentDidMount() {
     const { match: { params: { id } } } = this.props;
     movieAPI.getMovie(id).then((data) => {
