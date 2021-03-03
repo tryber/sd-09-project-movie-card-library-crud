@@ -7,7 +7,7 @@ class EditMovie extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-    this.handleSubmit = this.handleSubmit.bind(this);
+    /* this.handleSubmit = this.handleSubmit.bind(this); */
   }
 
   /* handleSubmit(updatedMovie) {
@@ -25,7 +25,7 @@ class EditMovie extends Component {
 
     return (
       <div data-testid="edit-movie">
-        <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />
+        <MovieForm movie={ movie } /* onSubmit={ this.handleSubmit } */ />
       </div>
     );
   }
