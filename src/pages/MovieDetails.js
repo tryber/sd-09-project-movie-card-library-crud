@@ -34,18 +34,7 @@ class MovieDetails extends Component {
     movieAPI.deleteMovie(id);
   }
 
-  renderLinks() {
-    return(
-      <div>
-        <Link to="/">VOLTAR</Link>
-        <Link to="/" onClick={ this.deleteMovie }>DELETAR</Link>
-      </div>
-    )
-  }
-
   render() {
-    // Change the condition to check the state
-    // if (true) retn <Loading />;
     const { check, movie } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle } = movie;
     if (!check) return <Loading />;
@@ -59,7 +48,8 @@ class MovieDetails extends Component {
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${movie.id}/edit` }>EDITAR</Link>
-        {this.renderLinks()}
+        <Link to="/">VOLTAR</Link>
+        <Link to="/" onClick={ this.deleteMovie }>DELETAR</Link>
       </div>
     );
   }
