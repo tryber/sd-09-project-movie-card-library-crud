@@ -142,7 +142,7 @@ describe('2 - Faça uma requisição para buscar e mostrar a lista de filmes qua
 });
 
 describe('3 - Insira um link para a página de detalhes de um filme dentro de `MovieCard`', () => {
-  test.skip('deve exibir pelo menos o título e a sinopse de seu respectivo filme', async () => {
+  test('deve exibir pelo menos o título e a sinopse de seu respectivo filme', async () => {
     const { unmount, getAllByText } = renderPath('/');
     await waitFor(() => movieAPI.getMovies());
     expect(screen.getAllByTestId('movie-card').length).toBe(5);
@@ -152,7 +152,7 @@ describe('3 - Insira um link para a página de detalhes de um filme dentro de `M
     })
     unmount();
   })
-  test.skip('deve conter um link com o texto "VER DETALHES" que redireciona para a página de detalhes do filme', async () => {
+  test('deve conter um link com o texto "VER DETALHES" que redireciona para a página de detalhes do filme', async () => {
     const { unmount, getAllByText } = renderPath('/');
     await waitFor(() => movieAPI.getMovies());
     getAllByText('VER DETALHES').forEach((link, index) => {
