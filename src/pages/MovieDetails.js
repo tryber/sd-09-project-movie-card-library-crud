@@ -35,7 +35,8 @@ class MovieDetails extends Component {
   }
 
   render() {
-    const { title, storyline, imagePath, genre, rating, subtitle, loading, id } = this.state;
+    const { title, storyline, imagePath, genre, rating, subtitle, loading, id,
+    } = this.state;
     if (loading) return <Loading />;
     return (
       <section>
@@ -47,10 +48,8 @@ class MovieDetails extends Component {
           <p>{ `Genre: ${genre}` }</p>
           <p>{ `Rating: ${rating}` }</p>
         </div>
-        <div>
-          <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-          <Link to="/">VOLTAR</Link>
-        </div>
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link to="/">VOLTAR</Link>
       </section>
     );
   }
