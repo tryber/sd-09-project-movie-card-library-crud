@@ -1,4 +1,4 @@
-### Termos e acordos
+### Termos e acordos ##
 
 Ao iniciar este projeto, você concorda com as diretrizes do Código de Ética e Conduta e do Manual da Pessoa Estudante da Trybe
 
@@ -23,7 +23,7 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 - [Como desenvolver](#como-desenvolver)
 - [Requisitos do projeto](#requisitos-do-projeto)
   - [Lista de requisitos](#lista-de-requisitos)
-    
+
     `Requisitos Obrigatórios:`
     - [1 - Renderize BrowserRouter no componente App usando rotas](#1---renderize-browserrouter-no-componente-app-usando-rotas)
     - [2 - Faça uma requisição para buscar e mostrar a lista de filmes quando MovieList for montado](#2---faça-uma-requisição-para-buscar-e-mostrar-a-lista-de-filmes-quando-movielist-for-montado)
@@ -31,7 +31,7 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
     - [4 - Faça uma requisição para buscar o filme que deverá ser renderizado dentro de Movie Details](#4---faça-uma-requisição-para-buscar-o-filme-que-deverá-ser-renderizado-dentro-de-movie-details)
     - [5 - Realize uma requisição para buscar o filme que será editado em EditMovie](#5---realize-uma-requisição-para-buscar-o-filme-que-será-editado-em-editmovie)
     - [6 - Insira um link na página inicial para NewMovie para criar novos cartões](#6---insira-um-link-na-página-inicial-para-newmovie-para-criar-novos-cartões)
-        
+
     `Requisitos Bônus:`
     - [7 - Adicione um link para deletar um cartão em MovieDetails](#7---adicione-um-link-para-deletar-um-cartão-em-moviedetails)
 - [Avisos Finais](#avisos-finais)
@@ -59,7 +59,7 @@ Lembre-se que você pode consultar nosso conteúdo sobre Git & GitHub sempre que
 
 ## O que deverá ser desenvolvido
 
-Dando continuidade aos últimos projetos, você criará um **CRUD** de cartões de filmes em React. 
+Dando continuidade aos últimos projetos, você criará um **CRUD** de cartões de filmes em React.
 A sigla **CRUD** significa, _Create, Read, Update and Delete_, então deve ser possível realizar as seguintes operações nesse projeto:
 
   - Adicionar um novo filme à lista - **CREATE**;
@@ -228,7 +228,7 @@ Você deve utilizar um `BrowserRouter` pra criar as rotas da sua aplicação. As
 - qualquer rota não declarada deve renderizar NotFound
 ```
 
-### 2 - Faça uma requisição para buscar e mostrar a lista de filmes quando `MovieList` for montado 
+### 2 - Faça uma requisição para buscar e mostrar a lista de filmes quando `MovieList` for montado
 
 Para buscar a lista, você deve utilizar a função `getMovies` importada do módulo `movieAPI` em `MovieList`. Essa função retorna uma _promise_. A requisição deve ser feita no momento em que o `MovieList` for montado no DOM. Enquanto a requisição estiver em curso, `MovieList` deve renderizar o componente `Loading`, como ilustrado na imagem a seguir.
 
