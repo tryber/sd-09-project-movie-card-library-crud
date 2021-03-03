@@ -34,7 +34,6 @@ class MovieDetails extends Component {
     movieAPI.deleteMovie(id);
   }
 
-
   render() {
     // Change the condition to check the state
     // if (true) return <Loading />;

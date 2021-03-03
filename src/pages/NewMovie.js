@@ -20,11 +20,11 @@ class NewMovie extends Component {
       redirect: true,
     });
   }
-  
+
   render() {
     const { redirect } = this.state;
-    if (redirect) return <Redirect path="/" />
-    
+    if (redirect) return <Redirect path="/" />;
+
     return (
       <div data-testid="new-movie">
         <MovieForm onSubmit={ this.handleSubmit } />
