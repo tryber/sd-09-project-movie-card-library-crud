@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import * as movieAPI from '../services/movieAPI';
-import { Loading } from '../components';
+// import * as movieAPI from '../services/movieAPI';
+// import { Loading } from '../components';
 
 class MovieDetails extends Component {
   render() {
@@ -12,6 +12,7 @@ class MovieDetails extends Component {
 
     return (
       <div data-testid="movie-details">
+        <p>{title}</p>
         <img alt="Movie Cover" src={ `../${imagePath}` } />
         <p>{ `Subtitle: ${subtitle}` }</p>
         <p>{ `Storyline: ${storyline}` }</p>
