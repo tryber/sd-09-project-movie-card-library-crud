@@ -23,7 +23,7 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 - [Como desenvolver](#como-desenvolver)
 - [Requisitos do projeto](#requisitos-do-projeto)
   - [Lista de requisitos](#lista-de-requisitos)
-    
+
     `Requisitos Obrigatórios:`
     - [1 - Renderize BrowserRouter no componente App usando rotas](#1---renderize-browserrouter-no-componente-app-usando-rotas)
     - [2 - Faça uma requisição para buscar e mostrar a lista de filmes quando MovieList for montado](#2---faça-uma-requisição-para-buscar-e-mostrar-a-lista-de-filmes-quando-movielist-for-montado)
