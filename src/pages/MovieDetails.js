@@ -14,6 +14,7 @@ class MovieDetails extends Component {
     };
 
     this.cardElement = this.cardElement.bind(this);
+    this.deleteCard = this.deleteCard.bind(this);
   }
 
   componentDidMount() {
@@ -34,10 +35,13 @@ class MovieDetails extends Component {
     );
   }
 
+  deleteCard(id) {
+    movieAPI.deleteMovie(id);
+  }
+
   cardElement() {
-    const { match: { params: { id } } } = this.props;
     const { movie: { title, storyline,
-      imagePath, genre, rating, subtitle } } = this.state;
+      imagePath, genre, rating, subtitle, id } } = this.state;
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
@@ -49,6 +53,7 @@ class MovieDetails extends Component {
         <div>
           <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
           <Link to="/">VOLTAR</Link>
+          <Link to="/" onClick={ () => this.deleteCard(id) }>DELETAR</Link>
         </div>
       </div>
     );
