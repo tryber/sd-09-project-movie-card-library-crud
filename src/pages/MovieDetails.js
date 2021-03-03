@@ -29,9 +29,9 @@ class MovieDetails extends Component {
     });
   }
 
-  deleteMovie() {
+  async deleteMovie() {
     const { movie: { id } } = this.state;
-    movieAPI.deleteMovie(id);
+    await movieAPI.deleteMovie(id);
   }
 
   render() {
