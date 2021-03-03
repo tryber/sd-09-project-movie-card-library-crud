@@ -37,7 +37,7 @@ class MovieDetails extends Component {
 
   renderComponent() {
     const {
-      movie: { title, storyline, imagePath, genre, rating, subtitle } } = this.state;
+      movie: { title, storyline, imagePath, genre, rating, subtitle, id } } = this.state;
 
     return (
       <div data-testid="movie-details">
@@ -47,7 +47,7 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
-        <Link to="/movies/:id/edit">EDITAR</Link>
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
       </div>
     );
