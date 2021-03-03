@@ -19,7 +19,7 @@ class MovieList extends Component {
 
   render() {
     const { movies, loading } = this.state;
-    if (loading) return <span>Loading...</span>;
+    if (loading) return <span>Carregando...</span>;
 
     return (
       <div>

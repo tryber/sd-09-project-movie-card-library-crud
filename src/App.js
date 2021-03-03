@@ -10,7 +10,6 @@ function App() {
   return (
     <BrowserRouter>
       <Link to="/">Movie List</Link>
-      <Link to="/movies/:id">Movie Details</Link>
       <Link to="/movies/new">New Movie</Link>
       <Link to="/movies/:id/edit">Edit Movie</Link>
 
