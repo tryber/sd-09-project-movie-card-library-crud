@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import * as movieAPI from "../services/movieAPI";
-import { Loading } from "../components";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import * as movieAPI from '../services/movieAPI';
+import { Loading } from '../components';
 
 class MovieDetails extends Component {
   constructor() {
@@ -16,8 +16,7 @@ class MovieDetails extends Component {
   componentDidMount() {
     const { match: { params: { id } } } = this.props;
     this.fetchMovie(id);
-
-}
+  }
 
   async fetchMovie(movie) {
     const request = await movieAPI.getMovie(movie);
@@ -25,13 +24,13 @@ class MovieDetails extends Component {
       check: true,
       movie: request,
     });
-}
+  }
 
   render() {
     // Change the condition to check the state
     // if (true) return <Loading />;
-    const { check, movie } = this.state;
-    const { storyline, imagePath, genre, rating, subtitle } = movie;
+    const { check, movie, } = this.state;
+    const { storyline, imagePath, genre, rating, subtitle, } = movie;
     if (!check) return <Loading />;
 
     return (

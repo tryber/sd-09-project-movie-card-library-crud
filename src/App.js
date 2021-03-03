@@ -1,7 +1,7 @@
-import React from "react";
-import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
-import { EditMovie, MovieDetails, MovieList, NewMovie, NotFound } from "./pages";
-import "./App.css";
+import React from 'react';
+import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
+import { EditMovie, MovieDetails, MovieList, NewMovie, NotFound } from './pages';
+import './App.css';
 
 function App() {
   return (
