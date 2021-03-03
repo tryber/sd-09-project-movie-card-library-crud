@@ -11,9 +11,9 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" render={ () => <MovieList /> } />
-        <Route path="/movies/:id" render={ () => <MovieDetails /> } />
-        <Route exact path="/movies/new" render={ () => <NewMovie /> } />
+        <Route path="/movies/new" render={ () => <NewMovie /> } />
         <Route path="/movies/:id/edit" render={ () => <EditMovie /> } />
+        <Route path="/movies/:id" render={ () => <MovieDetails /> } />
         <Route render={ () => <NotFound /> } />
       </Switch>
     </BrowserRouter>
