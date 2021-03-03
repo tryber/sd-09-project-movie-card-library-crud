@@ -9,13 +9,13 @@ import NotFound from './pages/NotFound';
 function App() {
   return (
     <BrowserRouter>
-    <Switch>
-      <Route exact path="/" component={ MovieList } />
-      <Route path="/movies/new" component={ NewMovie } />
-      <Route path="/movies/:id" render={ (props) => <MovieDetails {...props} />} />
-      <Route path="/movies/:id/edit" component={ EditMovie } />
-      <Route component={ NotFound } />    
-    </Switch>
+      <Switch>
+        <Route exact path="/" component={ MovieList } />
+        <Route path="/movies/new" component={ NewMovie } />
+        <Route path="/movies/:id" render={ (props) => <MovieDetails { ...props } /> } />
+        <Route path="/movies/:id/edit" component={ EditMovie } />
+        <Route component={ NotFound } />
+      </Switch>
     </BrowserRouter>
   );
 }
