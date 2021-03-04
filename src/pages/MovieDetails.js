@@ -42,31 +42,36 @@ class MovieDetails extends Component {
     );
   }
 
-  render() {
-    const { loading, title, storyline, imagePath, genre, rating, subtitle } = this.state;
+  renderCard(){
+    const{title, storyline, imagePath, genre, rating, subtitle } = this.state;
     const { match: { params } } = this.props;
     const { id } = params;
 
+    return(    
+    <div>
+      <img alt="Movie Cover" src={ `../${imagePath}` }/>
+      <h4>{ `Title: ${title}` }</h4>
+      <h5>{ `Subtitle: ${subtitle}` }</h5>
+      <p>{ `Storyline: ${storyline}` }</p>
+      <p>{ `Genre: ${genre}` }</p>
+      <div>
+        <span>
+          { `Rating: ${rating}` }
+        </span>
+      </div>
+      <Link to="/">VOLTAR</Link>
+      <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+    </div>
+    )
+  }
+
+  render() {
+    const { loading } = this.state;
     return (
       <div>
         <Header />
         <section>
-          {loading ? <Loading /> 
-            : <div>
-                <img alt="Movie Cover" src={ `../${imagePath}` }/>
-                <h4>{ `Title: ${title}` }</h4>
-                <h5>{ `Subtitle: ${subtitle}` }</h5>
-                <p>{ `Storyline: ${storyline}` }</p>
-                <p>{ `Genre: ${genre}` }</p>
-                <div>
-                  <span>
-                    { `Rating: ${rating}` }
-                  </span>
-                </div>
-                <Link to="/">VOLTAR</Link>
-                <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-              </div>
-          }
+          {loading ? <Loading /> : this.renderCard()}
         </section>
         <Footer />
       </div>
