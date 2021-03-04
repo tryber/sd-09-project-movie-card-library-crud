@@ -40,10 +40,10 @@ class MovieDetails extends Component {
   }
 
   render() {
-    const { match: { params } } = this.props;
-    const { id } = params;
     const { loading, title, storyline, imagePath, genre, rating, subtitle } = this.state;
     if (loading) return <Loading />;
+    const { match: { params } } = this.props;
+    const { id } = params;
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
