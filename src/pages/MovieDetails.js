@@ -9,6 +9,8 @@ class MovieDetails extends Component {
   constructor(props) {
     super(props);
 
+    this.handleDeleteMovie = this.handleDeleteMovie.bind(this);
+
     this.state = {
       movies: [],
       status: 'loading',
@@ -25,19 +27,16 @@ class MovieDetails extends Component {
     });
   }
 
-  componentWillUnmount() {
-    this.setState({
-      movies: [],
-      status: 'loading',
-    });
+  handleDeleteMovie() {
+    const { movies } = this.state;
+    const { id } = movies;
+    movieAPI.deleteMovie(id);
   }
 
   render() {
     const { movies, status } = this.state;
     const { id, storyline, imagePath, genre, rating, subtitle, title } = movies;
-
     if (status === 'loading') return <Loading />;
-
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
@@ -48,6 +47,7 @@ class MovieDetails extends Component {
         <p>{`Rating: ${rating}`}</p>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
+        <Link to="/" onClick={ this.handleDeleteMovie }>DELETAR</Link>
       </div>
     );
   }
