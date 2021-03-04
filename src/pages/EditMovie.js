@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { MovieForm } from '../components';
 import * as movieAPI from '../services/movieAPI';
@@ -25,7 +26,8 @@ class EditMovie extends Component {
   }
 
   async getMovieFromAPI() {
-    const { id } = this.props.match.params;
+    const { match } = this.props;
+    const { id } = match.params;
     const movie = await movieAPI.getMovie(id);
     this.setState({ movie });
     this.setState({ status: 'complete' });
@@ -52,5 +54,9 @@ class EditMovie extends Component {
     );
   }
 }
+
+EditMovie.propTypes = {
+  match: PropTypes.objectOf(PropTypes.string).isRequired,
+};
 
 export default EditMovie;
