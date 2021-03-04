@@ -13,7 +13,7 @@ class MovieDetails extends Component {
   constructor(props) {
     super(props);
     this.movieRender = this.movieRender.bind(this);
-    this.fetchMovie = this.fetchMovie.bind(this); 
+    this.fetchMovie = this.fetchMovie.bind(this);
     this.state = initialState;
   }
 
