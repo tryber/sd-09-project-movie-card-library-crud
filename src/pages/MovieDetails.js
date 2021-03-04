@@ -4,6 +4,7 @@ import { Loading } from '../components';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import * as movieAPI from '../services/movieAPI';
+import Proptypes from 'prop-types';
 import './moviedetails.css';
 
 class MovieDetails extends Component {
@@ -53,13 +54,15 @@ class MovieDetails extends Component {
       genre,
     } = this.state;
     return (
-      <div 
+      <div
         className="
-        movie-card-body-details 
-        movie-card hvr-underline-reveal
+        movie-card-body-details
+        movie-card
+        hvr-underline-reveal
         hvr-grow"
       >
-        <img className="movie-card-image-details"
+        <img
+          className="movie-card-image-details"
           alt="Movie Cover"
           src={ `../${imagePath}` }
         />
@@ -81,18 +84,54 @@ class MovieDetails extends Component {
   }
 
   render() {
-    const { loading } = this.state;
+    const { loading, title, storyline, imagePath, genre, rating, subtitle } = this.state;
+    const { match: { params } } = this.props;
+    const { id } = params;
 
     return (
       <div>
         <Header />
         <section className="main-content-details">
-          {loading ? <Loading /> : this.DetailsRender()}
+          {loading ? <Loading /> : 
+          <div
+            className="
+            movie-card-body-details
+            movie-card
+            hvr-underline-reveal
+            hvr-grow"
+          >
+            <img
+              className="movie-card-image-details"
+              alt="Movie Cover"
+              src={ `../${imagePath}` }
+            />
+            <h4 className="movie-card-title-details">{ `Title: ${title}` }</h4>
+            <h5 className="movie-card-subtitle-details">{ `Subtitle: ${subtitle}` }</h5>
+            <p className="movie-card-storyline-details">{ `Storyline: ${storyline}` }</p>
+            <p className="movie-genre-details">
+              { `Genre: ${genre}` }
+            </p>
+            <div className="movie-card-rating-details">
+              <span className="rating movie-card-rating-span-details">
+                { `Rating: ${rating}` }
+            </span>
+            </div>
+            <Link to="/" className="button-home">VOLTAR</Link>
+            <Link to={ `/movies/${id}/edit` } className="button-edit">EDITAR</Link>
+          </div>
+          }
         </section>
         <Footer />
       </div>
     );
   }
 }
+MovieDetails.propTypes = {
+  match: Proptypes.shape({
+    params: Proptypes.shape({
+      id: Proptypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 
 export default MovieDetails;
