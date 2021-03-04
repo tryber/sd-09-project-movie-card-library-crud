@@ -1,0 +1,29 @@
+.link-add-card-container {
+  align-items: center;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  height: 50px;
+  margin: 30px;
+  padding: 0 10px;
+  width: 200px;
+}
+
+.movie-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.movie-list-container {
+  align-items: center;
+  background-color: lightskyblue;
+  border: 1px solid black;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  width: 80%;
+}

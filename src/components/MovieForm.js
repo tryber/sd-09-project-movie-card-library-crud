@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './MovieForm.css';
 
 class MovieForm extends React.Component {
   constructor(props) {
@@ -126,8 +127,8 @@ class MovieForm extends React.Component {
 
   render() {
     return (
-      <main>
-        <form>
+      <main className="form-container">
+        <form className="form">
           { this.renderTitle() }
           { this.renderSubtitle() }
           { this.renderImagePath() }

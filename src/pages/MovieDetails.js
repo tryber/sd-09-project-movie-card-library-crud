@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
+import './MovieDetails.css';
 
 class MovieDetails extends Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class MovieDetails extends Component {
     const { movie } = this.state;
     const { id } = movie;
     return (
-      <div>
+      <div className="links-container">
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
         <Link to="/" onClick={ () => this.deleteMovie(id) }>DELETAR</Link>
@@ -44,7 +45,7 @@ class MovieDetails extends Component {
     const { title, storyline, imagePath, genre, rating, subtitle } = movie;
     if (loading === true) return <Loading />;
     return (
-      <div data-testid="movie-details">
+      <div data-testid="movie-details" className="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
         <div>
           <p>{ `Title: ${title}` }</p>
