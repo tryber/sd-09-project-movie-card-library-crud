@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 class MovieForm extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = { ...props.movie };
+    this.state = { ...props.movie };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -19,7 +19,6 @@ class MovieForm extends React.Component {
 
   renderTitleInput() {
     const { title } = this.state;
-
     return (
       <div>
         <label htmlFor="movie_title">
@@ -148,6 +147,7 @@ class MovieForm extends React.Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <div>
         <form>
