@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Loading from '../components/Loading';
 import * as movieAPI from '../services/movieAPI';
 import './MovieDetails.css';
@@ -30,6 +30,11 @@ class MovieDetails extends Component {
     });
   }
 
+  async deleteThisMovie(id) {
+    await movieAPI.deleteMovie(id);
+    return <Redirect to="/" />;
+  }
+
   createPartOfCard(movie) {
     const { title, storyline, imagePath, genre, rating, subtitle } = movie;
     return (
@@ -55,6 +60,13 @@ class MovieDetails extends Component {
         <hr />
         <Link to={ `/movies/${movie.id}/edit` } className="card-detail-link">EDITAR</Link>
         <Link to="/" className="card-detail-link">VOLTAR</Link>
+        <Link
+          to="/"
+          className="card-detail-link"
+          onClick={ () => this.deleteThisMovie(movie.id) }
+        >
+          DELETAR
+        </Link>
       </div>
     );
   }
