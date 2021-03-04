@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
+import MovieList from './MovieList';
 
 class MovieDetails extends Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class MovieDetails extends Component {
     this.state = {
       movie: {},
       loading: true,
+      shouldRedirect: false,
     };
   }
 
@@ -28,17 +30,24 @@ class MovieDetails extends Component {
     this.fetchMovie();
   }
 
-  render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
+  async removeMovie(id) {
+    const request = await movieAPI.deleteMovie(id);
 
-    const { title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
+    // console.log(request.status);
+    return (request.status === 'OK') && this.setState({ shouldRedirect: true });
+  }
+
+  structureDetails({ title, storyline, imagePath, genre, rating, subtitle }) {
     const { params } = this.props.match;
     const { id } = params;
 
-    const structure = (
+    if (id < 5) {
+      imagePath = `../${imagePath}`;
+    }
+
+    return (
       <div data-testid="movie-details">
-        <img alt="Movie Cover" src={ `../${imagePath}` } />
+        <img alt="Movie Cover" src={ `${imagePath}` } />
         <h1>{ title }</h1>
         <p>{ `Subtitle: ${subtitle}` }</p>
         <p>{ `Storyline: ${storyline}` }</p>
@@ -46,12 +55,20 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <div className="links">
           <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+          <Link to="/" onClick={ () => this.removeMovie(id) }>DELETAR</Link>
           <Link to="/">VOLTAR</Link>
         </div>
-      </div>
-    );
+      </div>);
+  }
 
-    return (this.state.loading) ? <Loading /> : structure;
+  render() {
+    const { movie, shouldRedirect, loading } = this.state;
+
+    if (shouldRedirect) {
+      return <Redirect to='/' component={ MovieList } />;
+    }
+
+    return (loading) ? <Loading /> : this.structureDetails(movie);
   }
 }
 
