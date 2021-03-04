@@ -1,11 +1,9 @@
-.movieCardDetails {
-  max-width: 35rem;
-
-  display: flex;
+.movieCardDetails {  
   align-items: flex-start;
+  display: flex;
   flex-direction: column;
-
   margin: auto;
+  max-width: 35rem;
   padding: 10px;
 }
 
@@ -25,4 +23,3 @@
   border: none;
   padding: 10px;
 }
-
