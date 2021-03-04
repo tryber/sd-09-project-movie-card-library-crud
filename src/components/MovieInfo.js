@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { shape, number, string, oneOfType } from "prop-types";
+import React, { Component } from 'react';
+import { shape, number, string, oneOfType } from 'prop-types';
 
 export default class MovieInfo extends Component {
   render() {
@@ -8,7 +8,7 @@ export default class MovieInfo extends Component {
 
     return (
       <div data-testid="movie-details">
-        <img alt="Movie Cover" src={`../${imagePath}`} />
+        <img alt="Movie Cover" src={ `../${imagePath}` } />
         <p>{`Title: ${title}`}</p>
         <p>{`Subtitle: ${subtitle}`}</p>
         <p>{`Rating: ${rating}`}</p>

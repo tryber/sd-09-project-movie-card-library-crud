@@ -31,9 +31,11 @@ class NewMovie extends Component {
     );
   }
 
+  /*
   myAlert(msg) {
     alert(msg);
   }
+  */
 
   render() {
     const { loading, shouldRedirect } = this.state;
