@@ -3,7 +3,7 @@
   background-color: #090f1f;
   display: flex;
   justify-content: center;
-  margin: 5em 30em 5em 30em;
+  margin: 5em 30em;
   min-height: 50em;
 }
 
@@ -11,7 +11,7 @@
   width: 100%;
 }
 
-/* topo | direita | inferior | esquerda 
+/* topo | direita | inferior | esquerda
 .movie-card-container-details {
   border-top: #e03f54 1px solid;
 }
