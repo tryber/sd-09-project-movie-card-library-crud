@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
+import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
-import { Link } from 'react-router-dom';
 
 class MovieDetails extends Component {
   constructor() {
@@ -33,11 +33,9 @@ class MovieDetails extends Component {
     );
   }
 
-
-
   render() {
     const { movieDetails, loading } = this.state;
-    const { title, storyline, imagePath, genre, rating, subtitle, id } = movieDetails;
+    const { title, storyline, imagePath, genre, rating, subtitle, id} = movieDetails;
     if (loading) return <Loading />;
     return (
       <div data-testid="movie-details">
@@ -49,7 +47,7 @@ class MovieDetails extends Component {
           <p>{ `Genre: ${genre}` }</p>
           <p>{ `Rating: ${rating}` }</p>
         </div>
-        <Link to={ `/movies/${id}/edit` }>EDITAR</Link> 
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <br />
         <Link to="/">VOLTAR</Link>
       </div>
