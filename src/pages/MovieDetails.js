@@ -9,6 +9,7 @@ class MovieDetails extends Component {
   constructor(props) {
     super(props);
     this.fetchMovie = this.fetchMovie.bind(this);
+    this.dataMovie = this.dataMovie.bind(this);
     this.state = {
       loading: true,
       movie: {},
@@ -36,22 +37,31 @@ class MovieDetails extends Component {
     );
   }
 
+  dataMovie() {
+    const { movie } = this.state;
+    const { title, storyline, genre, rating, subtitle } = movie;
+    return (
+      <div className="movie-card-body">
+        <h4 className="movie-card-title">{ title }</h4>
+        <h4 className="movie-card-subtitle">{ subtitle }</h4>
+        <p className="movie-card-storyline">{ `Storyline: ${storyline}` }</p>
+        <p>{ `Genre: ${genre}` }</p>
+        <p>{ `Rating: ${rating}` }</p>
+      </div>
+    );
+  }
+
   renderMovie() {
     const { movie } = this.state;
-    const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
+    const { id, imagePath } = movie;
     return (
       <div data-testid="movie-details" className="movie-card">
         <img alt="Movie Cover" src={ `../${imagePath}` } className="movie-card-image" />
-        <div className="movie-card-body">
-          <h4 className="movie-card-title">{ title }</h4>
-          <h4 className="movie-card-subtitle">{ subtitle }</h4>
-          <p className="movie-card-storyline">{ `Storyline: ${storyline}` }</p>
-          <p>{ `Genre: ${genre}` }</p>
-          <p>{ `Rating: ${rating}` }</p>
-        </div>
+        {this.dataMovie()}
         <div>
           <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
           <Link to="/">VOLTAR</Link>
+          <Link to={ `/movies/${id}` }>DELETAR</Link>
         </div>
       </div>
     );
