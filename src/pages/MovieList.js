@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Home from '../components/Home';
 import Loading from '../components/Loading';
-import MovieCard from '../components/MovieCard';
 
 import * as movieAPI from '../services/movieAPI';
 import '../styles/movieList.css';

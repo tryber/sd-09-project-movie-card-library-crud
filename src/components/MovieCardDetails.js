@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import * as movieAPI from '../services/movieAPI';
+import PropTypes from 'prop-types';
 
-class movieCardDetails extends Component {
+class MovieCardDetails extends Component {
   render() {
     const { movie, onSubmit } = this.props;
     const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
@@ -18,10 +18,23 @@ class movieCardDetails extends Component {
           <button type="button"><Link to={ `/movies/${id}/edit` }>EDITAR</Link></button>
           <button type="button"><Link exact to="/">VOLTAR</Link></button>
         </div>
-        <button type="submit" onClick={ () => onSubmit(id) }><Link exact to="/">DELETAR</Link></button>
+        <p><Link exact to="/" onClick={ () => onSubmit(id) }>DELETAR</Link></p>
       </div>
     );
   }
 }
 
-export default movieCardDetails;
+MovieCardDetails.propTypes = {
+  movie: PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    storyline: PropTypes.string,
+    imagePath: PropTypes.string,
+    genre: PropTypes.string,
+    rating: PropTypes.number,
+  }).isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
+
+export default MovieCardDetails;

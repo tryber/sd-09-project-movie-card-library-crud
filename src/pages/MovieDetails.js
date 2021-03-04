@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-closing-tag-location */
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 import '../styles/movieCardDetails.css';
@@ -15,7 +15,7 @@ class MovieDetails extends Component {
     this.state = {
       movie: {},
       loading: true,
-      movieId: 0,
+      // movieId: 0,
     };
   }
 
@@ -31,7 +31,7 @@ class MovieDetails extends Component {
   async addMoviesfromApi() {
     const { match } = this.props;
     const { id } = match.params;
-    this.setState({ movieId: id });
+    // this.setState({ movieId: id });
     const selectedMovie = await movieAPI.getMovie(id);
     this.setState({ movie: selectedMovie });
     this.setState({ loading: false });
@@ -50,5 +50,13 @@ class MovieDetails extends Component {
     );
   }
 }
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }).isRequired,
+};
 
 export default MovieDetails;
