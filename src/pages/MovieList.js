@@ -28,8 +28,8 @@ class MovieList extends Component {
       <div>
         <Header />
         <section className="main-content">
-          { loading ? <Loading /> 
-          : movies.map((movie) => <MovieCard key={ movie.title } movie={ movie }/>)}
+          { loading ? <Loading />
+            : movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
         </section>
         <Footer />
       </div>
