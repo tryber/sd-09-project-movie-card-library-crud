@@ -11,6 +11,7 @@ class MovieDetails extends Component {
       movie: {},
     };
     this.deleteMovie = this.deleteMovie.bind(this);
+    this.renderLinks = this.renderLinks.bind(this);
   }
 
   componentDidMount() {
@@ -24,13 +25,25 @@ class MovieDetails extends Component {
     movieAPI.deleteMovie(movieId);
   }
 
+  renderLinks() {
+    const { movie } = this.state;
+    const { id } = movie;
+    return (
+      <div>
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link to="/">VOLTAR</Link>
+        <Link to="/" onClick={ () => this.deleteMovie(id) }>DELETAR</Link>
+      </div>
+    );
+  }
+
   render() {
     const { movie } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
     if (!movie) return <Loading />;
     return (
       <div data-testid="movie-details">
-        <img alt="Movie Cover" src={ `../${imagePath}` } />
+        <img alt={ `Movie Cover ${id}` } src={ `../${imagePath}` } />
         <div>
           <p>{ `Title: ${title}` }</p>
           <p>{ `Subtitle: ${subtitle}` }</p>
@@ -38,11 +51,7 @@ class MovieDetails extends Component {
           <p>{ `Genre: ${genre}` }</p>
           <p>{ `Rating: ${rating}` }</p>
         </div>
-        <div>
-          <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-          <Link to="/">VOLTAR</Link>
-          <Link to="/" onClick={ () => this.deleteMovie(id) }>DELETAR</Link>
-        </div>
+        { this.renderLinks() }
       </div>
     );
   }

@@ -59,7 +59,7 @@ class MovieForm extends React.Component {
   }
 
   renderImagePath() {
-    const { imagePath } = this.state
+    const { imagePath } = this.state;
     return (
       <label htmlFor="imagePath">
         Imagem
