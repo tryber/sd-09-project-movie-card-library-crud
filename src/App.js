@@ -2,7 +2,7 @@ import React from 'react';
 
 function App() {
   return (
-    <div>Movie Card Library CRUD</div>
+    <div>Hudson Carlos Movie Card Library CRUD</div>
   );
 }
 
