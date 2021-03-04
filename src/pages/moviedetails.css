@@ -1,4 +1,4 @@
-/* .main-content-details {
+ .main-content-details {
   align-items: center;
   background-color: #090f1f;
   display: flex;
@@ -14,7 +14,7 @@
 .movie-card-image-details {
   width: 100%;
 }
-
+/*
 .movie-card-container-details {
   border-top: #e03f54 1px solid;
 }
