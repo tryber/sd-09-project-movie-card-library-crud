@@ -41,8 +41,7 @@ class MovieDetails extends Component {
 
   MovieDetailsRender(){
     const { title, subtitle, storyline, rating, imagePath, genre } = this.state;
-    const { match: { params } } = this.props;
-    const { id } = params;
+
     return(
     <div className="movie-card-body-details movie-card hvr-underline-reveal hvr-grow">
      <img className="movie-card-image-details" alt="Movie Cover" src={ `../${imagePath}` } />
