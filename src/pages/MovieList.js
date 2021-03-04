@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import MovieCard from '../components/MovieCard';
 
-import * as movieAPI from '../services/movieAPI';
-import { BrowserRouter as Router } from 'react-router-dom';
+// import * as movieAPI from '../services/movieAPI';
+// import { BrowserRouter as Router } from 'react-router-dom';
 
 class MovieList extends Component {
   constructor() {
