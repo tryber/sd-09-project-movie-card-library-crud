@@ -10,14 +10,7 @@ class EditMovie extends Component {
     this.state = {
       status: 'loading',
       shouldRedirect: false,
-      movie: {
-        title: '',
-        subtitle: '',
-        imagePath: '',
-        storyline: '',
-        genre: '',
-        rating: 0,
-      },
+      movie: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.fetchMovie = this.fetchMovie.bind(this);
@@ -61,12 +54,6 @@ class EditMovie extends Component {
     );
   }
 }
-EditMovie.propTypes = {
-  match: Proptypes.shape({
-    params: Proptypes.shape({
-      id: Proptypes.string.isRequired,
-    }).isRequired,
-  }).isRequired,
-};
+EditMovie.propTypes = { id: Proptypes.string.isRequired };
 
 export default EditMovie;
