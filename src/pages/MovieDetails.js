@@ -16,7 +16,7 @@ class MovieDetails extends Component {
 
     this.fetchMovie = this.fetchMovie.bind(this);
     this.renderComponent = this.renderComponent.bind(this);
-    this.deleteCarD = this.deleteCard.bind(this);
+    this.deleteCard = this.deleteCard.bind(this);
   }
 
   componentDidMount() {
@@ -55,7 +55,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
-        <Link to="/" onClick={ this.deleteCarD }>DELETAR</Link>
+        <Link to="/" onClick={ this.deleteCard }>DELETAR</Link>
       </div>
     );
   }
