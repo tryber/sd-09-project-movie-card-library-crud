@@ -4,7 +4,6 @@ import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
-
   componentDidMount() {
     const { match: { params } } = this.props;
     movieAPI.getMovie(params.id).then((apiValue) => this.setState({ movie: apiValue }));
