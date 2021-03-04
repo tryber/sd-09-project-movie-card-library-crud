@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
@@ -16,18 +17,20 @@ class MovieDetails extends Component {
     };
   }
 
+  componentDidMount() {
+    this.fetchMovie();
+  }
+
   async fetchMovie() {
-    const { id } = this.props.match.params;
+    const { match } = this.props;
+    const { id } = match.params;
+
     const movie = await movieAPI.getMovie(id);
 
     this.setState({
       movie,
       loading: false,
-    })
-  }
-
-  componentDidMount() {
-    this.fetchMovie();
+    });
   }
 
   async removeMovie(id) {
@@ -37,17 +40,19 @@ class MovieDetails extends Component {
     return (request.status === 'OK') && this.setState({ shouldRedirect: true });
   }
 
-  structureDetails({ title, storyline, imagePath, genre, rating, subtitle }) {
-    const { params } = this.props.match;
-    const { id } = params;
+  checkImageURL(image) {
+    if (!image.includes('http')) return `../${image}`;
 
-    if (id < 5) {
-      imagePath = `../${imagePath}`;
-    }
+    return image;
+  }
+
+  structureDetails({ title, storyline, imagePath, genre, rating, subtitle }) {
+    const { match } = this.props;
+    const { id } = match.params;
 
     return (
       <div data-testid="movie-details">
-        <img alt="Movie Cover" src={ `${imagePath}` } />
+        <img alt="Movie Cover" src={ this.checkImageURL(imagePath) } />
         <h1>{ title }</h1>
         <p>{ `Subtitle: ${subtitle}` }</p>
         <p>{ `Storyline: ${storyline}` }</p>
@@ -65,11 +70,19 @@ class MovieDetails extends Component {
     const { movie, shouldRedirect, loading } = this.state;
 
     if (shouldRedirect) {
-      return <Redirect to='/' component={ MovieList } />;
+      return <Redirect to="/" component={ MovieList } />;
     }
 
     return (loading) ? <Loading /> : this.structureDetails(movie);
   }
 }
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }).isRequired,
+};
 
 export default MovieDetails;
