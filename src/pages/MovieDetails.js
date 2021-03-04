@@ -5,10 +5,11 @@ import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.deleteMovie = this.deleteMovie.bind(this);
+    this.fetchMovie = this.fetchMovie.bind(this);
 
     this.state = {
       check: false,
@@ -37,8 +38,8 @@ class MovieDetails extends Component {
     const { check, movie } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle } = movie;
     const { match: { params: { id } } } = this.props;
-    if (!check) return <Loading />;
 
+    if (!check) return <Loading />;
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
@@ -49,7 +50,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${movie.id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
-        <p><Link to="/" onClick={ () => this.deleteMovie(id) }>DELETAR</Link></p>
+        <Link to="/" onClick={ () => this.deleteMovie(id) }>DELETAR</Link>
       </div>
     );
   }
