@@ -1,20 +1,17 @@
- .main-content-details {
+.main-content-details {
   align-items: center;
   background-color: #090f1f;
   display: flex;
-  display: flex;
   justify-content: center;
-  margin-left: 30em;
-  margin-right: 30em;
-  margin-top: 5em;
-  margin-bottom: 5em;
+  margin: 5em 30em 5em 30em;
   min-height: 50em;
 }
 
 .movie-card-image-details {
   width: 100%;
 }
-/*
+
+/* topo | direita | inferior | esquerda 
 .movie-card-container-details {
   border-top: #e03f54 1px solid;
 }
