@@ -12,10 +12,9 @@ class MovieDetails extends Component {
   }
 
   render() {
+    if (!this.state) return <Loading />;
     const { movie } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle } = movie;
-    if (!this.state) return <Loading />;
-    const { match: { params } } = this.props;
 
     return (
       <div data-testid="movie-details">
@@ -25,7 +24,7 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
-        <Link to={ `/movies/${params.id}/edit` }>EDITAR</Link>
+        <Link to="/movies/:id/edit">EDITAR</Link>
         <Link to="/">VOLTAR</Link>
         <Link to="/" onClick={ movieAPI.deleteMovie }>DELETAR</Link>
       </div>
