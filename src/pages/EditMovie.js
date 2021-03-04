@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import Proptypes from 'prop-types';
 import { MovieForm, Loading } from '../components';
 import * as movieAPI from '../services/movieAPI';
-import Proptypes from 'prop-types';
 
 class EditMovie extends Component {
   constructor(props) {
