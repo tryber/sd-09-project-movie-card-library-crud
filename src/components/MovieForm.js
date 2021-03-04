@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 class MovieForm extends React.Component {
@@ -163,5 +164,10 @@ class MovieForm extends React.Component {
     );
   }
 }
+
+MovieForm.propTypes = {
+  movie: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default MovieForm;
