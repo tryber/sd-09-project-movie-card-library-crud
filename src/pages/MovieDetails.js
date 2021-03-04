@@ -13,7 +13,7 @@ class MovieDetails extends Component {
       shouldRedirect: false,
       info: {},
     };
-    this.deleteMovie = this.deleteMovie.bind(this);
+    // this.deleteMovie = this.deleteMovie.bind(this);
   }
 
   componentDidMount() {
@@ -33,6 +33,7 @@ class MovieDetails extends Component {
     this.setState({ info, loading: false });
   }
 
+  /*
   myAlert(msg) {
     alert(msg);
   }
@@ -55,13 +56,12 @@ class MovieDetails extends Component {
       },
     );
   }
+  */
 
   render() {
     const { loading, shouldRedirect, info } = this.state;
     const { id } = info;
-
     if (shouldRedirect) return <Redirect to="/" />;
-
     return (
       loading
         ? <Loading />
@@ -70,7 +70,7 @@ class MovieDetails extends Component {
             <MovieInfo info={ info } />
             <Link to="/">VOLTAR</Link>
             <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-            <button type="button" onClick={ this.deleteMovie }>DELETAR</button>
+            <Link to="/" onClick={ () => movieAPI.deleteMovie(id) }>DELETAR</Link>
           </div>
         )
     );
