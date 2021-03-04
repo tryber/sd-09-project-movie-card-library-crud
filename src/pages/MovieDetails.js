@@ -42,25 +42,25 @@ class MovieDetails extends Component {
     );
   }
 
-  renderCard(){
-    const{title, storyline, imagePath, genre, rating, subtitle } = this.state;
+  renderCard() {
+    const { title, storyline, imagePath, genre, rating, subtitle } = this.state;
     const { match: { params } } = this.props;
     const { id } = params;
 
-    return(    
-    <div>
-      <img alt="Movie Cover" src={ `../${imagePath}` }/>
-      <h4>{ `Title: ${title}` }</h4>
-      <h5>{ `Subtitle: ${subtitle}` }</h5>
-      <p>{ `Storyline: ${storyline}` }</p>
-      <p>{ `Genre: ${genre}` }</p>
-        <span>
-          { `Rating: ${rating}` }
-        </span>
-      <Link to="/">VOLTAR</Link>
-      <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-    </div>
-    )
+    return(
+      <div>
+        <img alt="Movie Cover" src={ `../${imagePath}` }/>
+        <h4>{ `Title: ${title}` }</h4>
+        <h5>{ `Subtitle: ${subtitle}` }</h5>
+        <p>{ `Storyline: ${storyline}` }</p>
+        <p>{ `Genre: ${genre}` }</p>
+          <span>
+            { `Rating: ${rating}` }
+          </span>
+        <Link to="/">VOLTAR</Link>
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+      </div>
+    );
   }
 
   render() {
