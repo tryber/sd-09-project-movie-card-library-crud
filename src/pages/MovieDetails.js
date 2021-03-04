@@ -15,21 +15,16 @@ class MovieDetails extends Component {
   }
 
   componentDidMount() {
-    const { id } = this.props.match.params;
+    const { match: { params: { id } } } = this.props;
     movieAPI.getMovie(id)
-      .then((movie) => {
-        this.setState({ movie, loading: false })
-        console.log(movie)
-      });
+      .then((movie) => this.setState({ movie, loading: false }));
   }
 
   render() {
     const { movie, loading } = this.state;
-
-    if (loading) return <Loading loadingMessage="Carregando..." />;
-
     const { title, storyline, imagePath, genre, rating, subtitle } = movie;
-    const { id } = this.props.match.params;
+    const { match: { params: { id } } } = this.props;
+    if (loading) return <Loading loadingMessage="Carregando..." />;
 
     return (
       <div data-testid="movie-details">
@@ -39,7 +34,7 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
-        <Link to={`/movies/${id}/edit`}>EDITAR</Link>
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
       </div>
     );
