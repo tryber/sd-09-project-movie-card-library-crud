@@ -1,31 +1,34 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
+
+const initialState = {
+  loading: true,
+  movie: '',
+};
 
 class MovieDetails extends Component {
   constructor(props) {
     super(props);
     this.movieRender = this.movieRender.bind(this);
-    this.state = {
-      movie: [],
-    };
+    this.state = initialState;
   }
 
   componentDidMount() {
-    this.fetchMovie();
+    const { match } = this.props;
+    this.fetchMovie(match.params.id);
   }
 
   componentDidUpdate() {
     this.movieRender();
   }
 
-  async fetchMovie() {
-    const { match } = this.props;
-    const { id } = match.params;
-    const { getMovie } = movieAPI;
-    const requestReturn = await getMovie(id);
+  async fetchMovie(id) {
+    const requestReturn = await movieAPI.getMovie(id);
     this.setState({
+      loading: false,
       movie: requestReturn,
     });
   }
@@ -46,26 +49,19 @@ class MovieDetails extends Component {
   }
 
   render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
-    const { movie } = this.state;
+    const { movie, loading } = this.state;
     return (
-      <div>{ movie.length !== 0 ? this.movieRender() : <Loading /> }</div>
+      <div>
+        { loading ? <Loading /> : this.movieRender() }
+        <Link to="/">VOLTAR</Link>
+        <Link to={ `/movies/${movie.id}/edit` }>EDITAR</Link>
+      </div>
     );
   }
 }
 
 MovieDetails.propTypes = {
-  movie: PropTypes.shape({
-    title: PropTypes.string,
-    subtitle: PropTypes.string,
-    storyline: PropTypes.string,
-    rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    imagePath: PropTypes.string,
-  }).isRequired,
-  match: PropTypes.shape({}).isRequired,
-  params: PropTypes.shape({}).isRequired,
-  id: PropTypes.number.isRequired,
-};
+  id: PropTypes.string,
+}.isRequired;
 
 export default MovieDetails;
