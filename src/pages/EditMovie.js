@@ -54,6 +54,12 @@ class EditMovie extends Component {
     );
   }
 }
-EditMovie.propTypes = { id: Proptypes.string.isRequired };
+EditMovie.propTypes = {
+  match: Proptypes.shape({
+    params: Proptypes.shape({
+      id: Proptypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 
 export default EditMovie;
