@@ -14,9 +14,12 @@ class MovieList extends Component {
       loading: true,
     };
   }
+  
   componentDidMount() {
     movieAPI.getMovies().then(
-      (getMovie) => this.setState({ movies: getMovie, loading: false })
+      (getMovie) => {
+        return this.setState({ movies: getMovie, loading: false });
+      }
     );
   }
 
@@ -27,7 +30,9 @@ class MovieList extends Component {
       <div>
         <Header />
         <section className="main-content">
-            {loading ? <Loading /> : movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
+          {loading ? <Loading /> : movies.map((movie) => {
+            return <MovieCard key={movie.title} movie={movie} />;
+          })}
         </section>
         <Footer />
       </div>

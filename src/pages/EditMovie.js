@@ -29,19 +29,20 @@ class EditMovie extends Component {
   async handleSubmit(updatedMovie) {
     const {updateMovie} = movieAPI;
     await updateMovie(updatedMovie);
-    this.setState({shouldRedirect: true});
+    this.setState({ shouldRedirect: true });
   }
 
   async fetchMovie() {
-    const {getMovie} = movieAPI;
-    const { match: {params}} = this.props;
-    const {id} = params;
+    const { getMovie } = movieAPI;
+    const { match: { params }} = this.props;
+    const { id } = params;
     const selectedMovie = await getMovie(id);
     this.setState({
       movie: selectedMovie,
       status: 'ready',
     });
   }
+  
   render() {
     const { status, shouldRedirect, movie } = this.state;
     if (shouldRedirect) {

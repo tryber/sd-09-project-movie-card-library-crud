@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
 import MovieForm from '../components/MovieForm';
 import * as movieAPI from '../services/movieAPI';
 
@@ -18,12 +18,12 @@ class NewMovie extends Component {
   }
 
   async movieGenerate(newMovieGenerate) {
-    const {createMovie} = movieAPI;
+    const { createMovie } = movieAPI;
     try {
       await createMovie(newMovieGenerate);
-      this.setState({redirect: true});
+      this.setState({ redirect: true });
     } catch (error) {
-      alert(error);
+      console.log(error);
     }
   }
 

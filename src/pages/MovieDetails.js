@@ -7,8 +7,8 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 class MovieDetails extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       loading: true,
@@ -20,13 +20,14 @@ class MovieDetails extends Component {
       rating: 0,
     };
   }
+
   componentDidMount() {
     const { match: { params } } = this.props;
     const { id } = params;
     movieAPI.getMovie(id).then(
       (fetchMovie) => {
         const { title, subtitle, storyline, rating, imagePath, genre } = fetchMovie;
-        console.log(fetchMovie)
+        console.log(fetchMovie);
         this.setState({
           title,
           subtitle,
@@ -40,19 +41,19 @@ class MovieDetails extends Component {
     );
   }
 
-  MovieDetailsRender(){
+  MovieDetailsRender() {
     const { match: { params } } = this.props;
     const { id } = params;
     const { title, subtitle, storyline, rating, imagePath, genre } = this.state;
-    return(
+    return (
       <div className="movie-card-body-details movie-card hvr-underline-reveal hvr-grow">
-        <img className="movie-card-image-details" alt="Movie Cover" src={ `../${ imagePath }` } />
-        <h4 className="movie-card-title-details">{ `Title: ${ title }` }</h4>
-        <h5 className="movie-card-subtitle-details">{ `Subtitle: ${ subtitle }` }</h5>
-        <p className="movie-card-storyline-details">{ `Storyline: ${ storyline }` }</p>
-        <p className="movie-genre-details">{ `Genre: ${ genre }` }</p>
+        <img className="movie-card-image-details" alt="Movie Cover" src={ `../${imagePath}` } />
+        <h4 className="movie-card-title-details">{ `Title: ${title}` }</h4>
+        <h5 className="movie-card-subtitle-details">{ `Subtitle: ${subtitle}` }</h5>
+        <p className="movie-card-storyline-details">{ `Storyline: ${storyline}` }</p>
+        <p className="movie-genre-details">{ `Genre: ${genre}` }</p>
         <div className="movie-card-rating-details">
-          <span className="rating movie-card-rating-span-details">{ `Rating: ${ rating }` }</span>
+          <span className="rating movie-card-rating-span-details">{ `Rating: ${rating}` }</span>
         </div>
         <Link to="/" className="button-home">VOLTAR</Link>
         <Link to={ `/movies/${id}/edit` } className="button-edit">EDITAR</Link>
