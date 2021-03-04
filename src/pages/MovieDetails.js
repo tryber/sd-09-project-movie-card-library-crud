@@ -42,47 +42,6 @@ class MovieDetails extends Component {
     );
   }
 
-  DetailsRender() {
-    const { match: { params } } = this.props;
-    const { id } = params;
-    const {
-      title,
-      subtitle,
-      storyline,
-      rating,
-      imagePath,
-      genre,
-    } = this.state;
-    return (
-      <div
-        className="
-        movie-card-body-details
-        movie-card
-        hvr-underline-reveal
-        hvr-grow"
-      >
-        <img
-          className="movie-card-image-details"
-          alt="Movie Cover"
-          src={ `../${imagePath}` }
-        />
-        <h4 className="movie-card-title-details">{ `Title: ${title}` }</h4>
-        <h5 className="movie-card-subtitle-details">{ `Subtitle: ${subtitle}` }</h5>
-        <p className="movie-card-storyline-details">{ `Storyline: ${storyline}` }</p>
-        <p className="movie-genre-details">
-          { `Genre: ${genre}` }
-        </p>
-        <div className="movie-card-rating-details">
-          <span className="rating movie-card-rating-span-details">
-            { `Rating: ${rating}` }
-          </span>
-        </div>
-        <Link to="/" className="button-home">VOLTAR</Link>
-        <Link to={ `/movies/${id}/edit` } className="button-edit">EDITAR</Link>
-    </div>
-    );
-  }
-
   render() {
     const { loading, title, storyline, imagePath, genre, rating, subtitle } = this.state;
     const { match: { params } } = this.props;
@@ -95,7 +54,7 @@ class MovieDetails extends Component {
           {loading ? <Loading /> : 
           <div
             className="
-            movie-card-body-details
+            moviebody
             movie-card
             hvr-underline-reveal
             hvr-grow"
@@ -105,14 +64,14 @@ class MovieDetails extends Component {
               alt="Movie Cover"
               src={ `../${imagePath}` }
             />
-            <h4 className="movie-card-title-details">{ `Title: ${title}` }</h4>
-            <h5 className="movie-card-subtitle-details">{ `Subtitle: ${subtitle}` }</h5>
-            <p className="movie-card-storyline-details">{ `Storyline: ${storyline}` }</p>
-            <p className="movie-genre-details">
+            <h4 className="movietitle">{ `Title: ${title}` }</h4>
+            <h5 className="moviesubtitle">{ `Subtitle: ${subtitle}` }</h5>
+            <p className="moviestoryline">{ `Storyline: ${storyline}` }</p>
+            <p className="moviegenre">
               { `Genre: ${genre}` }
             </p>
-            <div className="movie-card-rating-details">
-              <span className="rating movie-card-rating-span-details">
+            <div className="movierating">
+              <span className="movieratingspan">
                 { `Rating: ${rating}` }
             </span>
             </div>

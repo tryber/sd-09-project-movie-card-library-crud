@@ -16,7 +16,7 @@
   border-top: #e03f54 1px solid;
 }
 
-.movie-card-body-details {
+.moviebody {
   background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 3px;
@@ -29,20 +29,20 @@
   width: 40%;
 } */
 
-/* .movie-card-title-details {
+/* .movietitle {
   font-size: 24px;
   font-weight: 500;
   margin: 10px 0 12px;
 }
 
-.movie-card-subtitle-details {
+.moviesubtitle {
   color: #6c757d;
   font-size: 16px;
   font-weight: 500;
   margin: 0px 0px 8px 10px;
 }
 
-.movie-card-storyline-details {
+.moviestoryline {
   font-size: 14px;
   min-height: 105px;
   text-align: justify;
@@ -59,7 +59,7 @@
   margin-left: 20px;
 }
 
-.movie-card-rating-details {
+.movierating {
   align-items:center;
   background-color: rgba(0, 0, 0, 0.03);
   border-top: 1px solid rgba(0, 0, 0, 0.125);
@@ -68,7 +68,7 @@
   padding: 12px 20px;
 }
 
-.movie-card-rating-span-details {
+.movieratingspan {
   align-items: center;
   border-top: 1px solid rgba(0, 0, 0, 0.125);
   display: flex;
