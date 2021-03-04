@@ -10,7 +10,7 @@ class NewMovie extends Component {
   }
   // handleSubmit(newMovie) {
   // }
-  
+
   handleSubmit() {
   }
 
