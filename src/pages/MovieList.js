@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import MovieCard from '../components/MovieCard';
 
 import * as movieAPI from '../services/movieAPI';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 class MovieList extends Component {
   constructor() {
@@ -19,6 +20,7 @@ class MovieList extends Component {
 
     return (
       <div data-testid="movie-list">
+        MovieList Rendered
         {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
       </div>
     );
