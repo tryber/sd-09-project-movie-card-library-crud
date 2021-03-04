@@ -1,3 +1,12 @@
+.card-link {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  padding: 5px 0;
+  width: auto;
+}
+
 .movie-card {
   background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.125);
@@ -10,7 +19,21 @@
   width: 300px;
 }
 
+.movie-card-body {
+  height: 200px;
+  width: 100%;
+}
+
 .movie-card img {
   height: 180px;
   width: 100%;
+}
+
+.rating {
+  background-color: lightgreen;
+  border-radius: 25px;
+  color: black;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 0 9px;
 }

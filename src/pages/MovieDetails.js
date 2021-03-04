@@ -16,11 +16,11 @@ class MovieDetails extends Component {
     this.renderLinks = this.renderLinks.bind(this);
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     const { match } = this.props;
     const { params } = match;
     const { id } = params;
-    await movieAPI.getMovie(id)
+    movieAPI.getMovie(id)
       .then((response) => this.setState({ movie: response, loading: false }));
   }
 
