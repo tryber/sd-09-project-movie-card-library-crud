@@ -50,13 +50,15 @@ class MovieDetails extends Component {
       storyline,
       rating,
       imagePath,
-      genre
+      genre,
     } = this.state;
     return (
-      <div className="
+      <div 
+        className="
         movie-card-body-details 
         movie-card hvr-underline-reveal
-        hvr-grow">
+        hvr-grow"
+      >
         <img className="movie-card-image-details"
           alt="Movie Cover"
           src={ `../${imagePath}` }
@@ -79,7 +81,7 @@ class MovieDetails extends Component {
   }
 
   render() {
-    const { loading } = this.state
+    const { loading } = this.state;
 
     return (
       <div>
