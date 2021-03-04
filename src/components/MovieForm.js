@@ -168,8 +168,8 @@ MovieForm.propTypes = {
   movie: PropTypes.shape({
     id: PropTypes.number,
     title: PropTypes.string,
-    storyline: PropTypes.string,
     imagePath: PropTypes.string,
+    storyline: PropTypes.string,
   }),
   onSubmit: PropTypes.func.isRequired,
 };
@@ -177,8 +177,11 @@ MovieForm.propTypes = {
 MovieForm.defaultProps = {
   movie: {
     title: '',
-    storyline: '',
+    subtitle: '',
     imagePath: '',
+    storyline: '',
+    genre: 'action',
+    rating: 0,
   },
 };
 
