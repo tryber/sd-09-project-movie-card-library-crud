@@ -8,7 +8,7 @@ function App() {
       <Switch>
         <Route exact path="/" render={ () => <MovieList /> } />
         <Route exact path="/movies/:id" render={ () => <MovieDetails /> } />
-        <Route id="new-movie" exact path="/movies/new" render={ () => <NewMovie /> } />
+        <Route id="new-movie" data-testid="new-movie" exact path="/movies/new" render={ () => <NewMovie /> } />
         <Route exact path="/movies/:id/edit" render={ () => <EditMovie /> } />
         <Route path="*" render={ () => <NotFound /> } />
       </Switch>
