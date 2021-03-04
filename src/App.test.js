@@ -211,7 +211,7 @@ describe('4 - Faça uma requisição para buscar o filme que deverá ser renderi
 
 describe('5 - Realize uma requisição para buscar o filme que será editado em `EditMovie`', () => {
 
-  it.skip('deverá exibir o texto "Carregando..." enquanto estiver fazendo a requisição', async () => {
+  it('deverá exibir o texto "Carregando..." enquanto estiver fazendo a requisição', async () => {
     for (const movie of readMovies()) {
       await cleanup();
       const { unmount, getByText } = renderPath(`/movies/${movie.id}/edit`);
@@ -219,7 +219,7 @@ describe('5 - Realize uma requisição para buscar o filme que será editado em 
     }
   });
 
-  it.skip('deverá conter um formulário preenchido com o título, subtítulo, sinopse, caminho da imagem e gênero do filme selecionado', async () => {
+  it('deverá conter um formulário preenchido com o título, subtítulo, sinopse, caminho da imagem e gênero do filme selecionado', async () => {
     for (const movie of readMovies()) {
       const { container, unmount, getByText, getAllByText, getByAltText, getByDisplayValue, getAllByDisplayValue } = renderPath(`/movies/${movie.id}/edit`);
       await waitFor(() => movieAPI.getMovie(movie.id - 1))
@@ -233,7 +233,7 @@ describe('5 - Realize uma requisição para buscar o filme que será editado em 
   });
 
 
-  it.skip('Quando clicar no botão de submit, deverá fazer uma requisição para API para atualizar o filme selecionado. Após a conclusão da atualização a pessoa usuária deverá ser redirecionada para a página inicial', async () => {
+  it('Quando clicar no botão de submit, deverá fazer uma requisição para API para atualizar o filme selecionado. Após a conclusão da atualização a pessoa usuária deverá ser redirecionada para a página inicial', async () => {
     for (const movie of readMovies()) {
       await cleanup();
       const { container, getByLabelText, getByRole } = renderPath(`/movies/${movie.id}/edit`)
