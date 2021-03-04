@@ -8,10 +8,10 @@
 }
 
 .body2 {
-  margin: 30px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  margin: 30px;
   padding: 20px;
 }
 
