@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Proptypes from 'prop-types';
 import { Loading } from '../components';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import * as movieAPI from '../services/movieAPI';
-import Proptypes from 'prop-types';
 import './moviedetails.css';
 
 class MovieDetails extends Component {
@@ -43,7 +43,14 @@ class MovieDetails extends Component {
   }
 
   render() {
-    const { loading, title, storyline, imagePath, genre, rating, subtitle } = this.state;
+    const { 
+      loading, 
+      title, 
+      storyline, 
+      imagePath, 
+      genre, 
+      rating, 
+      subtitle } = this.state;
     const { match: { params } } = this.props;
     const { id } = params;
 
