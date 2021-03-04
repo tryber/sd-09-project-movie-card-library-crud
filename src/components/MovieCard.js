@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 
 class MovieCard extends React.Component {
   render() {
-    const { movie: { title, storyline, id } } = this.props;
-    console.log(this.props);
+    const { movie: { title, storyline, id, imagePath } } = this.props;
 
     return (
       <div data-testid="movie-card">
+        <img src={ imagePath } alt={ title } />
         <h2>{ title }</h2>
         <h3>{ storyline }</h3>
         <Link to={ `movies/${id}` }>VER DETALHES</Link>
