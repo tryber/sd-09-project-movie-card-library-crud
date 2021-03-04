@@ -9,7 +9,7 @@ class NewMovie extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(newMovie) {
+  handleSubmit() { // newMovie colocar como parametro da func
   }
 
   render() {
