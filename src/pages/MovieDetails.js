@@ -31,7 +31,7 @@ export default class MovieDetails extends Component {
     const { loading, movie } = this.state;
     if (loading) return <Loading message="Carregando..." />;
 
-    const { title, storyline, imagePath, genre, rating, subtitle } = movie;
+    const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
@@ -42,6 +42,7 @@ export default class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to="/">VOLTAR</Link>
         <Link to={ `/movies/${this.id}/edit` }>EDITAR</Link>
+        <Link to="/" onClick={ () => movieAPI.deleteMovie(id) }>DELETAR</Link>
       </div>
     );
   }
