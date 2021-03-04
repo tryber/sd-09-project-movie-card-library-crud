@@ -3,7 +3,23 @@ body {
   box-sizing: border-box;
 }
 
+.error {
+  font: 900;
+}
+
 .loading {
   text-align: center;
   margin-top: 12rem;
+}
+
+.movie-card {
+  border: 1px solid lightgrey;
+  margin: 1em auto;
+  max-width: 400px;
+  padding: 1%;
+}
+
+.movie-list {
+  display: flex;
+  flex-flow: wrap;
 }
