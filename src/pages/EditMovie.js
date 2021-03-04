@@ -15,14 +15,15 @@ class EditMovie extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const { match } = this.props;
     const { params } = match;
     const { id } = params;
-    movieAPI.getMovie(id).then((response) => this.setState({
-      movie: response,
-      status: 'ok',
-    }));
+    await movieAPI.getMovie(id)
+      .then((response) => this.setState({
+        movie: response,
+        status: 'ok',
+      }));
   }
 
   handleSubmit(updatedMovie) {
