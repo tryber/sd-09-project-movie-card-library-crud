@@ -43,14 +43,7 @@ class MovieDetails extends Component {
   }
 
   render() {
-    const {
-      loading,
-      title,
-      storyline,
-      imagePath,
-      genre,
-      rating,
-      subtitle } = this.state;
+    const { loading, title, storyline, imagePath, genre, rating, subtitle } = this.state;
     const { match: { params } } = this.props;
     const { id } = params;
 
@@ -89,34 +82,3 @@ MovieDetails.propTypes = {
 };
 
 export default MovieDetails;
-
-{/* <section className="main-content-details">
-{loading ? <Loading /> 
-: <div
-    className="
-    moviebody
-    movie-card
-    hvr-underline-reveal
-    hvr-grow"
-  >
-    <img
-      className="movie-card-image-details"
-      alt="Movie Cover"
-      src={ `../${imagePath}` }
-    />
-    <h4 className="movietitle">{ `Title: ${title}` }</h4>
-    <h5 className="moviesubtitle">{ `Subtitle: ${subtitle}` }</h5>
-    <p className="moviestoryline">{ `Storyline: ${storyline}` }</p>
-    <p className="moviegenre">
-      { `Genre: ${genre}` }
-    </p>
-    <div className="movierating">
-      <span className="movieratingspan">
-        { `Rating: ${rating}` }
-    </span>
-    </div>
-    <Link to="/" className="button-home">VOLTAR</Link>
-    <Link to={ `/movies/${id}/edit` } className="button-edit">EDITAR</Link>
-  </div>
-}
-</section> */}
