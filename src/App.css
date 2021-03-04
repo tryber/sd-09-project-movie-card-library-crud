@@ -206,15 +206,13 @@ body {
   min-height: 14em;
 }
 
-.center
-{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-.ring
-{
+.ring {
   animation: animate 1s linear infinite;
   border-radius: 50%;
   box-shadow: 0 4px 0 #ea7b8a;
@@ -222,8 +220,7 @@ body {
   background: transparent;
   width: 300px;
 }
-.text
-{
+.text {
   background: transparent;
   border-radius: 50%;
   box-shadow: 0 0 5px #e03f54;
@@ -237,14 +234,13 @@ body {
   top: 0;
   width: 300px;
 }
-@keyframes animate
-{
-    0%
-    {
-        transform: rotate(0deg);
-    }
-    100%
-    {
-        transform: rotate(360deg);
-    }
+@keyframes animate {
+  0%
+  {
+    transform: rotate(0deg);
+  }
+  100%
+  {
+    transform: rotate(360deg);
+  }
 }

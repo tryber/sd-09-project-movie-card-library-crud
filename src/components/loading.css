@@ -3,6 +3,7 @@
     margin-top: 15%;
     position: absolute;
 }
+
 .ring-details {
     animation: animate 1s linear infinite;
     background: transparent;
@@ -11,6 +12,7 @@
     height: 300px;
     width: 300px;
 }
+
 .text-details {
     background: transparent;
     border-radius: 50%;
@@ -25,14 +27,14 @@
     text-align: center;
     width: 300px;
 }
-@keyframes animate
-{
-    0%
-    {
-        transform: rotate(0deg);
-    }
-    100%
-    {
-        transform: rotate(360deg);
-    }
+
+@keyframes animate {
+  0%
+  {
+    transform: rotate(0deg);
+  }
+  100%
+  {
+    transform: rotate(360deg);
+  }
 }
