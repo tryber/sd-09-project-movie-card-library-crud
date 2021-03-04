@@ -1,4 +1,4 @@
-body {
+/* body {
   background-color: #090f1f;
   box-sizing: border-box;
   font-size: 16px;
@@ -6,7 +6,7 @@ body {
 
 .movie-card-header {
   align-items: center;
-  background-color:#090f1f;
+  background-color: #090f1f;
   border-bottom: 1px #e03f54 ridge;
   display: flex;
   height: 20em;
@@ -243,4 +243,4 @@ body {
   {
     transform: rotate(360deg);
   }
-}
+} */
