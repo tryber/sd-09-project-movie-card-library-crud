@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
@@ -24,7 +25,7 @@ class MovieDetails extends Component {
     const { movie, loading } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle } = movie;
     const { match: { params: { id } } } = this.props;
-    if (loading) return <Loading loadingMessage="Carregando..." />;
+    if (loading) return <Loading />;
 
     return (
       <div data-testid="movie-details">
@@ -40,5 +41,13 @@ class MovieDetails extends Component {
     );
   }
 }
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+  }).isRequired,
+};
 
 export default MovieDetails;
