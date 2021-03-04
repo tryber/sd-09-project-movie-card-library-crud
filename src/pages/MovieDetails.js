@@ -13,16 +13,13 @@ class MovieDetails extends Component {
   constructor(props) {
     super(props);
     this.movieRender = this.movieRender.bind(this);
+    this.fetchMovie = this.fetchMovie.bind(this); 
     this.state = initialState;
   }
 
   componentDidMount() {
     const { match } = this.props;
     this.fetchMovie(match.params.id);
-  }
-
-  componentDidUpdate() {
-    this.movieRender();
   }
 
   async fetchMovie(id) {
@@ -33,8 +30,7 @@ class MovieDetails extends Component {
     });
   }
 
-  movieRender() {
-    const { movie } = this.state;
+  movieRender(movie) {
     const { title, storyline, imagePath, genre, rating, subtitle } = movie;
     return (
       <div data-testid="movie-details">
@@ -50,9 +46,10 @@ class MovieDetails extends Component {
 
   render() {
     const { movie, loading } = this.state;
+    if (loading) return <Loading />;
     return (
       <div>
-        { loading ? <Loading /> : this.movieRender() }
+        { this.movieRender(movie) }
         <Link to="/">VOLTAR</Link>
         <Link to={ `/movies/${movie.id}/edit` }>EDITAR</Link>
       </div>
