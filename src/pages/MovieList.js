@@ -12,7 +12,7 @@ class MovieList extends Component {
       movies: [],
       loading: false,
     };
-    this.fetchMovie = this.getMovieList.bind(this);
+    this.getMovieList = this.getMovieList.bind(this);
   }
 
   componentDidMount() {
