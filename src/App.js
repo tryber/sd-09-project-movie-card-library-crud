@@ -9,9 +9,8 @@ import NotFound from './pages/NotFound';
 function App() {
   return (
     <BrowserRouter>
-      <Link to="/">Movie List</Link>
-      <Link to="/movies/new">New Movie</Link>
-      <Link to="/movies/:id/edit">Edit Movie</Link>
+      <Link to="/">LISTA DE FILMES</Link>
+      <Link to="/movies/new">ADICIONAR CARTÃO</Link>
 
       <Switch>
         <Route path="/movies/:id/edit" component={ EditMovie } />
