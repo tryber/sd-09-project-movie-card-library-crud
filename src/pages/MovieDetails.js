@@ -18,6 +18,8 @@ class MovieDetails extends Component {
       genre: '',
       rating: 0,
     };
+
+    this.deleteCard = this.deleteCard.bind(this);
   }
 
   componentDidMount() {
@@ -39,21 +41,28 @@ class MovieDetails extends Component {
     );
   }
 
+  async deleteCard() {
+    const { match: { params } } = this.props;
+    const { id } = params;
+    await movieAPI.deleteMovie(id);
+  }
+
   render() {
     const { loading, title, storyline, imagePath, genre, rating, subtitle } = this.state;
     if (loading) return <Loading />;
     const { match: { params } } = this.props;
     const { id } = params;
     return (
-      <div data-testid="movie-details">
-        <img alt="Movie Cover" src={ `../${imagePath}` } />
-        <h4>{ `Title: ${title}` }</h4>
-        <p>{ `Subtitle: ${subtitle}` }</p>
-        <p>{ `Storyline: ${storyline}` }</p>
+      <div className="movie-card-details" data-testid="movie-details">
+        <img className="movie-card-image" alt="Movie Cover" src={ `../${imagePath}` } />
+        <h4 className="movie-card-title">{ `Title: ${title}` }</h4>
+        <p className="movie-card-subtitle">{ `Subtitle: ${subtitle}` }</p>
+        <p className="movie-card-storyline">{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
-        <p>{ `Rating: ${rating}` }</p>
-        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-        <Link to="/">VOLTAR</Link>
+        <p className="movie-card-id">{ `Rating: ${rating}` }</p>
+        <Link to={ `/movies/${id}/edit` } className="btn">EDITAR</Link>
+        <Link to="/" className="btn">VOLTAR</Link>
+        <Link to="/" onClick={ this.deleteCard } className="btn">DELETAR</Link>
       </div>
     );
   }
