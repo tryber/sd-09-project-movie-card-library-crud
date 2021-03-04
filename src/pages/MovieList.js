@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MovieCard from '../components/MovieCard';
 
-// import * as movieAPI from '../services/movieAPI';
+import * as movieAPI from '../services/movieAPI';
 // import { BrowserRouter as Router } from 'react-router-dom';
 
 class MovieList extends Component {
@@ -13,6 +13,15 @@ class MovieList extends Component {
     };
   }
 
+  // componentWillMount() {
+  //   console.log('Carregando...');
+  // }
+
+  componentDidMount() {
+    movieAPI.getMovies();
+    console.log('componentDidMount');
+  }
+
   render() {
     const { movies } = this.state;
 
@@ -22,9 +31,14 @@ class MovieList extends Component {
       <div data-testid="movie-list">
         MovieList Rendered
         {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
+        <movieAPI />
       </div>
     );
   }
 }
+
+// MovieList.propTypes = {
+//   movie: PropTypes.string.isRequired,
+// };
 
 export default MovieList;
