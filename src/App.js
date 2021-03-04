@@ -16,7 +16,7 @@ function App() {
         <Route exact path="/" component={ Movielist } />
         <Route path="/movies/new" component={ NewMovie } />
         <Route exact path="/movies/:id" component={ MovieDetails } />
-        <Route exact path="/movies/:id/edit" component={ EditMovie } />
+        <Route path="/movies/:id/edit" component={ EditMovie } />
         <Route component={ NotFound } />
       </Switch>
     </Router>
