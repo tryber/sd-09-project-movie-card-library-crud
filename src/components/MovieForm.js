@@ -164,4 +164,10 @@ class MovieForm extends React.Component {
   }
 }
 
+MovieForm.propTypes = {
+  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onSubmit: PropTypes.func,
+  
+};
+
 export default MovieForm;
