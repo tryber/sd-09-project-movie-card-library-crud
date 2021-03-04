@@ -6,11 +6,11 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path='/' render={ () => <MovieList /> } />
-        <Route exact path='/movies/:id' render={ () => <MovieDetails /> } />
-        <Route exact path='/movies/new' render={ () => <NewMovie /> } />
-        <Route exact path='/movies/:id/edit' render={ () => <EditMovie /> } />
-        <Route path='*' render={ () => <NotFound /> } />
+        <Route exact path="/" render={ () => <MovieList /> } />
+        <Route exact path="/movies/:id" render={ () => <MovieDetails /> } />
+        <Route id="new-movie" exact path="/movies/new" render={ () => <NewMovie /> } />
+        <Route exact path="/movies/:id/edit" render={ () => <EditMovie /> } />
+        <Route path="*" render={ () => <NotFound /> } />
       </Switch>
     </BrowserRouter>
   );
