@@ -41,14 +41,25 @@ class MovieDetails extends Component {
     );
   }
 
-  MovieDetailsRender() {
+  DetailsRender() {
     const { match: { params } } = this.props;
     const { id } = params;
-    const { title, subtitle, storyline, rating, imagePath, genre } = this.state;
+    const { 
+      title, 
+      subtitle, 
+      storyline, 
+      rating, 
+      imagePath, 
+      genre 
+    } = this.state;
     return (
-      <div className="movie-card-body-details movie-card hvr-underline-reveal hvr-grow">
+      <div className="
+        movie-card-body-details 
+        movie-card hvr-underline-reveal 
+        hvr-grow">
         <img className="movie-card-image-details" 
-          alt="Movie Cover" src={ `../${imagePath}` } 
+          alt="Movie Cover" 
+          src={ `../${imagePath}` } 
         />
         <h4 className="movie-card-title-details">{ `Title: ${title}` }</h4>
         <h5 className="movie-card-subtitle-details">{ `Subtitle: ${subtitle}` }</h5>
@@ -74,7 +85,7 @@ class MovieDetails extends Component {
       <div>
         <Header />
         <section className="main-content-details">
-          {loading ? <Loading /> : this.MovieDetailsRender()}
+          {loading ? <Loading /> : this.DetailsRender()}
         </section>
         <Footer />
       </div>
