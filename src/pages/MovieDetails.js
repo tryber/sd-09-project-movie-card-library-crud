@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { shape, number } from 'prop-types';
+import { shape, string } from 'prop-types';
+import { Link, Redirect } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
+import MovieInfo from '../components/MovieInfo';
 
 class MovieDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
       loading: true,
+      shouldRedirect: false,
       info: {},
     };
+    this.deleteMovie = this.deleteMovie.bind(this);
   }
 
   componentDidMount() {
@@ -30,22 +33,44 @@ class MovieDetails extends Component {
     this.setState({ info, loading: false });
   }
 
+  myAlert(msg) {
+    alert(msg);
+  }
+
+  deleteMovie() {
+    const { info } = this.state;
+    const { id } = info;
+    this.setState(
+      { loading: true },
+      async () => {
+        try {
+          const result = await movieAPI.deleteMovie(id);
+          if (result.status !== 'OK') throw new Error('Could not delete movie');
+          // this.myAlert('Movie succesfully deleted!');
+          this.setState({ shouldRedirect: true });
+        } catch (error) {
+          this.setState({ loading: false });
+          this.myAlert(error);
+        }
+      },
+    );
+  }
+
   render() {
-    const { loading, info } = this.state;
-    const { id, title, storyline, imagePath, genre, rating, subtitle } = info;
+    const { loading, shouldRedirect, info } = this.state;
+    const { id } = info;
+
+    if (shouldRedirect) return <Redirect to="/" />;
+
     return (
       loading
         ? <Loading />
         : (
-          <div data-testid="movie-details">
-            <img alt="Movie Cover" src={ `../${imagePath}` } />
-            <p>{ `Title: ${title}` }</p>
-            <p>{ `Subtitle: ${subtitle}` }</p>
-            <p>{ `Rating: ${rating}` }</p>
-            <p>{ `Genre: ${genre}` }</p>
-            <p>{ `Storyline: ${storyline}` }</p>
+          <div>
+            <MovieInfo info={ info } />
             <Link to="/">VOLTAR</Link>
             <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+            <button type="button" onClick={ this.deleteMovie }>DELETAR</button>
           </div>
         )
     );
@@ -55,7 +80,7 @@ class MovieDetails extends Component {
 MovieDetails.propTypes = {
   match: shape({
     params: shape({
-      id: number,
+      id: string,
     }),
   }).isRequired,
 };
