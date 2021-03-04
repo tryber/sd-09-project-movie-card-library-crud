@@ -25,6 +25,7 @@ jest.mock('./services/movieAPI');
 movieAPI.getMovies = jest.fn(() => (
   new Promise((resolve) => {
     const movies = readMovies();
+    console.log(movies)
     resolve(movies);
   })
 ));

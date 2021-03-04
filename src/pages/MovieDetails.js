@@ -5,16 +5,22 @@ import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
+  // constructor(props) {
+  //   super(props)
+  // }
   componentDidMount() {
     const { match: { params } } = this.props;
     movieAPI.getMovie(params.id).then((apiValue) => this.setState({ movie: apiValue }));
-    movieAPI.deleteMovie(params.id);
+  }
+
+  async teste(id) {
+    await movieAPI.deleteMovie(id);
   }
 
   render() {
     if (!this.state) return <Loading />;
     const { movie } = this.state;
-    const { title, storyline, imagePath, genre, rating, subtitle } = movie;
+    const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
 
     return (
       <div data-testid="movie-details">
@@ -24,9 +30,9 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
-        <Link to="/movies/:id/edit">EDITAR</Link>
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
-        <Link to="/" onClick={ movieAPI.deleteMovie }>DELETAR</Link>
+        <Link to="/" onClick={ () => this.teste(id) }>DELETAR</Link>
       </div>
     );
   }
