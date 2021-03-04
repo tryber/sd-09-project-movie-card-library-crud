@@ -9,16 +9,18 @@ class MovieDetails extends Component {
     super(props);
     this.state = {
       movie: {},
+      loading: true,
     };
     this.deleteMovie = this.deleteMovie.bind(this);
     this.renderLinks = this.renderLinks.bind(this);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const { match } = this.props;
     const { params } = match;
     const { id } = params;
-    movieAPI.getMovie(id).then((response) => this.setState({ movie: response }));
+    await movieAPI.getMovie(id)
+      .then((response) => this.setState({ movie: response, loading: false }));
   }
 
   deleteMovie(movieId) {
@@ -38,12 +40,12 @@ class MovieDetails extends Component {
   }
 
   render() {
-    const { movie } = this.state;
-    const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
-    if (!movie) return <Loading />;
+    const { movie, loading } = this.state;
+    const { title, storyline, imagePath, genre, rating, subtitle } = movie;
+    if (loading === true) return <Loading />;
     return (
       <div data-testid="movie-details">
-        <img alt={ `Movie Cover ${id}` } src={ `../${imagePath}` } />
+        <img alt="Movie Cover" src={ `../${imagePath}` } />
         <div>
           <p>{ `Title: ${title}` }</p>
           <p>{ `Subtitle: ${subtitle}` }</p>
