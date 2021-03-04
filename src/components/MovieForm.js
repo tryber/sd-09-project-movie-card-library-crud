@@ -34,6 +34,7 @@ class MovieForm extends React.Component {
       <label htmlFor="title">
         Título
         <input
+          id="title"
           name="title"
           type="text"
           value={ title }
@@ -49,6 +50,7 @@ class MovieForm extends React.Component {
       <label htmlFor="subtitle">
         Subtítulo
         <input
+          id="subtitle"
           name="subtitle"
           type="text"
           value={ subtitle }
@@ -64,6 +66,7 @@ class MovieForm extends React.Component {
       <label htmlFor="imagePath">
         Imagem
         <input
+          id="imagePath"
           name="imagePath"
           type="text"
           value={ imagePath }
@@ -79,6 +82,7 @@ class MovieForm extends React.Component {
       <label htmlFor="storyline">
         Sinopse
         <textarea
+          id="storyline"
           name="storyline"
           value={ storyline }
           onChange={ this.handleChange }
@@ -93,6 +97,7 @@ class MovieForm extends React.Component {
       <label htmlFor="genre">
         Gênero
         <select
+          id="genre"
           name="genre"
           value={ genre }
           onChange={ this.handleChange }
@@ -112,6 +117,7 @@ class MovieForm extends React.Component {
       <label htmlFor="rating">
         Avaliação
         <input
+          id="rating"
           name="rating"
           type="number"
           step={ 0.1 }
