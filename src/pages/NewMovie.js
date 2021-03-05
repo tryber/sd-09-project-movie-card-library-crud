@@ -8,7 +8,17 @@ class NewMovie extends Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = { shouldRedirect: false };
+    this.state = {
+      shouldRedirect: false,
+      objNew: {
+        title: '',
+        subtitle: '',
+        storyline: '',
+        rating: 0,
+        imagePath: '',
+        genre: 'action',
+      },
+    };
   }
 
   handleSubmit(newMovie) {
@@ -16,13 +26,13 @@ class NewMovie extends Component {
   }
 
   render() {
-    const { shouldRedirect } = this.state;
+    const { shouldRedirect, objNew } = this.state;
 
     if (shouldRedirect) return (<Redirect to="/" />);
 
     return (
       <div data-testid="new-movie">
-        <MovieForm onSubmit={ this.handleSubmit } />
+        <MovieForm movie={ objNew } onSubmit={ this.handleSubmit } />
       </div>
     );
   }

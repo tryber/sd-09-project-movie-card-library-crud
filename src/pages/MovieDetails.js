@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import * as movieAPI from '../services/movieAPI';
@@ -12,7 +12,6 @@ class MovieDetails extends Component {
     this.state = {
       loading: true,
       movie: [],
-      shouldRedirect: false,
     };
   }
 
@@ -28,10 +27,9 @@ class MovieDetails extends Component {
   }
 
   render() {
-    const { movie, loading, shouldRedirect } = this.state;
+    const { movie, loading } = this.state;
     const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
 
-    if (shouldRedirect) return (<Redirect to="/" />);
     if (loading) return (<Loading />);
 
     return (
@@ -44,6 +42,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
+        <Link to="/">DELETAR</Link>
       </div>
     );
   }
