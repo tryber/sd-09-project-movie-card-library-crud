@@ -11,9 +11,9 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" render={ (props) => <MovieList { ...props } /> } />
-        <Route path="/movies/:id" component={ MovieDetails } />
         <Route path="/movies/new" component={ NewMovie } />
         <Route path="/movies/:id/edit" component={ EditMovie } />
+        <Route path="/movies/:id" component={ MovieDetails } />
         <Redirect to="/notfound" component={ NotFound } />
       </Switch>
     </BrowserRouter>
