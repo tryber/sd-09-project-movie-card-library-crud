@@ -8,8 +8,7 @@ body {
 }
 
 .loading {
-  text-align: center;
-  margin-top: 12rem;
+  margin: 12rem auto 1em;
 }
 
 .movie-card {
