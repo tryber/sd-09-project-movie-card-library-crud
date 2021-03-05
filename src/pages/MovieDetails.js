@@ -24,21 +24,10 @@ class MovieDetails extends Component {
     }));
   }
 
-  async deleteThisMovie() {
-    const { match } = this.props;
-    const { params } = match;
-    const { id } = params;
-    await movieAPI.deleteMovie(id);
+  deleteThisMovie(id) {
+    movieAPI.deleteMovie(id);
+    console.log('deletou');
   }
-  // async componentDidUpdate() {
-  //   const { id } = this.props.match.params;
-  //   await movieAPI.deleteMovie(id);
-  // }
-
-  // async componentWillUnmount() {
-  //   const { id } = this.props.match.params;
-  //   await movieAPI.deleteMovie(id);
-  // }
 
   render() {
     const { movieInfo, movieInfoReceived } = this.state;
@@ -54,7 +43,7 @@ class MovieDetails extends Component {
           <p>{ `Genre: ${genre}` }</p>
           <p>{ `Rating: ${rating}` }</p>
           <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-          <Link to="/">DELETAR</Link>
+          <Link to="/" onClick={ () => this.deleteThisMovie(id) }>DELETAR</Link>
           <Link to="/">VOLTAR</Link>
         </div>
       </div>
