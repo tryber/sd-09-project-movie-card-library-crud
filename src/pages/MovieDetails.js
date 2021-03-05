@@ -5,8 +5,8 @@ import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       loading: false,
@@ -35,7 +35,7 @@ class MovieDetails extends Component {
 
   render() {
     const { movieDetails, loading } = this.state;
-    const { title, storyline, imagePath, genre, rating, subtitle, id} = movieDetails;
+    const { title, storyline, imagePath, genre, rating, subtitle, id } = movieDetails;
     if (loading) return <Loading />;
     return (
       <div data-testid="movie-details">
