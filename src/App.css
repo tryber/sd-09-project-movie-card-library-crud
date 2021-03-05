@@ -18,6 +18,16 @@ body {
   padding: 1%;
 }
 
+.movie-details {
+  margin: 1em auto;
+  padding: 10px;
+}
+
+.movie-details button {
+  margin: 0 1em;
+  padding: 0 20px;
+}
+
 .movie-list {
   display: flex;
   flex-flow: wrap;
