@@ -4,8 +4,8 @@ import * as movieAPI from '../services/movieAPI';
 import MovieCard from '../components/MovieCard';
 
 class MovieList extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       movies: [],
