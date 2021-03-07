@@ -31,8 +31,6 @@ class MovieList extends Component {
     if (loading) {
       return <Loading />;
     }
-
-    console.log(movies);
     return (
       <div data-testid="movie-list">
         {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
