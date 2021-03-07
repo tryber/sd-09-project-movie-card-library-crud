@@ -16,6 +16,10 @@ class MovieList extends Component {
     this.showMovies = this.showMovies.bind(this);
   }
 
+  componentDidMount() {
+    this.fetchMovies();
+  }
+
   async fetchMovies() {
     this.setState(
       { loading: true },
@@ -25,13 +29,10 @@ class MovieList extends Component {
         this.setState({
           movies: requestMovies,
           loading: false,
-    
+
         });
       }
     );
-  }
-  componentDidMount() {
-    this.fetchMovies();
   }
 
   showMovies() {
@@ -51,7 +52,7 @@ class MovieList extends Component {
     return (
       <div data-testid="movie-list">
         { loading ? <Loading /> : this.showMovies() }
-        </div>
+      </div>
     );
   }
 }
