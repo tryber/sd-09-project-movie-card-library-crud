@@ -138,12 +138,14 @@ class MovieForm extends React.Component {
   renderSubmitButton() {
     return (
       <div>
-        <Link to="/"><button
-          type="button"
-          onClick={ this.handleSubmit }
-        >
-          Submit
-        </button></Link>
+        <Link to="/">
+          <button
+            type="button"
+            onClick={ this.handleSubmit }
+          >
+            Submit
+          </button>
+        </Link>
       </div>
     );
   }
@@ -164,5 +166,9 @@ class MovieForm extends React.Component {
     );
   }
 }
+
+MovieForm.propTypes = {
+  onSubmit: PropTypes.func,
+}.isRequired;
 
 export default MovieForm;
