@@ -25,7 +25,6 @@ class MovieDetails extends Component {
     this.setState({ movie: movieObject,
       loading: false,
     });
-    console.log(movieObject);
   }
 
   render() {
