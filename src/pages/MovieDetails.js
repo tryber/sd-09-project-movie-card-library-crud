@@ -5,11 +5,11 @@ import { Loading } from '../components';
 
 import * as movieAPI from '../services/movieAPI';
 
-
 class MovieDetails extends Component {
   constructor(props) {
     super(props);
-    const { id } = this.props.match.params;
+    const { match } = this.props;
+    const { id } = match.params;
     this.state = {
       movie: {},
       loading: true,
@@ -54,7 +54,7 @@ class MovieDetails extends Component {
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-        <Link to={"/"}>VOLTAR</Link>
+        <Link to={ '/' }>VOLTAR</Link>
 
       </div>
     );
