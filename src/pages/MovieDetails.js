@@ -34,7 +34,7 @@ class MovieDetails extends Component {
         this.setState({
           movie: requestMovie,
           loading: false,
-    
+
         });
       },
     );
