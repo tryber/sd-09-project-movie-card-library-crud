@@ -275,7 +275,7 @@ describe('5 - Realize uma requisição para buscar o filme que será editado em 
 });
 
 describe('6 - Insira um link na página inicial para `NewMovie` para criar novos cartões', () => {
-  it.skip('a página inicial deverá conter um link "ADICIONAR CARTÃO". Esse link deve redirecionar para a página de criação de filmes', async () => {
+  it('a página inicial deverá conter um link "ADICIONAR CARTÃO". Esse link deve redirecionar para a página de criação de filmes', async () => {
     const { unmount } = renderPath('/');
     await waitFor(() => movieAPI.getMovies());
     const addMovie = screen.getByText('ADICIONAR CARTÃO');
