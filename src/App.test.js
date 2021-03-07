@@ -127,13 +127,13 @@ describe('1 - Renderize `BrowserRouter` no componente `App` usando rotas', () =>
 });
 
 describe('2 - Faça uma requisição para buscar e mostrar a lista de filmes quando `MovieList` for montado', () => {
-  test.skip('deverá exibir o texto "Carregando..." enquanto estiver fazendo a requisição', async () => {
+  test('deverá exibir o texto "Carregando..." enquanto estiver fazendo a requisição', async () => {
     const { container, unmount, getByText } = renderPath('/');
     expect(getByText('Carregando...'));
     await waitFor(() => movieAPI.getMovies())
     unmount();
   })
-  test.skip('deverá exibir um MovieCard para cada filme retornado pela API', async () => {
+  test('deverá exibir um MovieCard para cada filme retornado pela API', async () => {
     const { unmount, getAllByTestId } = renderPath('/');
     await waitFor(() => movieAPI.getMovies());
     expect(getAllByTestId('movie-card').length).toBe(5);
@@ -142,7 +142,7 @@ describe('2 - Faça uma requisição para buscar e mostrar a lista de filmes qua
 });
 
 describe('3 - Insira um link para a página de detalhes de um filme dentro de `MovieCard`', () => {
-  test.skip('deve exibir pelo menos o título e a sinopse de seu respectivo filme', async () => {
+  test('deve exibir pelo menos o título e a sinopse de seu respectivo filme', async () => {
     const { unmount, getAllByText } = renderPath('/');
     await waitFor(() => movieAPI.getMovies());
     expect(screen.getAllByTestId('movie-card').length).toBe(5);
@@ -152,7 +152,7 @@ describe('3 - Insira um link para a página de detalhes de um filme dentro de `M
     })
     unmount();
   })
-  test.skip('deve conter um link com o texto "VER DETALHES" que redireciona para a página de detalhes do filme', async () => {
+  test('deve conter um link com o texto "VER DETALHES" que redireciona para a página de detalhes do filme', async () => {
     const { unmount, getAllByText } = renderPath('/');
     await waitFor(() => movieAPI.getMovies());
     getAllByText('VER DETALHES').forEach((link, index) => {
@@ -164,7 +164,7 @@ describe('3 - Insira um link para a página de detalhes de um filme dentro de `M
 
 describe('4 - Faça uma requisição para buscar o filme que deverá ser renderizado dentro de `Movie Details`', () => {
 
-  it.skip('deverá exibir o texto "Carregando..." enquanto estiver fazendo a requisição', async () => {
+  it('deverá exibir o texto "Carregando..." enquanto estiver fazendo a requisição', async () => {
     for (const movie of readMovies()) {
       await cleanup();
       const { getByText } = renderPath('/movies/' + movie.id);
