@@ -31,7 +31,7 @@ class MovieList extends Component {
           loading: false,
 
         });
-      }
+      },
     );
   }
 

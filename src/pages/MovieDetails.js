@@ -1,20 +1,27 @@
 import React, { Component } from 'react';
-
-import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 import { Link } from 'react-router-dom';
+
+import * as movieAPI from '../services/movieAPI';
+
+import PropTypes from 'prop-types';
 
 class MovieDetails extends Component {
   constructor(props) {
     super(props);
-
+    const { id } = this.props.match.params;
     this.state = {
       movie: {},
       loading: true,
-      id: this.props.match.params.id
+      id,
 
-    }
+    };
+
     this.showMovie = this.showMovie.bind(this);
+  }
+
+  componentDidMount() {
+    this.fetchMovie()
   }
 
   async fetchMovie() {
@@ -22,7 +29,7 @@ class MovieDetails extends Component {
       { loading: true },
 
       async () => {
-        let { id } = this.state;
+        const { id } = this.state;
         const requestMovie = await movieAPI.getMovie(id);
         this.setState({
           movie: requestMovie,
@@ -32,9 +39,6 @@ class MovieDetails extends Component {
       }
     );
   }
-  componentDidMount() {
-    this.fetchMovie()
-  }
 
   showMovie() {
     const { movie } = this.state;
@@ -42,16 +46,17 @@ class MovieDetails extends Component {
 
     return (
       <div data-testid="movie-details">
-      <img alt="Movie Cover" src={ `../${ imagePath }` } />
-      <p>{ `Title: ${ title }` }</p>
-      <p>{ `Subtitle: ${ subtitle }` }</p>
-      <p>{ `Storyline: ${ storyline }` }</p>
-      <p>{ `Genre: ${ genre }` }</p>
-      <p>{ `Rating: ${ rating }` }</p>
-      <Link to={`/movies/${ id }/edit`}>EDITAR</Link>
-      <Link to={`/`}>VOLTAR</Link>
 
-    </div>
+        <img alt="Movie Cover" src={ `../${imagePath}` } />
+        <p>{ `Title: ${title}` }</p>
+        <p>{ `Subtitle: ${subtitle}` }</p>
+        <p>{ `Storyline: ${storyline}` }</p>
+        <p>{ `Genre: ${genre}` }</p>
+        <p>{ `Rating: ${rating}` }</p>
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link to={ `/` }>VOLTAR</Link>
+
+      </div>
     );
   }
 
@@ -62,5 +67,14 @@ class MovieDetails extends Component {
     return (loading ? <Loading /> : this.showMovie() );
   }
 }
+
+MovieDetails.propTypes = {
+  params: PropTypes.shape({
+    id: PropTypes.string,
+
+
+  }).isRequired,
+
+}.isRequired;
 
 export default MovieDetails;
