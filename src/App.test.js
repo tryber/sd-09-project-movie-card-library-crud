@@ -211,7 +211,7 @@ describe('4 - Faça uma requisição para buscar o filme que deverá ser renderi
 
 describe('5 - Realize uma requisição para buscar o filme que será editado em `EditMovie`', () => {
 
-  it.skip('deverá exibir o texto "Carregando..." enquanto estiver fazendo a requisição', async () => {
+  it('deverá exibir o texto "Carregando..." enquanto estiver fazendo a requisição', async () => {
     for (const movie of readMovies()) {
       await cleanup();
       const { unmount, getByText } = renderPath(`/movies/${movie.id}/edit`);
