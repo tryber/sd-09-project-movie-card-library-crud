@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import NotFound from './pages/NotFound';
 import MovieList from './pages/MovieList';
 import MovieDetails from './pages/MovieDetails';
@@ -14,7 +14,7 @@ function App() {
         <Route path="/movies/new" component={ NewMovie } />
         <Route path="/movies/:id/edit" component={ EditMovie } />
         <Route path="/movies/:id" component={ MovieDetails } />
-        <Redirect to="/notfound" component={ NotFound } />
+        <Route component={ NotFound } />
       </Switch>
     </BrowserRouter>
   );

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
@@ -8,9 +8,12 @@ class MovieDetails extends Component {
   constructor() {
     super();
     this.fetchMovie = this.fetchMovie.bind(this);
+    this.deleteMovie = this.deleteMovie.bind(this);
+    this.renderDetails = this.renderDetails.bind(this);
     this.state = {
       loading: true,
       movie: {},
+      shouldRedirect: false,
     };
   }
 
@@ -33,12 +36,26 @@ class MovieDetails extends Component {
     );
   }
 
-  render() {
+  async deleteMovie(evt) {
+    evt.preventDefault();
     const { match } = this.props;
     const { id } = match.params;
-    const { loading, movie } = this.state;
+    this.setState(
+      { shouldRedirect: false },
+      async () => {
+        await movieAPI.deleteMovie(id);
+        this.setState({
+          shouldRedirect: true,
+        });
+      },
+    );
+  }
+
+  renderDetails() {
+    const { match } = this.props;
+    const { id } = match.params;
+    const { movie } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle } = movie;
-    if (loading) return <div className="movie-list"><Loading /></div>;
     return (
       <div data-testid="movie-details" className="movie-details">
         <img alt="Movie Cover" src={ `/${imagePath}` } />
@@ -47,10 +64,18 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
-        <button type="button"><Link to={ `/movies/${id}/edit` }>EDITAR</Link></button>
-        <button type="button"><Link to="/">VOLTAR</Link></button>
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link to="/">VOLTAR</Link>
+        <Link to="/" onClick={ this.deleteMovie }>DELETAR</Link>
       </div>
     );
+  }
+
+  render() {
+    const { loading, shouldRedirect } = this.state;
+    if (shouldRedirect) return <Redirect to="/" />;
+    if (loading) return <div className="movie-list"><Loading /></div>;
+    return this.renderDetails();
   }
 }
 
