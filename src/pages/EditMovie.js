@@ -24,8 +24,6 @@ class EditMovie extends Component {
     this.setState({ shouldRedirect: true });
   }
 
-  // pegar o id do filme, buscar o filme na lista, colocar no formulário as informações do filme, quando clicar tem que pegar os valores do formulario e atualizar o estado, colocar os novos dados na requisção da api e ir para a página inicial
-
   async setMovieState() {
     const { match: { params: { id } } } = this.props;
     const movieObject = await movieAPI.getMovie(id);
@@ -36,13 +34,9 @@ class EditMovie extends Component {
 
   render() {
     const { status, shouldRedirect, movie } = this.state;
-    if (shouldRedirect) {
-      return <Redirect to="/" />;
-    }
+    if (shouldRedirect) return <Redirect to="/" />;
 
-    if (status === 'loading') {
-      return <Loading />;
-    }
+    if (status) return <Loading />;
 
     return (
       <div data-testid="edit-movie">
