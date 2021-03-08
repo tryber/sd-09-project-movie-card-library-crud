@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
@@ -11,6 +11,7 @@ class MovieDetails extends Component {
   constructor(props) {
     super(props);
     this.fetchMovie = this.fetchMovie.bind(this);
+    this.deleteMovie = this.deleteMovie.bind(this);
     this.state = {
       movie: [],
       loading: true,
@@ -28,6 +29,11 @@ class MovieDetails extends Component {
       movie: movieDetails,
       loading: false,
     });
+  }
+
+  async deleteMovie(id) {
+    await movieAPI.deleteMovie(id);
+    return <Redirect to="/" />;
   }
 
   movieDetailsAbout(movie) {
@@ -55,7 +61,7 @@ class MovieDetails extends Component {
       <div className="movie-details-buttons">
         <Link to={ `/movies/${movie.id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
-        <Link to="/">DELETAR</Link>
+        <Link to="/" onClick={ () => this.deleteMovie(movie.id) }>DELETAR</Link>
       </div>
     );
   }

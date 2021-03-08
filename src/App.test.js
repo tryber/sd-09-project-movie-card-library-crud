@@ -326,7 +326,7 @@ describe('7 - Adicione um link para deletar um cartão em `MovieDetails`', () =>
     }
   })
 
-  it.skip('o botão "DELETAR" deverá fazer uma requisição para a API para excluir o filme em questão', async () => {
+  it('o botão "DELETAR" deverá fazer uma requisição para a API para excluir o filme em questão', async () => {
     resetStorage();
     const deletedMovie = readMovies()[2];
     renderPath('/movies/3');
