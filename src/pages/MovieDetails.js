@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './style.css'
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
@@ -30,6 +31,16 @@ class MovieDetails extends Component {
     movieAPI.deleteMovie(id);
   }
 
+  links(id) {
+    return (
+      <div className="links-conteiner">
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link to="/">VOLTAR</Link>
+        <Link to="/" onClick={ () => this.deleteMovie(id) }>DELETAR</Link>
+      </div>
+    );
+  }
+
   render() {
     const { movie } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle } = movie;
@@ -43,9 +54,7 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
-        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-        <Link to="/">VOLTAR</Link>
-        <Link to="/" onClick={ () => this.deleteMovie(id) }>DELETAR</Link>
+        {this.links(id)}
       </div>
     );
   }
