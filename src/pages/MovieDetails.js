@@ -30,6 +30,26 @@ class MovieDetails extends Component {
     });
   }
 
+  movieDetailsAbout(movie) {
+    const { title, storyline, subtitle } = movie;
+    return (
+      <>
+        <p>
+          Title:
+          <div className="movie-details-title">{`${title}`}</div>
+        </p>
+        <p>
+          Subtitle:
+          <div className="movie-details-subtitle">{`${subtitle}`}</div>
+        </p>
+        <p>
+          Storyline:
+          <div className="movie-details-storyline">{`${storyline}`}</div>
+        </p>
+      </>
+    );
+  }
+
   movieDetailsButtons(movie) {
     return (
       <div className="movie-details-buttons">
@@ -40,18 +60,10 @@ class MovieDetails extends Component {
   }
 
   movieDetails(movie) {
-    const { title, storyline, genre, rating, subtitle } = movie;
+    const { genre, rating } = movie;
     return (
       <div className="movie-details">
-        <p>Title:
-          <div className="movie-details-title">{`${title}`}</div>
-        </p>
-        <p>Subtitle:
-          <div className="movie-details-subtitle">{`${subtitle}`}</div>
-        </p>
-        <p>Storyline:
-          <div className="movie-details-storyline">{`${storyline}`}</div>
-        </p>
+        { this.movieDetailsAbout(movie) }
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
         { this.movieDetailsButtons(movie) }
