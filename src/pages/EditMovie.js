@@ -1,44 +1,50 @@
-import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { withRouter, Redirect } from 'react-router-dom';
-import { getMovie, updateMovie } from '../services/movieAPI';
-import { MovieForm, Loading } from '../components';
+import React, { Component } from 'react';
+import * as movieAPI from '../services/movieAPI';
+import Loading from '../components/Loading';
+import { MovieForm } from '../components';
+
 
 class EditMovie extends Component {
   constructor(props) {
     super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    const { id } = this.props.match.params;
     this.state = {
-      movie: [],
-      isLoading: false,
+      status: 'loading',
       shouldRedirect: false,
+      movie: [],
+      movieId: id,
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.fetchMovie = this.fetchMovie.bind(this);
   }
 
   componentDidMount() {
-    this.fetchMovie();
+    this.fetchMovie(this.state.movieId);
   }
-  handleSubmit(updatedMovie) {
-    this.setState({ shouldRedirect: true },
-      async () => {
-        await updateMovie(updatedMovie);
-      });
+
+  async fetchMovie(id) {
+    this.setState({
+      movie: await movieAPI.getMovie(id),
+      status: '',
+    });
   }
-  fetchMovie() {
-    const { id } = this.props.match.params;
-    this.setState({ isLoading: true },
-      async () => {
-        const movieGet = await getMovie(id);
-        this.setState({ movie: movieGet, isLoading: false });
-      });
+
+  async handleSubmit(updatedMovie) {
+    this.setState({
+      shouldRedirect: true,
+    });
+    await movieAPI.updateMovie(updatedMovie);
   }
+
   render() {
-    const { shouldRedirect, movie, isLoading } = this.state;
+    const { status, shouldRedirect, movie } = this.state;
     if (shouldRedirect) {
       return <Redirect to="/" />;
     }
 
-    if (isLoading) {
+    if (status === 'loading') {
       return <Loading />;
     }
 
@@ -50,10 +56,12 @@ class EditMovie extends Component {
   }
 }
 
-export default withRouter(EditMovie);
+export default EditMovie;
 
 EditMovie.propTypes = {
-  match: PropTypes.objectOf(),
-  params: PropTypes.objectOf(),
-  id: PropTypes.number,
-}.isRequired;
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }).isRequired,
+};
