@@ -10,6 +10,7 @@ class NewMovie extends Component {
   }
 
   handleSubmit(newMovie) {
+    
   }
 
   render() {
@@ -20,4 +21,5 @@ class NewMovie extends Component {
     );
   }
 }
+
 export default NewMovie;
