@@ -341,3 +341,5 @@ describe('7 - Adicione um link para deletar um cartão em `MovieDetails`', () =>
     expect(screen.queryByText(deletedMovie.title)).toBeNull();
   })
 });
+
+//soslso
