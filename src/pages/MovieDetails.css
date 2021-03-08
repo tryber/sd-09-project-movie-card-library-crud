@@ -34,7 +34,7 @@
 
 .movie-details-rating {
   align-items: center;
-  background-color: lightgrey;
+  background-color: lightgray;
   border: 2px solid #b65b3f;
   border-radius: 50%;
   display: flex;
@@ -50,7 +50,7 @@
 
 .movie-details-buttons a {
   background-color: #b65b3f;
-  border: 1px solid lightgrey;
+  border: 1px solid lightgray;
   border-radius: 5px;
   color: whitesmoke;
   padding: 2px 5px;
