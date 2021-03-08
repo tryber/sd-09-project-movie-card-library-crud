@@ -55,6 +55,7 @@ class MovieDetails extends Component {
       <div className="movie-details-buttons">
         <Link to={ `/movies/${movie.id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
+        <Link to="/">DELETAR</Link>
       </div>
     );
   }
@@ -64,8 +65,14 @@ class MovieDetails extends Component {
     return (
       <div className="movie-details">
         { this.movieDetailsAbout(movie) }
-        <p>{ `Genre: ${genre}` }</p>
-        <p>{ `Rating: ${rating}` }</p>
+        <p>
+          Genre:
+          <div className="movie-details-genre">{`${genre}`}</div>
+        </p>
+        <p>
+          Rating:
+          <div className="movie-details-rating">{`${rating}`}</div>
+        </p>
         { this.movieDetailsButtons(movie) }
       </div>
     );

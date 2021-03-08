@@ -33,10 +33,10 @@ class MovieList extends Component {
     if (loading) return <Loading />;
     return (
       <>
-        <Link to="/movies/new" className="add-card-button">ADICIONAR CARTÃO</Link>
         <div data-testid="movie-list" className="movie-list">
           {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
         </div>
+        <Link to="/movies/new" className="add-card-button">ADICIONAR CARTÃO</Link>
       </>
     );
   }
