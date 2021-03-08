@@ -4,29 +4,33 @@ import { Link } from 'react-router-dom';
 
 class MovieCard extends React.Component {
   render() {
-    const { title, storyline, id, imagePath, rating, genre } = this.props.movie;
+    const { id, title, subtitle, storyline, imagePath } = this.props.movie;
     return (
-      <div data-testid="movie-card">
-        <img src={imagePath} alt={title} />
-        <h2>{title}</h2>
-        <p>{storyline}</p>
-        <p>{genre}</p>
-        <div>{rating}</div>
-        <Link to={`/movies/${id}`}>VER DETALHES</Link>
+      <div className="movie-card" data-testid="movie-card">
+        <img alt="Movie Cover" className="movie-card-image" src={imagePath} />
+        <div className="movie-card-body">
+          <h4 data-testid="movie-card-title" className="movie-card-title">{title}</h4>
+          <h5 className="movie-card-subtitle">{subtitle}</h5>
+          <p className="movie-card-storyline">{storyline}</p>
+        </div>
+        <span className="movie-card-details">
+          <Link to={`/movies/${id}`}>
+            VER DETALHES</Link>
+        </span>
       </div>
     );
   }
 }
 
+export default MovieCard;
+
 MovieCard.propTypes = {
   movie: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    storyline: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    imagePath: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
+    id: PropTypes.number,
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    storyline: PropTypes.string,
+    imagePath: PropTypes.string,
+    rating: PropTypes.number,
   }).isRequired,
 };
-
-export default MovieCard;

@@ -1,58 +1,67 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import * as movieAPI from '../services/movieAPI';
+import { Link, withRouter } from 'react-router-dom';
+import { getMovie } from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
   constructor() {
     super();
-    this.fethMovie = this.fethMovie.bind(this);
+
     this.state = {
-      loading: false,
-      movie: {},
+      id: undefined,
+      title: '',
+      subtitle: '',
+      storyline: '',
+      rating: undefined,
+      imagePath: '',
+      bookmarked: false,
+      isLoading: false,
     };
   }
 
   componentDidMount() {
-    this.fethMovie();
+    this.fetchDetails();
   }
 
-  fethMovie() {
-    this.setState({ loading: true }, async () => {
-      const { id } = this.props.match.params;
-      const data = await movieAPI.getMovie(id);
-      this.setState({ movie: data, loading: false });
-    });
+  fetchDetails() {
+    const { id } = this.props.match.params;
+    this.setState({ isLoading: true },
+      async () => {
+        const movie = await getMovie(id);
+        this.setState({ ...movie, isLoading: false });
+      });
   }
 
   render() {
-    // Change the condition to check the state
-    const { loading } = this.state;
-    const { id, title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
-    if (loading) return <Loading />;
-
+    const { title, storyline, imagePath, genre, rating, subtitle, isLoading } = this.state;
+    const { id } = this.props.match.params;
+    if (isLoading) {
+      return <Loading />;
+    }
     return (
-      <div data-testid="movie-details">
-        <img alt="Movie Cover" src={`../${imagePath}`} />
-        <h1>{title}</h1>
-        <p>{`Subtitle: ${subtitle}`}</p>
-        <p>{`Storyline: ${storyline}`}</p>
-        <p>{`Genre: ${genre}`}</p>
-        <p>{`Rating: ${rating}`}</p>
-        <Link to="/">VOLTAR</Link>
-        <Link to={`/movies/${id}/edit`}>EDITAR</Link>
-      </div>
-    );
+      <div className="movie-det">
+        <div data-testid="movie-details" className="movie-details">
+          <img alt="Movie Cover" src={`../${imagePath}`} />
+          <h3>{`Title: ${title}`}</h3>
+          <p>{`Subtitle: ${subtitle}`}</p>
+          <p>{`Storyline: ${storyline}`}</p>
+          <p>{`Genre: ${genre}`}</p>
+          <p>{`Rating: ${rating}`}</p>
+          <div className="movie-det-button">
+            <Link className="det-button" to="/">VOLTAR</Link>
+            <Link className="det-button" to={`/movies/${id}/edit`}>EDITAR</Link>
+          </div>
+        </div>
+      </div>);
   }
 }
 
+export default withRouter(MovieDetails);
+
 MovieDetails.propTypes = {
   match: PropTypes.shape({
-    params: PropTypes.shape({
-      id: PropTypes.string.isRequired,
-    }),
+    params: PropTypes.objectOf(),
+    id: PropTypes.number,
   }).isRequired,
 };
-
-export default MovieDetails;
