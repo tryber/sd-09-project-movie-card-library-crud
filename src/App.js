@@ -6,7 +6,7 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" component={ MovieList } />
+        <Route path="/" exact component={ MovieList } />
         <Route path="/movies/:id" exact component={ MovieDetails } />
         <Route path="/movies/new" exact component={ NewMovie } />
         <Route path="/movies/:id/edit" exact component={ EditMovie } />
