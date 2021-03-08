@@ -22,7 +22,7 @@ class EditMovie extends Component {
   componentDidMount() {
     this.fetchMovie();
   }
-  
+
   handleSubmit(updatedMovie) {
     this.setState(
       { shouldRedirect: false },
