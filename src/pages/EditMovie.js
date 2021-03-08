@@ -1,41 +1,35 @@
-import { Redirect } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import * as movieAPI from '../services/movieAPI';
-import Loading from '../components/Loading';
-import { MovieForm } from '../components';
+import { Redirect } from 'react-router-dom';
+import { shape, string } from 'prop-types';
 
+import { Loading, MovieForm } from '../components';
+import * as movieAPI from '../services/movieAPI';
 
 class EditMovie extends Component {
   constructor(props) {
     super(props);
-    const { id } = this.props.match.params;
     this.state = {
       status: 'loading',
       shouldRedirect: false,
       movie: [],
-      movieId: id,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.fetchMovie = this.fetchMovie.bind(this);
   }
 
   componentDidMount() {
-    this.fetchMovie(this.state.movieId);
+    this.fetchMovie();
   }
 
-  async fetchMovie(id) {
-    this.setState({
-      movie: await movieAPI.getMovie(id),
-      status: '',
-    });
+  handleSubmit(updatedMovie) {
+    movieAPI.updateMovie(updatedMovie);
+    this.setState({ shouldRedirect: true });
   }
 
-  async handleSubmit(updatedMovie) {
-    this.setState({
-      shouldRedirect: true,
-    });
-    await movieAPI.updateMovie(updatedMovie);
+  async fetchMovie() {
+    const { match: { params: { id } } } = this.props;
+    const newMovie = await movieAPI.getMovie(id);
+    this.setState({ movie: newMovie, status: 'done' });
   }
 
   render() {
@@ -50,18 +44,18 @@ class EditMovie extends Component {
 
     return (
       <div data-testid="edit-movie">
-        <MovieForm movie={movie} onSubmit={this.handleSubmit} />
+        <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />
       </div>
     );
   }
 }
 
-export default EditMovie;
-
 EditMovie.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      id: PropTypes.string,
+  match: shape({
+    params: shape({
+      id: string,
     }),
   }).isRequired,
 };
+
+export default EditMovie;
