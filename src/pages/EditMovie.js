@@ -29,7 +29,7 @@ class EditMovie extends Component {
       { shouldRedirect: false },
 
       async () => {
-        movieAPI.updateMovie(updatedMovie);
+        await movieAPI.updateMovie(updatedMovie);
         this.setState({
           shouldRedirect: true,
 
