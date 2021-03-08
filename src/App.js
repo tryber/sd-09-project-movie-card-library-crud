@@ -11,3 +11,7 @@ function App() {
 }
 
 export default App;
+
+/* Source 1 : Scrimba (https://scrimba.com/learn/learnreact)*/
+/* Source 2 : Rocketseat (https://nextlevelweek.com/)*/
+/* Source 3: Caily.dev (https://daily.dev)*/
