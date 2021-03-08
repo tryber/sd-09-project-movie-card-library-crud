@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
@@ -7,12 +8,11 @@ class MovieDetails extends Component {
   constructor(state) {
     super(state);
     this.state = {
-      // title: '',
+      title: '',
       subtitle: '',
       storyline: '',
       imagePath: '',
       genre: '',
-      rating: '',
       loading: true,
     };
   }
@@ -21,28 +21,32 @@ class MovieDetails extends Component {
     const { match } = this.props;
     await movieAPI.getMovie(match.params.id).then((res) => {
       this.setState({
-        // title: '',
+        title: res.title,
         subtitle: res.subtitle,
         storyline: res.storyline,
         imagePath: res.imagePath,
         genre: res.genre,
-        rating: res.rating,
         loading: false,
       });
     });
   }
 
   render() {
-    const { loading, storyline, imagePath, genre, rating, subtitle } = this.state;
+    const { match } = this.props;
+    const { loading, storyline, imagePath, genre, subtitle, title } = this.state;
     return loading ? (
       <Loading />
     ) : (
       <div data-testid="movie-details">
+        <Link to="/">VOLTAR</Link>
+        <Link to={ `/movies/${match.params.id}/edit` }>
+          EDITAR
+        </Link>
         <img alt="Movie Cover" src={ `../${imagePath}` } />
+        <p>{ `Title: ${title}` }</p>
         <p>{ `Subtitle: ${subtitle}` }</p>
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
-        <p>{ `Rating: ${rating}` }</p>
       </div>
     );
   }
