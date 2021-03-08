@@ -7,6 +7,7 @@ import * as movieAPI from '../services/movieAPI';
 class EditMovie extends Component {
   constructor(props) {
     super(props);
+    
     this.state = {
       status: 'loading',
       shouldRedirect: false,
@@ -34,11 +35,11 @@ class EditMovie extends Component {
   render() {
     const { status, shouldRedirect, movie } = this.state;
     if (shouldRedirect) {
-      return <Redirect to="/" />
+      return <Redirect to="/" />;
     }
 
     if (status === 'loading') {
-      return <Loading />
+      return <Loading />;
     }
 
     return (
