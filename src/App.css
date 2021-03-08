@@ -7,8 +7,8 @@ body {
   align-items: center;
   background-color: #032541;
   display: flex;
-  justify-content: center;
   height: 64px;
+  justify-content: center;
 }
 
 .main-title {
