@@ -101,13 +101,14 @@ describe('1 - Renderize `BrowserRouter` no componente `App` usando rotas', () =>
   test('a rota "/movies/:id" deve renderizar MovieDetails', async () => {
     for (const movie of readMovies()) {
       const { unmount, getByTestId } = renderPath('/movies/' + movie.id);
-      await waitFor(() => movieAPI.getMovies());
+      await waitFor( async () => await movieAPI.getMovies());
       expect.anything(getByTestId('movie-details'));
       unmount();
     }
   })
-  test('a rota "/movies/new" deve renderizar NewMovie', () => {
+  test('a rota "/movies/new" deve renderizar NewMovie', async () => {
     const { unmount, getByTestId } = renderPath('/movies/new');
+    await waitFor( async () => await movieAPI.getMovies());
     expect.anything(getByTestId('new-movie'));
     unmount();
   })
@@ -266,7 +267,7 @@ describe('5 - Realize uma requisição para buscar o filme que será editado em 
       expect(screen.getAllByText(readMovies()[movie.id - 1].subtitle, { exact: false }).length).toBeGreaterThanOrEqual(1);
       expect(screen.getAllByText(readMovies()[movie.id - 1].storyline, { exact: false })).toBeTruthy;
       const image = screen.getByAltText('Movie Cover', { exact: false });
-      expect(image.src).toBe('http://localhost/' + readMovies()[movie.id - 1].imagePath);
+      expect(image.src).toBe('http://localhost:3000/' + readMovies()[movie.id - 1].imagePath);
       expect(screen.getAllByText(readMovies()[movie.id - 1].genre, { exact: false }))
     }
 

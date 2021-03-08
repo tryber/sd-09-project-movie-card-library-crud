@@ -15,20 +15,30 @@ class MovieDetails extends Component {
       genre: '',
       loading: true,
     };
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   async componentDidMount() {
     const { match } = this.props;
-    await movieAPI.getMovie(match.params.id).then((res) => {
-      this.setState({
-        title: res.title,
-        subtitle: res.subtitle,
-        storyline: res.storyline,
-        imagePath: res.imagePath,
-        genre: res.genre,
-        loading: false,
+    if (match.params.id !== 'new') {
+      console.log('match', match.params.id);
+      await movieAPI.getMovie(match.params.id).then((res) => {
+        this.setState({
+          title: res.title,
+          subtitle: res.subtitle,
+          storyline: res.storyline,
+          imagePath: res.imagePath,
+          genre: res.genre,
+          loading: false,
+        });
       });
-    });
+    }
+  }
+
+  async handleDelete() {
+    const { match } = this.props;
+    await movieAPI.deleteMovie(match.params.id);
+    return '/';
   }
 
   render() {
@@ -39,9 +49,8 @@ class MovieDetails extends Component {
     ) : (
       <div data-testid="movie-details">
         <Link to="/">VOLTAR</Link>
-        <Link to={ `/movies/${match.params.id}/edit` }>
-          EDITAR
-        </Link>
+        <Link to={ `/movies/${match.params.id}/edit` }>EDITAR</Link>
+        <Link to="/">DELETAR</Link>
         <img alt="Movie Cover" src={ `../${imagePath}` } />
         <p>{ `Title: ${title}` }</p>
         <p>{ `Subtitle: ${subtitle}` }</p>
