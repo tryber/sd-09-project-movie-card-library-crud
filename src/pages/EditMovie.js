@@ -18,7 +18,21 @@ class EditMovie extends Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
- 
+
+  handleSubmit(updatedMovie) {
+    this.setState(
+      { shouldRedirect: false },
+
+      async() => {
+        movieAPI.updateMovie(updatedMovie);
+        this.setState({
+          shouldRedirect: true,
+
+        });
+      },
+    );
+  }
+
   async fetchMovie() {
     const { movieId } = this.state;
     this.setState(
@@ -39,20 +53,6 @@ class EditMovie extends Component {
     this.fetchMovie();
   }
 
-  handleSubmit(updatedMovie) {
-    this.setState(
-      { shouldRedirect: false},
-
-      async() => {
-        movieAPI.updateMovie(updatedMovie);
-        this.setState({
-          shouldRedirect: true,
-
-        });
-      }
-    );
-  }
-
   render() {
     const { status, shouldRedirect, movie } = this.state;
     if (shouldRedirect) {
@@ -61,10 +61,20 @@ class EditMovie extends Component {
 
     return (
       <div data-testid="edit-movie">
-        { status ? <Loading /> : <MovieForm movie={ movie } onSubmit={ this.handleSubmit } /> }
+        { status ? <Loading />
+        : <MovieForm movie={ movie } onSubmit={ this.handleSubmit } /> }
       </div>
     );
   }
 }
+
+EditMovie.propTypes = {
+  params: PropTypes.shape({
+    id: PropTypes.string,
+
+  }).isRequired,
+
+}.isRequired;
+
 
 export default EditMovie;
