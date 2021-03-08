@@ -57,7 +57,6 @@
   text-decoration: none;
 }
 
-.movie-details-buttons a:nth-child( 2 ), 
-.movie-details-buttons a:nth-child( 3 ) {
+.movie-details-buttons a:nth-child( 2 ), .movie-details-buttons a:nth-child( 3 ) {
   margin-left: 15px;
 }
