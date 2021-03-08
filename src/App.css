@@ -3,3 +3,14 @@ body {
   box-sizing: border-box;
 }
 
+.main-header {
+  align-items: center;
+  background-color: #032541;
+  display: flex;
+  justify-content: center;
+  height: 64px;
+}
+
+.main-title {
+  color: white;
+}

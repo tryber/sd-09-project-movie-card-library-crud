@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
+import './MovieDetails.css';
+
 class MovieDetails extends Component {
   constructor(props) {
     super(props);
@@ -28,17 +30,44 @@ class MovieDetails extends Component {
     });
   }
 
-  createMovieCard(movie) {
-    const { title, storyline, imagePath, genre, rating, subtitle } = movie;
+  movieDetailsButtons(movie) {
     return (
-      <>
-        <img alt="Movie Cover" src={ `../${imagePath}` } />
-        <p>{ `Title: ${title}` }</p>
-        <p>{ `Subtitle: ${subtitle}` }</p>
-        <p>{ `Storyline: ${storyline}` }</p>
+      <div className="movie-details-buttons">
+        <Link to={ `/movies/${movie.id}/edit` }>EDITAR</Link>
+        <Link to="/">VOLTAR</Link>
+      </div>
+    );
+  }
+
+  movieDetails(movie) {
+    const { title, storyline, genre, rating, subtitle } = movie;
+    return (
+      <div className="movie-details">
+        <p>Title:
+          <div className="movie-details-title">{`${title}`}</div>
+        </p>
+        <p>Subtitle:
+          <div className="movie-details-subtitle">{`${subtitle}`}</div>
+        </p>
+        <p>Storyline:
+          <div className="movie-details-storyline">{`${storyline}`}</div>
+        </p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
-      </>
+        { this.movieDetailsButtons(movie) }
+      </div>
+    );
+  }
+
+  createMovieCard(movie) {
+    const { imagePath } = movie;
+    return (
+      <div className="movie-details-container">
+        <div className="movie-details-image">
+          <img alt="Movie Cover" src={ `../${imagePath}` } />
+        </div>
+        { this.movieDetails(movie) }
+      </div>
     );
   }
 
@@ -48,8 +77,6 @@ class MovieDetails extends Component {
     return (
       <div data-testid="movie-details">
         {this.createMovieCard(movie)}
-        <Link to={ `/movies/${movie.id}/edit` }>EDITAR</Link>
-        <Link to="/">VOLTAR</Link>
       </div>
     );
   }
