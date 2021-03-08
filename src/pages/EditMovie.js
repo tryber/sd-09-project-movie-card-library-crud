@@ -19,11 +19,15 @@ class EditMovie extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    this.fetchMovie();
+  }
+  
   handleSubmit(updatedMovie) {
     this.setState(
       { shouldRedirect: false },
 
-      async() => {
+      async () => {
         movieAPI.updateMovie(updatedMovie);
         this.setState({
           shouldRedirect: true,
@@ -49,20 +53,16 @@ class EditMovie extends Component {
     );
   }
 
-  componentDidMount() {
-    this.fetchMovie();
-  }
-
   render() {
     const { status, shouldRedirect, movie } = this.state;
     if (shouldRedirect) {
-      return <Redirect to="/" />
+      return <Redirect to="/" />;
     }
 
     return (
       <div data-testid="edit-movie">
         { status ? <Loading />
-        : <MovieForm movie={ movie } onSubmit={ this.handleSubmit } /> }
+          : <MovieForm movie={ movie } onSubmit={ this.handleSubmit } /> }
       </div>
     );
   }
@@ -75,6 +75,5 @@ EditMovie.propTypes = {
   }).isRequired,
 
 }.isRequired;
-
 
 export default EditMovie;
