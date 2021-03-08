@@ -1,4 +1,3 @@
-/* eslint-disable max-lines-per-function */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router';
@@ -6,16 +5,8 @@ import { Redirect } from 'react-router';
 class MovieForm extends React.Component {
   constructor(state) {
     super(state);
-    const { movie } = this.props;
-    this.state = {
-      title: movie ? movie.title : '',
-      subtitle: movie ? movie.subtitle : '',
-      storyline: movie ? movie.storyline : '',
-      genre: movie ? movie.genre : '',
-      rating: movie ? movie.rating : '',
-      imagePath: movie ? movie.imagePath : '',
-      shouldRedirect: false,
-    };
+    this.state = this.myState();
+    this.myState = this.myState.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateMovie = this.updateMovie.bind(this);
     this.renderTitleInput = this.renderTitleInput.bind(this);
@@ -25,12 +16,25 @@ class MovieForm extends React.Component {
     this.renderGenreSelection = this.renderGenreSelection.bind(this);
     this.renderRatingInput = this.renderRatingInput.bind(this);
     this.renderSubmitButton = this.renderSubmitButton.bind(this);
+    this.renderOptions = this.renderOptions.bind(this);
   }
 
   async handleSubmit() {
     const { onSubmit } = this.props;
     await onSubmit(this.state);
     this.setState({ shouldRedirect: true });
+  }
+
+  myState() {
+    const { movie } = this.props;
+
+    return { title: movie ? movie.title : '',
+      subtitle: movie ? movie.subtitle : '',
+      storyline: movie ? movie.storyline : '',
+      genre: movie ? movie.genre : '',
+      rating: movie ? movie.rating : '',
+      imagePath: movie ? movie.imagePath : '',
+      shouldRedirect: false };
   }
 
   updateMovie(e) {
@@ -116,6 +120,17 @@ class MovieForm extends React.Component {
     );
   }
 
+  renderOptions() {
+    return (
+      <>
+        <option value="action">Ação</option>
+        <option value="comedy">Comédia</option>
+        <option value="thriller">Suspense</option>
+        <option value="fantasy">Fantasia</option>
+      </>
+    );
+  }
+
   renderGenreSelection() {
     const { genre } = this.state;
     return (
@@ -128,10 +143,7 @@ class MovieForm extends React.Component {
             name="genre"
             onChange={ this.updateMovie }
           >
-            <option value="action">Ação</option>
-            <option value="comedy">Comédia</option>
-            <option value="thriller">Suspense</option>
-            <option value="fantasy">Fantasia</option>
+            {this.renderOptions()}
           </select>
         </label>
       </div>
