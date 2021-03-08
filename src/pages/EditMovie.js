@@ -7,7 +7,12 @@ class EditMovie extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: false,
+      title: '',
+      subtitle: '',
+      storyline: '', 
+      imagePath: '',
+      gender: '',
+      status: 'loading',
     };
     
     this.handleSubmit = this.handleSubmit.bind(this);
