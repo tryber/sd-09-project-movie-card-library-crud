@@ -18,14 +18,14 @@ class MovieList extends Component {
       this.setState({
         movies: receivedMovies,
         loading: false,
-      })
+      });
     });
   }
 
   render() {
     const { movies, loading } = this.state;
 
-    if (loading) return <Loading />
+    if (loading) return <Loading />;
 
     return (
       <div data-testid="movie-list">
