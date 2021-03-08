@@ -66,15 +66,3 @@ EditMovie.propTypes = {
 };
 
 export default EditMovie;
-
-  // render() {
-    // const { status, shouldRedirect, movie } = this.state;
-  //   return (
-  //     <div data-testid="edit-movie">
-  //       {shouldRedirect === true ? <Redirect to="/" /> : <div>{ shouldRedirect }</div> }
-  //       {status === 'loading' ? <Loading />
-  //         : <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />}
-  //     </div>
-  //   );
-  // }
-// }
