@@ -20,7 +20,6 @@ class MovieList extends Component {
   render() {
     const { movies } = this.state;
     if (movies.length < 1) return <Loading />;
-    if (movies.length > 0) console.log(movies);
     return (
       <div data-testid="movie-list">
         {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
