@@ -11,8 +11,8 @@
 
 .movie-list {
   display: flex;
-  flex-direction: row;
   flex-flow: wrap;
+  flex-direction: row;
   justify-content: space-around;
   margin: 0 20px;
 }
