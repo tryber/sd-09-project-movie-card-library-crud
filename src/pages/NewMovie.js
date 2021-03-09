@@ -13,23 +13,25 @@ class NewMovie extends Component {
         storyline: '',
         rating: 0,
         imagePath: '',
-        genre: 'undefined',
+        genre: 'action',
       },
       shouldRedirect: false,
-    }
+    };
+
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(newMovie) {
-    this.setState({
-      shouldRedirect: true,
-    })
-    return movieAPI.createMovie(newMovie);
+    movieAPI.createMovie(newMovie).then(() => {
+      this.setState({
+        shouldRedirect: true,
+      });
+    });
   }
 
   render() {
     const { shouldRedirect, movie } = this.state;
-    if (shouldRedirect) return <Redirect to="/" />
+    if (shouldRedirect) return <Redirect to="/" />;
     return (
       <div data-testid="new-movie">
         <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />
