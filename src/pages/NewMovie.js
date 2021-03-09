@@ -9,13 +9,13 @@ class NewMovie extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(newMovie) {
+  handleSubmit(/* newMovie */) {
   }
 
   render() {
     return (
       <div data-testid="new-movie">
-        <MovieForm onSubmit={ this.handleSubmit } />
+        <MovieForm onSubmit={ this.handleSubmit } movie={ movieAPI } />
       </div>
     );
   }
