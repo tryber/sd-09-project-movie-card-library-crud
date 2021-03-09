@@ -8,6 +8,7 @@ class MovieList extends Component {
     super();
 
     this.state = {
+      loading: true,
       movies: [],
     };
   }
@@ -16,6 +17,7 @@ class MovieList extends Component {
     const { movies } = this.state;
 
     // Render Loading here if the request is still happening
+    // if (loading) retunr <h1>Carregando...</h1>;
 
     return (
       <div data-testid="movie-list">
