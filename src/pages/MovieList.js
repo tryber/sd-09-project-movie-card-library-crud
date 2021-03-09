@@ -11,6 +11,8 @@ class MovieList extends Component {
     this.state = {
       movies: [],
     };
+
+    this.fetchMoviesApi = this.fetchMoviesApi.bind(this);
   }
 
   componentDidMount() {
