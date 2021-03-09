@@ -12,7 +12,7 @@ class NewMovie extends Component {
 
   handleSubmit(newMovie) {
     movieAPI.createMovie(newMovie);
-    this.setState({ newMovie: true})
+    this.setState({ newMovie: true });
   }
 
   updateState(field, newValue) {
@@ -25,10 +25,10 @@ class NewMovie extends Component {
       return <Redirect to="/" />;
     }
     return (
-        <div data-testid="new-movie">
-          <MovieForm onSubmit={ this.handleSubmit } />
-        </div>
-      );
+      <div data-testid="new-movie">
+        <MovieForm onSubmit={ this.handleSubmit } />
+      </div>
+    );
   }
 }
 export default NewMovie;
