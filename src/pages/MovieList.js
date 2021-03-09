@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
 import MovieCard from '../components/MovieCard';
+import Loading from '../components/Loading';
 
 import * as movieAPI from '../services/movieAPI';
 
 class MovieList extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       movies: [],
     };
+  }
+
+  componentDidMount() {
+    const { getMovies } = movieAPI;
+    getMovies().then((movies) => this.setState((state, current) => ({ movies })))
+    // this.state.isLoading && <Loading />
+
   }
 
   render() {
