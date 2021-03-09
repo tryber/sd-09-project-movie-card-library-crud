@@ -164,7 +164,7 @@ describe('3 - Insira um link para a página de detalhes de um filme dentro de `M
 
 describe('4 - Faça uma requisição para buscar o filme que deverá ser renderizado dentro de `Movie Details`', () => {
 
-  it.skip('deverá exibir o texto "Carregando..." enquanto estiver fazendo a requisição', async () => {
+  it('deverá exibir o texto "Carregando..." enquanto estiver fazendo a requisição', async () => {
     for (const movie of readMovies()) {
       await cleanup();
       const { getByText } = renderPath('/movies/' + movie.id);
@@ -172,7 +172,7 @@ describe('4 - Faça uma requisição para buscar o filme que deverá ser renderi
     }
   });
 
-  it.skip('deverá exibir o título, o subtítulo, a sinopse, a imagem e o gênero do filme', async () => {
+  it('deverá exibir o título, o subtítulo, a sinopse, a imagem e o gênero do filme', async () => {
     for (const movie of readMovies()) {
       const { container, unmount } = renderPath(`/movies/${movie.id}`);
       await waitFor(() => movieAPI.getMovie(movie.id))
@@ -181,14 +181,14 @@ describe('4 - Faça uma requisição para buscar o filme que deverá ser renderi
         .toBeGreaterThanOrEqual(1);
       expect(screen.getByText(readMovies()[movie.id - 1].storyline, { exact: false })).toBeTruthy;
 
-      let image = screen.getByAltText('Movie Cover').src.split.skip('/').slice(-2).join('/')
+      let image = screen.getByAltText('Movie Cover').src.split('/').slice(-2).join('/')
       expect(image).toEqual(readMovies()[movie.id - 1].imagePath);
       expect(screen.getAllByText(readMovies()[movie.id - 1].genre, { exact: false })).toBeTruthy;
       unmount();
     }
   });
 
-  it.skip('deverá conter um botão com o texto "VOLTAR" que redireciona para a página inicial', async () => {
+  it('deverá conter um botão com o texto "VOLTAR" que redireciona para a página inicial', async () => {
     for (const movie of readMovies()) {
       const { container, unmount, findByText } = renderPath('/movies/' + movie.id);
       await waitFor(() => movieAPI.getMovie(movie.id));
@@ -198,7 +198,7 @@ describe('4 - Faça uma requisição para buscar o filme que deverá ser renderi
     }
   });
 
-  it.skip('deverá conter um botão com o texto "EDITAR" que redireciona para a página de edição de filme', async () => {
+  it('deverá conter um botão com o texto "EDITAR" que redireciona para a página de edição de filme', async () => {
     for (const movie of readMovies()) {
       const { container, unmount, findByText } = renderPath('/movies/' + movie.id);
       await waitFor(() => movieAPI.getMovie(movie.id));

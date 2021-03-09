@@ -1,0 +1,28 @@
+.movie-details-container {
+  display: flex;
+  justify-content: center;
+}
+
+.movie-details-card {
+  box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2) , 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: flex;
+  flex-flow: wrap column;
+  margin: 20px;
+  max-height: 700px;
+  width: 700px;
+}
+
+.movie-details-card > p {
+  margin: 10px;
+}
+
+.movie-details-card > div {
+  align-items: flex-end;
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+
+.movie-details-card > div > * {
+  padding: 20px;
+}
