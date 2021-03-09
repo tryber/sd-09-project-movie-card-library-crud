@@ -14,7 +14,7 @@ class MovieDetails extends Component {
 
   componentDidMount() {
     const { match: { params: { id } } } = this.props;
-    movieAPI.getMovie(id).then((value) => this.setState({ movie: value }));
+    return movieAPI.getMovie(id).then((value) => this.setState({ movie: value }));
   }
 
   render() {
