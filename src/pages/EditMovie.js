@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-
-import { MovieForm } from '../components';
-import * as movieAPI from '../services/movieAPI';
-import Loading from '../components/Loading'
 import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+import * as movieAPI from '../services/movieAPI';
+import { MovieForm } from '../components';
+import Loading from '../components/Loading';
 
 class EditMovie extends Component {
   constructor(props) {
@@ -13,38 +14,37 @@ class EditMovie extends Component {
       status: 'loading',
       shouldRedirect: false,
     };
-    
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.fetchMovie = this.fetchMovie.bind(this);
   }
 
-  async fetchMovie() {
-    const { match } = this.props
-    const movie = await movieAPI.getMovie(match.params.id)
-
-    this.setState({movie, status:'ok'})
-  }
-
   componentDidMount() {
-    this.fetchMovie()
+    const { match } = this.props;
+    this.fetchMovie();
 
-    console.log(this.props.match.params)
+    console.log(match.params);
   }
 
   handleSubmit(updatedMovie) {
-    movieAPI.updateMovie(updatedMovie)
-    this.setState({ shouldRedirect: true })
+    movieAPI.updateMovie(updatedMovie);
+    this.setState({ shouldRedirect: true });
+  }
+
+  async fetchMovie() {
+    const { match } = this.props;
+    const movie = await movieAPI.getMovie(match.params.id);
+
+    this.setState({ movie, status: 'loaded' });
   }
 
   render() {
     const { status, shouldRedirect, movie } = this.state;
     if (shouldRedirect) {
-      return <Redirect to="/" />
+      return <Redirect to="/" />;
     }
 
-    if (status === 'loading') {
-      return <Loading />
-    }
+    if (status === 'loading') return <Loading />;
 
     return (
       <div data-testid="edit-movie">
@@ -53,5 +53,13 @@ class EditMovie extends Component {
     );
   }
 }
+
+EditMovie.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 
 export default EditMovie;
