@@ -10,12 +10,18 @@ class MovieDetails extends Component {
     this.state = {
       movieById: [],
     };
+    this.handleDeleteMovie = this.handleDeleteMovie.bind(this);
   }
 
   componentDidMount() {
-    const { match } = this.props;
-    const { id } = match.params;
+    const { match: { params: { id } } } = this.props;
     movieAPI.getMovie(id).then((response) => this.setState({ movieById: response }));
+  }
+
+  handleDeleteMovie() {
+    const { movieById } = this.state;
+    const { id } = movieById;
+    movieAPI.deleteMovie(id);
   }
 
   render() {
@@ -34,7 +40,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to="/">VOLTAR</Link>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-        <button type="submit" onClick="">DELETAR</button>
+        <Link to="/" onClick={ this.handleDeleteMovie }>DELETAR</Link>
       </div>
     );
   }
