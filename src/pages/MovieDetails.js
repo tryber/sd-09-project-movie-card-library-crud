@@ -13,6 +13,7 @@ class MovieDetails extends Component {
     };
 
     this.fetchMoviesApi = this.fetchMoviesApi.bind(this);
+    this.deleteMovie = this.deleteMovie.bind(this);
   }
 
   componentDidMount() {
@@ -25,13 +26,15 @@ class MovieDetails extends Component {
     this.setState({ movie: movieDetails });
   }
 
+  deleteMovie(movieId) {
+    movieAPI.deleteMovie(movieId);
+  }
+
   render() {
     const { match: { params: { id } } } = this.props;
     const { movie } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle } = movie;
-
     if (Object.keys(movie).length === 0) return (<Loading />);
-
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
@@ -42,6 +45,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to="/">VOLTAR</Link>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link to="/" onClick={ () => { this.deleteMovie(id); } }>DELETAR</Link>
       </div>
     );
   }
