@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MovieCard from '../components/MovieCard';
 import Loading from '../components/Loading';
+import '../styles/Pages/MovieList.css';
 
 import * as movieAPI from '../services/movieAPI';
 
@@ -30,7 +31,7 @@ class MovieList extends Component {
   render() {
     const { movies, loading } = this.state;
     return (
-      <div data-testid="movie-list">
+      <div className="movie-list-container" data-testid="movie-list">
         { (loading) ? (
           <Loading />
         ) : (
