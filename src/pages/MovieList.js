@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Loading } from '../components';
 import MovieCard from '../components/MovieCard';
+// import MovieDetails from '../pages/MovieDetails';
 
 import * as movieAPI from '../services/movieAPI';
 // import movies from '../services/movieData';
@@ -24,7 +25,7 @@ class MovieList extends Component {
 
   async fetchMovies() {
     const item = await movieAPI.getMovies();
-    // console.log(item[0]);
+    // console.log(item);
     this.setState({
       movies: item,
       loading: false,
@@ -32,8 +33,10 @@ class MovieList extends Component {
   }
 
   renderMovies() {
-    const { movies: movieList } = this.state;
-    return (movieList.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)
+    const { movies } = this.state;
+    console.log(movies);
+    return (
+      movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)
     );
   }
 

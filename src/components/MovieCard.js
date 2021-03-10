@@ -1,42 +1,43 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import MovieDetails from '../pages/MovieDetails';
-import movieData from '../services/movieData';
-import * as movieAPI from '../services/movieAPI';
+// import MovieDetails from '../pages/MovieDetails';
+import PropTypes from 'prop-types';
+// import movieData from '../services/movieData';
+// import MovieList from '../pages/MovieList';
 
 class MovieCard extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      title: '',
-      storyline: '',
-      // id:
-    };
-    // this.renderCard = this.renderCard.bind(this);
-  }
-
-  async fetchMovies() {
-    const movieTitle = await movieAPI.getMovies().title;
-    const movieStoryLine = await movieAPI.getMovies().storyline;
-    this.setState({
-      title: movieTitle,
-      storyline: movieStoryLine,
-    });
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     id: 0,
+  //   };
+  //   // this.renderCard = this.renderCard.bind(this);
+  // }
 
   render() {
-    const { title, storyline } = this.state;
+    const { movie } = this.props;
+    const { title, storyline, id } = movie;
     return (
       <div data-testid="movie-card">
-        {console.log(movieData.length)}
         <span>{title}</span>
         <span>{storyline}</span>
-        {/* Movie Card */}
-        <Link href="/movies/:id" component={ MovieDetails }>VER DETALHES</Link>
-        <Link href="/movies/:id">VER DETALHES2</Link>
+        <Link to={ `/movies/${id}` }>VER DETALHES</Link>
       </div>
     );
   }
 }
+
+// MovieCard.propTypes = {
+//   key: PropTypes.string.isRequired,
+//   movie: PropTypes.string.isRequired,
+// };
+
+MovieCard.propTypes = {
+  movie: PropTypes.shape({
+    title: PropTypes.string,
+    storyline: PropTypes.string,
+    id: PropTypes.number,
+  }).isRequired,
+};
 
 export default MovieCard;
