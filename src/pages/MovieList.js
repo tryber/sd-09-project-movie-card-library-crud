@@ -24,16 +24,15 @@ class MovieList extends Component {
 
   render() {
     const { movies, loadingState } = this.state;
-    // Render Loading here if the request is still happening
+    if (loadingState) {
+      return (<Loading />);
+    }
     return (
       <div>
-        {loadingState ? <Loading />
-          : <div data-testid="movie-list">
-            {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
-            <p>Voce esta em movie list</p>
-            <Link to="/movies/new">ADICIONAR CARTÃO</Link>
-            {/* eslint-disable-next-line react/jsx-closing-tag-location */}
-          </div>}
+        <div data-testid="movie-list">
+          {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
+          <Link to="/movies/new">ADICIONAR CARTÃO</Link>
+        </div>
       </div>
     );
   }

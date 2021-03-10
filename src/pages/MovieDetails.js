@@ -1,6 +1,5 @@
-/* eslint-disable react/jsx-closing-tag-location */
-/* eslint-disable react/jsx-indent */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
@@ -49,28 +48,25 @@ class MovieDetails extends Component {
 
   render() {
     const { LoadingState, movie } = this.state;
-    // o lint foi desabilitado no arquivo para a regra de identação e alinhamento entre tag de abertura e fechamento
-    // por causa do conflito na div da linha 66;
+    if (LoadingState) {
+      return (<Loading />);
+    }
     return (
-      <div>
-        {LoadingState ? <Loading />
-          : <div data-testid="movie-details">
-            {this.showMovieItems()}
-            <button type="button">
-              <Link to={ `/movies/${movie.id}/edit` }>EDITAR</Link>
-            </button>
-            <button type="button"><Link to="/">VOLTAR</Link></button>
-            <button type="button" onClick={ this.delete }>
-              <Link to="/">DELETAR</Link>
-            </button>
-          </div>}
-      </div>
-    );
+      <div data-testid="movie-details">
+        {this.showMovieItems()}
+        <button type="button">
+          <Link to={ `/movies/${movie.id}/edit` }>EDITAR</Link>
+        </button>
+        <button type="button"><Link to="/">VOLTAR</Link></button>
+        <button type="button" onClick={ this.delete }>
+          <Link to="/">DELETAR</Link>
+        </button>
+      </div>);
   }
 }
 
 MovieDetails.propTypes = {
-  match: propTypes.number.isRequired,
+  match: PropTypes.number.isRequired,
 };
 
 export default MovieDetails;
