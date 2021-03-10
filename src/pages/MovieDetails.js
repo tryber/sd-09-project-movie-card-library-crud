@@ -10,7 +10,7 @@ class MovieDetails extends Component {
     super();
     this.state = {
       movie: {},
-      loadding: true,
+      loading: true,
     };
     this.getMovie = this.getMovie.bind(this);
     this.loadParagraph = this.loadParagraph.bind(this);
@@ -25,7 +25,7 @@ class MovieDetails extends Component {
   getMovie(movie) {
     this.setState({
       movie,
-      loadding: false,
+      loading: false,
     });
   }
 
@@ -42,11 +42,11 @@ class MovieDetails extends Component {
   }
 
   render() {
-    const { loadding, movie } = this.state;
+    const { loading, movie } = this.state;
     const { id, imagePath } = movie;
     return (
       <div className="movie-details-container" data-testid="movie-details">
-        { (loadding) ? (<Loading />) : (
+        { (loading) ? (<Loading />) : (
           <div className="movie-details-card">
             <img alt="Movie Cover" src={ `../${imagePath}` } />
             { this.loadParagraph(movie) }
@@ -64,7 +64,7 @@ class MovieDetails extends Component {
 MovieDetails.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
 };

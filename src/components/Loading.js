@@ -4,7 +4,7 @@ import '../styles/Components/Loading.css';
 class Loading extends Component {
   render() {
     return (
-      <div className="loading-container">Carregando...</div>
+      <div className="loading-container"><span>Carregando...</span></div>
     );
   }
 }

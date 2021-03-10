@@ -1,0 +1,35 @@
+.movie-form {
+  align-items: center;
+  box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2) , 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-form > div > button {
+  background-color: green;
+  border-radius: 5px;
+  color: white;
+  font-weight: 700;
+  height: 30px;
+  margin: 20px;
+  width: 80px;
+}
+
+.movie-form > div > label {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  width: 400px;
+}
+
+.movie-form > div > label > textarea {
+  height: 100px;
+}
+
+.movie-form > div > label > select {
+  width: 100px;
+}
+
+.movie-form > div:nth-child( 6 ) > label > input {
+  width: 92px;
+}
