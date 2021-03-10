@@ -55,6 +55,7 @@ class MovieDetails extends Component {
             { this.loadMovieFields(movie) }
             <div>
               <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+              <Link to="/" onClick={ () => movieAPI.deleteMovie(id) }>DELETAR</Link>
               <Link to="/">VOLTAR</Link>
             </div>
           </div>
