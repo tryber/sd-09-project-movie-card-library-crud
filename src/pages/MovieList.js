@@ -9,7 +9,7 @@ class MovieList extends Component {
 
     this.state = {
       movies: [],
-      isLoading: false,
+      isLoading: true,
     };
     this.fetchMovies = this.fetchMovies.bind(this);
   }
