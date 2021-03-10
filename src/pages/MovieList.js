@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { BrowserRouter } from 'react-router-dom';
 import MovieCard from '../components/MovieCard';
 // import * as movieAPI from '../services/movieAPI';
 
