@@ -12,6 +12,7 @@ class MovieList extends Component {
 
     this.state = {
       movies: [],
+      hasFetched: false,
     };
   }
 
@@ -24,6 +25,7 @@ class MovieList extends Component {
       const response = await movieAPI.getMovies();
       this.setState({
         movies: response,
+        hasFetched: true,
       });
     } catch (error) {
       console.log(error);
@@ -31,14 +33,13 @@ class MovieList extends Component {
   }
 
   render() {
-    const { movies } = this.state;
+    const { movies, hasFetched } = this.state;
+    if (!hasFetched) return <Loading />;
 
     return (
       <div data-testid="movie-list">
         <Link to="/movies/new">ADICIONAR CARTÃO</Link>
-        {movies.length > 0
-          ? movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)
-          : <Loading />}
+        {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
       </div>
     );
   }
