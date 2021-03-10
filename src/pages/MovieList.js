@@ -14,6 +14,10 @@ class MovieList extends Component {
 
   render() {
     const { movies } = this.state;
+
+    // movieAPI.getMovies() {
+
+    // }
     // Render Loading here if the request is still happening
 
     return (
