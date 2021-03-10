@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
-import { getMovie } from '../services/movieAPI';
+import { getMovie, deleteMovie } from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
@@ -12,6 +12,8 @@ class MovieDetails extends Component {
     this.state = {
       movie: [],
     };
+
+    this.deleteMovieId = this.deleteMovieId.bind(this);
   }
 
   componentDidMount() {
@@ -24,13 +26,18 @@ class MovieDetails extends Component {
     }).catch((error) => console.log(error));
   }
 
+  deleteMovieId() {
+    const { match } = this.props;
+    const { params } = match;
+    deleteMovie(params.id);
+  }
+
   render() {
     // Change the condition to check the state
     const { movie } = this.state;
     if (movie.length < 1) return <Loading />;
     const { title, storyline, imagePath, genre, rating, subtitle } = movie;
-    const { match } = this.props;
-    const { params } = match;
+    const { match: { params } } = this.props;
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
@@ -40,6 +47,7 @@ class MovieDetails extends Component {
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${params.id}/edit` }>EDITAR</Link>
+        <Link to="/" onClick={ this.deleteMovieId }>DELETAR</Link>
         <Link to="/">VOLTAR</Link>
       </div>
     );
