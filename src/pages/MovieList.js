@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MovieCard from '../components/MovieCard';
 import * as movieAPI from '../services/movieAPI';
+import '../App.css';
 
 class MovieList extends Component {
   constructor() {
@@ -40,7 +41,7 @@ class MovieList extends Component {
     const { movies } = this.state;
 
     return (
-      <div data-testid="movie-list">
+      <div data-testid="movie-list" className="movie-list">
         {movies.length > 0 ? this.Cards(movies) : this.Loading()}
       </div>
     );
