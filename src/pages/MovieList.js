@@ -18,12 +18,10 @@ class MovieList extends Component {
     // Render Loading here if the request is still happening
 
     return (
-      <BrowserRouter>
-        <div data-testid="movie-list">
-          <h1> Movie List</h1>
-          {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
-        </div>
-      </BrowserRouter>
+      <div data-testid="movie-list">
+        <h1> Movie List</h1>
+        {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
+      </div>
     );
   }
 }

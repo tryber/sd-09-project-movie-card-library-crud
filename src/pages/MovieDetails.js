@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { BrowserRouter } from 'react-router-dom';
 // import * as movieAPI from '../services/movieAPI';
 // import { Loading } from '../components';
 
@@ -11,16 +10,14 @@ class MovieDetails extends Component {
     const { storyline, imagePath, genre, rating, subtitle } = {};
 
     return (
-      <BrowserRouter>
-        <div data-testid="movie-details">
-          <h1> detalhes </h1>
-          <img alt="Movie Cover" src={ `../${imagePath}` } />
-          <p>{ `Subtitle: ${subtitle}` }</p>
-          <p>{ `Storyline: ${storyline}` }</p>
-          <p>{ `Genre: ${genre}` }</p>
-          <p>{ `Rating: ${rating}` }</p>
-        </div>
-      </BrowserRouter>
+      <div data-testid="movie-details">
+        <h1> detalhes </h1>
+        <img alt="Movie Cover" src={ `../${imagePath}` } />
+        <p>{ `Subtitle: ${subtitle}` }</p>
+        <p>{ `Storyline: ${storyline}` }</p>
+        <p>{ `Genre: ${genre}` }</p>
+        <p>{ `Rating: ${rating}` }</p>
+      </div>
     );
   }
 }
