@@ -9,6 +9,7 @@ class MovieDetails extends Component {
     super(props);
     this.state = {
       movie: {},
+      id: 0,
       loading: true,
     };
   }
@@ -20,14 +21,15 @@ class MovieDetails extends Component {
     getMovie(id).then((movie) => this.setState(() => (
       {
         movie,
+        id,
         loading: false,
       }
     )));
   }
 
   render() {
-    const { movie, loading } = this.state;
-    const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
+    const { movie, id, loading } = this.state;
+    const { title, storyline, imagePath, genre, rating, subtitle } = movie;
     const movieDetails = (
       <div>
         <img className="movie-card-image" alt="Movie Cover" src={ `../${imagePath}` } />
