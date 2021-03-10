@@ -43,7 +43,7 @@ class EditMovie extends Component {
       return <Redirect to="/" />;
     }
     return (
-      <div className="form-container" data-testid="edit-movie">
+      <div className="edit-movie-form-container" data-testid="edit-movie">
         { (loading) ? <Loading /> : (
           <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />
         )}

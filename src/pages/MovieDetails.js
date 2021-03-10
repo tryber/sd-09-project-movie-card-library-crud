@@ -13,7 +13,7 @@ class MovieDetails extends Component {
       loading: true,
     };
     this.getMovie = this.getMovie.bind(this);
-    this.loadParagraph = this.loadParagraph.bind(this);
+    this.loadMovieFields = this.loadMovieFields.bind(this);
   }
 
   async componentDidMount() {
@@ -29,9 +29,13 @@ class MovieDetails extends Component {
     });
   }
 
-  loadParagraph({ title, subtitle, storyline, genre, rating }) {
+  loadMovieFields({ title, subtitle, storyline, genre, rating, imagePath }) {
     return (
       <>
+        <img
+          alt="Movie Cover"
+          src={ (imagePath.includes('http')) ? imagePath : `../${imagePath}` }
+        />
         <p>{ `Title: ${title}` }</p>
         <p>{ `Subtitle: ${subtitle}` }</p>
         <p>{ `Storyline: ${storyline}` }</p>
@@ -43,13 +47,12 @@ class MovieDetails extends Component {
 
   render() {
     const { loading, movie } = this.state;
-    const { id, imagePath } = movie;
+    const { id } = movie;
     return (
       <div className="movie-details-container" data-testid="movie-details">
         { (loading) ? (<Loading />) : (
           <div className="movie-details-card">
-            <img alt="Movie Cover" src={ `../${imagePath}` } />
-            { this.loadParagraph(movie) }
+            { this.loadMovieFields(movie) }
             <div>
               <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
               <Link to="/">VOLTAR</Link>
