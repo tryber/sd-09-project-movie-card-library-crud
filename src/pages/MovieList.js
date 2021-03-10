@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MovieCard from '../components/MovieCard';
+import Loading from '../components/Loading';
 import * as movieAPI from '../services/movieAPI';
 import '../App.css';
 
@@ -24,10 +25,6 @@ class MovieList extends Component {
     });
   }
 
-  Loading() {
-    return <h4>Carregando...</h4>;
-  }
-
   Cards(movies) {
     return movies.map((movie) => (
       <MovieCard
@@ -42,7 +39,7 @@ class MovieList extends Component {
 
     return (
       <div data-testid="movie-list" className="movie-list">
-        {movies.length > 0 ? this.Cards(movies) : this.Loading()}
+        {movies.length > 0 ? this.Cards(movies) : <Loading />}
       </div>
     );
   }
