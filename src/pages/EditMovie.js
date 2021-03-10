@@ -29,7 +29,6 @@ class EditMovie extends Component {
       <div data-testid="edit-movie">
         EditMovie was rendered
         <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />
-        MovieForm rendered inside EditMovie
       </div>
     );
   }

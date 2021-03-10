@@ -34,7 +34,7 @@ class MovieList extends Component {
 
   renderMovies() {
     const { movies } = this.state;
-    console.log(movies);
+    // console.log(movies);
     return (
       movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)
     );

@@ -5,15 +5,10 @@ import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      imagePath: '',
-      title: '',
-      subtitle: '',
-      storyline: '',
-      genre: '',
-      rating: '',
+      movie: {},
       loading: true,
     };
 
@@ -25,17 +20,12 @@ class MovieDetails extends Component {
   }
 
   async fetchMovies() {
-    const data = await movieAPI.getMovie();
-    // const movieData = await data;
+    // this.props.match.params.id
+    const { match: { params: { id } } } = this.props;
+    const data = await movieAPI.getMovie(id);
     console.log(data);
     this.setState({
-      id: '',
-      imagePath: '',
-      title: 'carregou fetchMovies',
-      subtitle: '',
-      storyline: '',
-      genre: '',
-      rating: 0,
+      movie: data,
       loading: false,
     });
   }
@@ -47,8 +37,7 @@ class MovieDetails extends Component {
 
   render() {
     // Change the condition to check the state
-    const { title, storyline, imagePath, genre, rating, subtitle, loading } = this.state;
-    const { id } = this.state;
+    const { movie: { id, title, storyline, imagePath, genre, rating, subtitle }, loading } = this.state;
     return (
       <div data-testid="movie-details">
         {loading ? <Loading /> : this.renderMovies() }
