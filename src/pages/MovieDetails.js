@@ -52,7 +52,7 @@ class MovieDetails extends Component {
     const { id } = movie;
     if (loading) return <Loading />;
     return (
-      <div data-testid="movie-details">
+      <div>
         {this.getElementMovie()}
         <Link to={ `/movies/${id}/edit` }> EDITAR </Link>
         <Link to="/"> VOLTAR </Link>
