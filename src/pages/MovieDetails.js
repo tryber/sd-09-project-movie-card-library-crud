@@ -17,7 +17,6 @@ class MovieDetails extends Component {
     const { getMovie } = movieAPI;
     const { match } = this.props;
     const { id } = match.params;
-    console.log('id', id);
     getMovie(id).then((movie) => this.setState(() => (
       {
         movie,
@@ -28,7 +27,7 @@ class MovieDetails extends Component {
 
   render() {
     const { movie, loading } = this.state;
-    const { title, storyline, imagePath, genre, rating, subtitle } = movie;
+    const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
     const movieDetails = (
       <div>
         <img className="movie-card-image" alt="Movie Cover" src={ `../${imagePath}` } />
@@ -37,7 +36,7 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
-        <Link to='/movies/:id/edit'>EDITAR</Link>
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to='/'>VOLTAR</Link>
       </div>
     );
