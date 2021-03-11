@@ -68,7 +68,7 @@ class MovieDetails extends Component {
           <div data-testid="movie-details">
             {this.renderMovieDetails(movie)}
             <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-            <Link to="/" onMouseDown={ this.deleteMovieAPI }>DELETAR</Link>
+            <Link to="/" onClick={ this.deleteMovieAPI }>DELETAR</Link>
             <Link to="/">VOLTAR</Link>
           </div>
         )
