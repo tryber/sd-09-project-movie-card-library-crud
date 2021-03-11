@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Loading, MovieForm } from '../components';
 import * as movieAPI from '../services/movieAPI';
 
-class EditMovie extends Component {
+class EdtMve extends Component {
   constructor(props) {
     super(props);
 
@@ -52,7 +52,7 @@ class EditMovie extends Component {
   }
 }
 
-EditMovie.propTypes = {
+EdtMve.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string,
@@ -60,4 +60,4 @@ EditMovie.propTypes = {
   }).isRequired,
 };
 
-export default EditMovie;
+export default EdtMve;

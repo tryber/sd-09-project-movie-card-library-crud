@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import MovieList from './pages/MovieList';
 import NewMovie from './pages/NewMovie';
 import MovieDetails from './pages/MovieDetails';
-import EditMovie from './pages/EditMovie';
+import EdtMve from './pages/EditMovie';
 import NotFound from './pages/NotFound';
 
 class App extends React.Component {
@@ -12,7 +12,7 @@ class App extends React.Component {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={ MovieList } />
-          <Route path="/movies/:id/edit" render={ (props) => <EditMovie { ...props } /> } />
+          <Route path="/movies/:id/edit" render={ (props) => <EdtMve { ...props } /> } />
           <Route path="/movies/:id" render={ (props) => <MovieDetails { ...props } /> } />
           <Route path="movies/new" component={ NewMovie } />
           <Route path="*" component={ NotFound } />
