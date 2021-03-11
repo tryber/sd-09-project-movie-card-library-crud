@@ -16,7 +16,7 @@ class MovieDetails extends Component {
 
   componentDidMount() {
     const { match: { params: { id } } } = this.props;
-    movieAPI.getmovie(id).then((movie) => {
+    movieAPI.getMovie(id).then((movie) => {
       this.setState({
         movie,
         loading: false,
@@ -38,7 +38,7 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
-        <Link to={ `movies/${id}/edit` }>EDITAR</Link>
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
       </div>
     );
