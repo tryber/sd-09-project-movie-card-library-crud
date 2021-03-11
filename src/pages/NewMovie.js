@@ -14,7 +14,7 @@ class NewMovie extends Component {
   }
 
   handleSubmit(newMovie) {
-    this.setState({ shouldRedirect: false }, 
+    this.setState({ shouldRedirect: false },
       async () => {
         await movieAPI.createMovie(newMovie);
         this.setState({ shouldRedirect: true });
