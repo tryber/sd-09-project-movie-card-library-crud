@@ -9,7 +9,6 @@ class MovieCard extends React.Component {
     return (
       <div data-testid="movie-card">
         <p>
-          Title:
           { movie.title }
         </p>
         <p>
