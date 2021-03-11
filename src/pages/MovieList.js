@@ -23,7 +23,6 @@ class MovieList extends Component {
       { isLoading: true },
       async () => {
         const moviesArray = await movieAPI.getMovies();
-        // const moviesArray = await moviesPromise.json();
         this.setState({
           isLoading: false,
           movies: moviesArray,
