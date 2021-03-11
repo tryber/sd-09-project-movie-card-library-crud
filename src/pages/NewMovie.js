@@ -25,9 +25,24 @@ class NewMovie extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.generateNewMovieId();
+  }
+
   handleSubmit(newMovie) {
     movieAPI.createMovie(newMovie).then(() => this.setState({
       shouldRedirect: true,
+    }));
+  }
+
+  async generateNewMovieId() {
+    const movieList = await movieAPI.getMovies();
+    const movieId = movieList[movieList.length - 1].id;
+    this.setState((prevState) => ({
+      movieInicialState: { 
+        ...prevState.movieInicialState,
+        id: movieId,
+      },
     }));
   }
 
