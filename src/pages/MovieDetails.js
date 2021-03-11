@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
@@ -30,11 +30,10 @@ class MovieDetails extends Component {
   }
 
   render() {
-    const { movie, loading } = this.state;
+    const { movie, loading, redirect } = this.state;
     const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
-    if (loading) {
-      return <Loading />;
-    } return (
+    if (loading) return <Loading />;
+    return (
       <div data-testid="movie-details">
         <h1> detalhes </h1>
         <img alt="Movie Cover" src={ `../${imagePath}` } />
@@ -45,6 +44,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
+        <Link to="/" onClick={ () => movieAPI.deleteMovie(id) }>DELETAR</Link>
       </div>
     );
   }

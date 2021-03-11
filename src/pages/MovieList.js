@@ -29,13 +29,17 @@ class MovieList extends Component {
       if (movies.length === 0) {
         return 'Carregando...';
       }
-      return movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />);
+      return (
+        <div>
+          {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
+          <Link to="/movies/new">ADICIONAR CARTÃO</Link>
+        </div>
+      );
     }
 
     return (
       <div data-testid="movie-list">
         { loadMovieList() }
-        <Link to="/movies/new">ADICIONAR CARTÃO</Link>
       </div>
     );
   }
