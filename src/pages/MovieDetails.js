@@ -8,7 +8,7 @@ import { Loading } from '../components';
 class MovieDetails extends Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {
       movie: {
         title: '',
@@ -16,7 +16,7 @@ class MovieDetails extends Component {
         imagePath: '',
         genre: '',
         rating: 0,
-        subtitle: ''
+        subtitle: '',
       },
       loading: true,
     };
@@ -28,18 +28,18 @@ class MovieDetails extends Component {
   componentDidMount() {
     this.fetchMovie(this.id);
   }
-  
+
   async fetchMovie(id) {
     this.setState({ loading: true });
     const movie = await movieAPI.getMovie(id);
     this.setState({ loading: false, movie });
   }
   render() {
-    // Change the condition to check the state
-    const load = this.state.loading;
-    if (load) return <Loading />;
 
-    const { title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
+    const { movie: {title, storyline, imagePath, genre, rating, subtitle } }= this.state;
+
+    const { loading } = this.state;
+    if (loading) return <Loading />;
 
     return (
       <div data-testid="movie-details">
@@ -59,9 +59,9 @@ class MovieDetails extends Component {
 MovieDetails.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      id: PropTypes.string
+      id: PropTypes.string,
     }),
-  }).isRequired
+  }).isRequired,
 };
 
 export default MovieDetails;
