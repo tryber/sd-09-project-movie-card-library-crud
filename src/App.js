@@ -10,12 +10,13 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
+        <div>Movie Card Library CRUD</div>
         <Switch>
           <Route exact path="/" component={ MovieList } />
           <Route path="/movies/:id/edit" render={ (props) => <EdtMve { ...props } /> } />
           <Route path="/movies/:id" render={ (props) => <MovieDetails { ...props } /> } />
           <Route path="movies/new" component={ NewMovie } />
-          <Route path="*" component={ NotFound } />
+          <Route component={ NotFound } />
         </Switch>
       </BrowserRouter>
     );
