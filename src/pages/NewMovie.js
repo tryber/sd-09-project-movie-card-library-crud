@@ -39,7 +39,7 @@ class NewMovie extends React.Component {
     const movieList = await movieAPI.getMovies();
     const movieId = movieList[movieList.length - 1].id;
     this.setState((prevState) => ({
-      movieInicialState: { 
+      movieInicialState: {
         ...prevState.movieInicialState,
         id: movieId,
       },
