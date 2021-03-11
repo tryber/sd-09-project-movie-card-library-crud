@@ -28,11 +28,8 @@ class EditMovie extends Component {
   }
 
   render() {
-    const { status, shouldRedirect, movie } = this.state;
-    // eslint-disable-next-line no-empty
-    if (shouldRedirect) {
-    }
-
+    const { status, movie } = this.state;
+    
     if (status === 'loading') {
       return <Loading />;
     }
