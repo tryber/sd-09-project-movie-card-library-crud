@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
-import * as movieAPI from '../services/movieAPI';
+import { Link } from 'react-router-dom';
 import { Loading } from '../components';
+import * as movieAPI from '../services/movieAPI';
 
 class MovieDetails extends Component {
   constructor(props) {
@@ -27,6 +26,10 @@ class MovieDetails extends Component {
         .setState({ movie: response, loading: false }));
   }
 
+  movieDelete(id) {
+    movieAPI.deleteMovie(id);
+  }
+
   render() {
     const { movie, loading } = this.state;
     if (loading) return <Loading />;
@@ -43,6 +46,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to="/">VOLTAR</Link>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link to="/" onClick={ () => this.movieDelete(id) }>DELETAR</Link>
       </div>
     );
   }
