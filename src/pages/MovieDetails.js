@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
@@ -14,9 +14,11 @@ class MovieDetails extends Component {
       id,
       movie: {},
       isLoading: true,
+      shouldRedirect: false,
     };
     this.getMovieFromAPI = this.getMovieFromAPI.bind(this);
     this.renderMovieDetails = this.renderMovieDetails.bind(this);
+    this.deleteMovieAPI = this.deleteMovieAPI.bind(this);
   }
 
   componentDidMount() {
@@ -37,6 +39,11 @@ class MovieDetails extends Component {
     );
   }
 
+  async deleteMovieAPI() {
+    const { id } = this.state;
+    await movieAPI.deleteMovie(id);
+  }
+
   renderMovieDetails(movie) {
     const { title, storyline, imagePath, genre, rating, subtitle } = movie;
     return (
@@ -52,15 +59,16 @@ class MovieDetails extends Component {
   }
 
   render() {
-    const { isLoading, movie } = this.state;
+    const { isLoading, movie, shouldRedirect } = this.state;
     const { id } = movie;
+    if (shouldRedirect) { return <Redirect to="/" />; }
     return (
       isLoading ? <Loading />
         : (
           <div data-testid="movie-details">
             {this.renderMovieDetails(movie)}
             <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-            <Link to="/" onMouseDown={ movieAPI.deleteMovie(id) }>DELETAR</Link>
+            <Link to="/" onMouseDown={ this.deleteMovieAPI }>DELETAR</Link>
             <Link to="/">VOLTAR</Link>
           </div>
         )
