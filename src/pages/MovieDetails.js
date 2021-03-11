@@ -16,7 +16,6 @@ class MovieDetails extends Component {
 
     this.getMovie = this.getMovie.bind(this);
     this.setNewMovie = this.setNewMovie.bind(this);
-    this.loadMovieFields = this.loadMovieFields.bind(this);
   }
 
   async componentDidMount() {
@@ -55,7 +54,7 @@ class MovieDetails extends Component {
       <div data-testid="movie-details">
         { (loading) ? (<Loading />) : (
           <div>
-            { this.loadMovieFields(movie) }
+            {this.setNewMovie(movie)}
             <div>
               <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
               <Link to="/" onClick={ () => movieAPI.deleteMovie(id) }>DELETAR</Link>
