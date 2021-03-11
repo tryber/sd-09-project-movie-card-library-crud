@@ -13,6 +13,7 @@ class MovieList extends Component {
       movies: [],
       loading: true,
     };
+    this.mapMovie = this.mapMovie.bind(this);
   }
 
   componentDidMount() {
@@ -24,20 +25,20 @@ class MovieList extends Component {
     });
   }
 
-  render() {
-    // Render Loading here if the request is still happening
+  mapMovie() {
     const { movies, loading } = this.state;
-    if (loading === true) {
+    if (loading) {
       return <Loading />;
     }
+    return movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />);
+  }
+
+  render() {
+    // Render Loading here if the request is still happening
 
     return (
       <div data-testid="movie-list">
-        { movies.map((movie) => (<MovieCard
-          key={ movie.title }
-          movie={ movie }
-          status={ loading } />))
-        }
+        {this.mapMovie()}
         <Link to="/movies/new">ADICIONAR CARTÃO</Link>
       </div>
     );
