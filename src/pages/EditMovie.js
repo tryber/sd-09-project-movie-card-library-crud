@@ -29,7 +29,7 @@ class EditMovie extends Component {
 
   render() {
     const { status, movie } = this.state;
-    
+
     if (status === 'loading') {
       return <Loading />;
     }
@@ -47,7 +47,7 @@ EditMovie.propTypes = {
     params: PropTypes.shape({
       id: PropTypes.string,
     }),
-  }).isRequired
+  }).isRequired,
 };
 
 export default EditMovie;

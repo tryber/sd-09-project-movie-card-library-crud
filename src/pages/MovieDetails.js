@@ -23,6 +23,11 @@ class MovieDetails extends Component {
     }));
   }
 
+  deleteMovie() {
+    const { match: { params: { id } } } = this.props;
+    return movieAPI.deleteMovie(id).then();
+  }
+
   render() {
     const { movie, loading } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
@@ -38,6 +43,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
+        <Link to="/" onClick={ () => this.deleteMovie() }>DELETAR</Link>
       </div>
     );
   }
