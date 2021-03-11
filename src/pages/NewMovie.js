@@ -9,12 +9,12 @@ class NewMovie extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       shouldRedirect: false,
-    }
+    };
   }
 
   handleSubmit(newMovie) {
     movieAPI.createMovie(newMovie).then(() => {
-      this.setState({shouldRedirect: true})
+      this.setState({ shouldRedirect: true });
     });
   }
 
