@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 
-// eslint-disable-next-line no-unused-vars
-import { Loading, MovieForm } from '../components';
-// eslint-disable-next-line no-unused-vars
-import * as movieAPI from '../services/movieAPI';
+import { MovieForm } from '../components';
 
 class EditMovie extends Component {
   constructor(props) {
@@ -12,8 +9,7 @@ class EditMovie extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // eslint-disable-next-line no-unused-vars
-  handleSubmit(updatedMovie) {
+  handleSubmit() {
   }
 
   render() {
