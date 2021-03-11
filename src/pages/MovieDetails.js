@@ -26,8 +26,7 @@ class MovieDetails extends Component {
         })));
   }
 
-  async delete() {
-    const { movie: { id } } = this.state;
+  async delete(id) {
     return movieAPI.deleteMovie(id);
   }
 
