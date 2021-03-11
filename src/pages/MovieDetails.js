@@ -14,14 +14,15 @@ class MovieDetails extends Component {
       loading: true,
     };
 
-    this.fetchMovie = this.fetchMovie.bind(this);
+    this.getMovie = this.getMovie.bind(this);
     this.setNewMovie = this.setNewMovie.bind(this);
+    this.loadMovieFields = this.loadMovieFields.bind(this);
   }
 
   async componentDidMount() {
     const { match } = this.props;
-    const movie = await movieAPI.fetchMovie(match.params.id);
-    this.fetchMovie(movie);
+    const movie = await movieAPI.getMovie(match.params.id);
+    this.getMovie(movie);
   }
 
   setNewMovie({ title, subtitle, storyline, genre, rating, imagePath }) {
@@ -40,7 +41,7 @@ class MovieDetails extends Component {
     );
   }
 
-  fetchMovie(movie) {
+  getMovie(movie) {
     this.setState({
       movie,
       loading: false,
