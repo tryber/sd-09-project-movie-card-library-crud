@@ -315,7 +315,7 @@ describe('6 - Insira um link na página inicial para `NewMovie` para criar novos
   })
 });
 
-describe('7 - Adicione um link para deletar um cartão em `MovieDetails`', () => {
+describe.only('7 - Adicione um link para deletar um cartão em `MovieDetails`', () => {
   it('"MovieDetails" deverá conter um botão com o texto "DELETAR"', async () => {
     for (const movie of readMovies()) {
       const { container, unmount, findByText } = renderPath('/movies/' + movie.id);
