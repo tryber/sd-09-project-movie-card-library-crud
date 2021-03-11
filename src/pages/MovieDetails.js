@@ -26,7 +26,6 @@ class MovieDetails extends Component {
 
   async require() {
     const { match } = this.props;
-    console.log(match);
     const { params } = match;
     const { id } = params;
     this.setState({
@@ -56,13 +55,14 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to="/">VOLTAR</Link>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link to="/" onClick={ () => movieAPI.deleteMovie(id) }>DELETAR</Link>
       </div>
     );
   }
 
   render() {
     const { load } = this.state;
-    return load === true ? <Loading /> : this.details();
+    return load ? <Loading /> : this.details();
   }
 }
 
