@@ -23,8 +23,8 @@ class MovieDetails extends Component {
 
   async fetchMovie() {
     const { match } = this.props;
-    const movieObject = await movieAPI.getMovie(match.params.id);
-    this.setState({ movie: movieObject, loading: false });
+    const movie = await movieAPI.getMovie(match.params.id);
+    this.setState({ movie, loading: false });
   }
 
   async requestDeleteMovie(id) {
