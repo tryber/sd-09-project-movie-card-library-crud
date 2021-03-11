@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import { MovieForm, Loading } from '../components';
 import * as movieAPI from '../services/movieAPI';
@@ -22,12 +23,13 @@ class EditMovie extends Component {
       })));
   }
 
-  handleSubmit(updatedMovie) {
-    return movieAPI.updatedMovie(updatedMovie);
+  handleSubmit(updateMovie) {
+    return movieAPI.updateMovie(updateMovie);
   }
 
   render() {
     const { status, shouldRedirect, movie } = this.state;
+    // eslint-disable-next-line no-empty
     if (shouldRedirect) {
     }
 
@@ -42,5 +44,13 @@ class EditMovie extends Component {
     );
   }
 }
+
+EditMovie.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }).isRequired
+};
 
 export default EditMovie;
