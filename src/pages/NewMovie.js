@@ -23,6 +23,7 @@ class NewMovie extends React.Component {
         genre: '',
       },
     };
+    this.generateNewMovieId = this.generateNewMovieId.bind(this);
   }
 
   componentDidMount() {
@@ -38,6 +39,7 @@ class NewMovie extends React.Component {
   async generateNewMovieId() {
     const movieList = await movieAPI.getMovies();
     const movieId = movieList[movieList.length - 1].id;
+    console.log(movieList);
     this.setState((prevState) => ({
       movieInicialState: {
         ...prevState.movieInicialState,
