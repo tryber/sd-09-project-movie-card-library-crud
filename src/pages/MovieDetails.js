@@ -6,8 +6,8 @@ import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       loading: true,
@@ -33,10 +33,9 @@ class MovieDetails extends Component {
   }
 
   render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
+    const { match: { params: { id } } } = this.props;
     const { movies, loading } = this.state;
-    const { title, storyline, imagePath, genre, rating, subtitle } = { movies };
+    const { title, storyline, imagePath, genre, rating, subtitle } = movies;
     if (loading === true) return <Loading />;
 
     return (
@@ -47,7 +46,7 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
-        <p><Link to="/movies/:id/edit">EDITAR</Link></p>
+        <p><Link to={ `/movies/${id}/edit` }>EDITAR</Link></p>
         <p><Link to="/">VOLTAR</Link></p>
       </div>
     );
