@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Loading } from '../components';
-import PropTypes from 'prop-types';
 
 import * as movieAPI from '../services/movieAPI';
-
 
 class MovieDetails extends Component {
   constructor() {
@@ -25,13 +24,6 @@ class MovieDetails extends Component {
     this.fetchMovie(movie);
   }
 
-  fetchMovie(movie) {
-    this.setState({
-      movie,
-      loading: false,
-    });
-  }
-
   setNewMovie({ title, subtitle, storyline, genre, rating, imagePath }) {
     return (
       <div>
@@ -48,6 +40,12 @@ class MovieDetails extends Component {
     );
   }
 
+  fetchMovie(movie) {
+    this.setState({
+      movie,
+      loading: false,
+    });
+  }
 
   render() {
     const { loading, movie } = this.state;

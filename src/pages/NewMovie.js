@@ -31,8 +31,8 @@ class NewMovie extends React.Component {
     }));
   }
 
-  render () {
-    const { shouldRedirect } = this.state;
+  render() {
+    const { shouldRedirect, movieInicialState } = this.state;
 
     if (shouldRedirect) {
       return (<Redirect to="/" />);
