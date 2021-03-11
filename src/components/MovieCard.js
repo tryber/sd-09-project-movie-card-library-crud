@@ -12,7 +12,6 @@ class MovieCard extends React.Component {
           { movie.title }
         </p>
         <p>
-          StoryLine:
           { movie.storyline }
         </p>
         <Link to={ detailRoutePath }>VER DETALHES</Link>
