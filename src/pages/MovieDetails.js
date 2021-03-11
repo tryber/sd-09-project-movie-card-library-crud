@@ -34,9 +34,10 @@ class MovieDetails extends Component {
     const movie = await movieAPI.getMovie(id);
     this.setState({ loading: false, movie });
   }
+
   render() {
 
-    const { movie: {title, storyline, imagePath, genre, rating, subtitle } }= this.state;
+    const { movie: { title, storyline, imagePath, genre, rating, subtitle } } = this.state;
 
     const { loading } = this.state;
     if (loading) return <Loading />;
