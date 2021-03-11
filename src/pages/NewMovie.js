@@ -1,23 +1,21 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
 
-import MovieForm from '../components/MovieForm';
-import * as movieAPI from '../services/movieAPI';
+// import MovieForm from '../components/MovieForm';
 
-class NewMovie extends Component {
-  constructor(props) {
-    super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleSubmit(newMovie) {
-  }
-
-  render() {
-    return (
-      <div data-testid="new-movie">
-        <MovieForm onSubmit={ this.handleSubmit } />
-      </div>
-    );
-  }
-}
-export default NewMovie;
+// class NewMovie extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.handleSubmit = this.handleSubmit.bind(this);
+//   }
+//   //import * as movieAPI from '../services/movieAPI';
+//   // handleSubmit(newMovie) {
+//   // }
+//   render() {
+//     return (
+//       <div data-testid="new-movie">
+//         <MovieForm onSubmit={ this.handleSubmit } />
+//       </div>
+//     );
+//   }
+// }
+// export default NewMovie;
