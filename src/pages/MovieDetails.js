@@ -36,7 +36,6 @@ class MovieDetails extends Component {
   }
 
   render() {
-    // Change the condition to check the state
     const { movies, loading } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movies;
 
@@ -52,6 +51,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
+        <Link to="/" onClick={ () => movieAPI.deleteMovie(id) }>DELETAR</Link>
       </div>
     );
   }
