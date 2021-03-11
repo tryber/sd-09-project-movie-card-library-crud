@@ -1,6 +1,6 @@
-/* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 
+// eslint-disable-next-line no-unused-vars
 import { Loading, MovieForm } from '../components';
 // eslint-disable-next-line no-unused-vars
 import * as movieAPI from '../services/movieAPI';

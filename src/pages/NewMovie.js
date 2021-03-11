@@ -1,7 +1,7 @@
-/* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 
 import MovieForm from '../components/MovieForm';
+// eslint-disable-next-line no-unused-vars
 import * as movieAPI from '../services/movieAPI';
 
 class NewMovie extends Component {
@@ -10,6 +10,7 @@ class NewMovie extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  // eslint-disable-next-line no-unused-vars
   handleSubmit(newMovie) {
   }
 
