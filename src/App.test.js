@@ -209,7 +209,7 @@ describe.only('4 - Faça uma requisição para buscar o filme que deverá ser re
   });
 });
 
-describe('5 - Realize uma requisição para buscar o filme que será editado em `EditMovie`', () => {
+describe.only('5 - Realize uma requisição para buscar o filme que será editado em `EditMovie`', () => {
 
   it('deverá exibir o texto "Carregando..." enquanto estiver fazendo a requisição', async () => {
     for (const movie of readMovies()) {
