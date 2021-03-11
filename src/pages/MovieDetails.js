@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
@@ -10,8 +10,8 @@ class MovieDetails extends Component {
     super(props);
     this.state = {
       movie: {},
-      id: 0,
       loading: true,
+      shouldRedirect: false,
     };
   }
 
@@ -23,24 +23,35 @@ class MovieDetails extends Component {
     getMovie(id).then((movie) => this.setState(() => (
       {
         movie,
-        id,
         loading: false,
       }
     )));
   }
 
+  deleteMovieCard(id) {
+    const { deleteMovie } = movieAPI;
+    /* const { match } = this.props;
+    const { params } = match;
+    const { id } = params; */
+    deleteMovie(id).then(() => {
+      this.setState({ shouldRedirect: true});
+    });
+  }
+
   render() {
-    const { movie, id, loading } = this.state;
+    const { movie, loading, shouldRedirect } = this.state;
     const movieDetails = (
       <div>
         <Card movie={ movie } />
-        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link to={ `/movies/${movie.id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
+        <Link to="/" onClick={ () => this.deleteMovieCard(movie.id) }>DELETAR</Link>
       </div>
     );
     return (
       <div className="movie-card" data-testid="movie-details">
         {loading ? <Loading /> : movieDetails}
+        {shouldRedirect && <Redirect to="/" />}
       </div>
     );
   }
