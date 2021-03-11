@@ -57,6 +57,7 @@ class MovieDetails extends Component {
     );
   }
 }
+
 MovieDetails.propTypes = {
   match: PropTypes.shape(
     {
@@ -66,4 +67,5 @@ MovieDetails.propTypes = {
     },
   ).isRequired,
 };
+
 export default MovieDetails;
