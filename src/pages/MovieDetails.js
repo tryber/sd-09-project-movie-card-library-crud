@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
@@ -17,11 +18,7 @@ class MovieDetails extends Component {
   //    const { title, storyline, imagePath, genre, rating, subtitle } = {};
 
   componentDidMount() {
-    const {
-      match: {
-        params: { id },
-      },
-    } = this.props;
+    const { match: { params: { id } } } = this.props;
     // const { id } = this.props.match.params;
     movieAPI.getMovie(id).then((data) => {
       this.setState({
@@ -32,9 +29,7 @@ class MovieDetails extends Component {
   }
 
   handleClick() {
-    const {
-      movie: { id },
-    } = this.state;
+    const { movie: { id } } = this.state;
     movieAPI.deleteMovie(id);
   }
 
