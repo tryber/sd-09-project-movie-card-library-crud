@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Redirect } from 'react-router';
 import Loading from '../components/Loading';
 import { MovieForm } from '../components';
@@ -17,8 +18,8 @@ class EditMovie extends Component {
   }
 
   componentDidMount() {
-    const { id } = this.props.match.params;
-    this.fetchEditMovie(id);
+    const { match } = this.props;
+    this.fetchEditMovie(match.params.id);
   }
 
   handleSubmit(updatedMovie) {
@@ -53,3 +54,11 @@ class EditMovie extends Component {
 }
 
 export default EditMovie;
+
+EditMovie.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
