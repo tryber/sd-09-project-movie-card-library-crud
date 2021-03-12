@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { Loading } from '../components';
-
 import * as movieAPI from '../services/movieAPI';
 
 class MovieDetails extends Component {
@@ -10,8 +9,9 @@ class MovieDetails extends Component {
     super(props);
 
     this.getMovie = this.getMovie.bind(this);
-    this.renderMovieElement = this.criaElementoFilme.bind(this);
-    this.excluiFilme = this.excluiFilme.bind(this);
+
+    this.renderMovieElement = this.renderMovieElement.bind(this);
+    this.deleteMovie = this.deleteMovie.bind(this);
 
     this.state = {
       movie: {},
@@ -28,33 +28,37 @@ class MovieDetails extends Component {
       { loading: true },
       async () => {
         const { match } = this.props;
-        this.setState({
-          movie: await movieAPI.getMovie(match.params.id),
-          loading: false,
-        });
+        try {
+          this.setState({
+            movie: await movieAPI.getMovie(match.params.id),
+            loading: false,
+          });
+        } catch (error) {
+          console.log(error);
+        }
       },
     );
   }
 
-  excluiFilme() {
+  deleteMovie() {
     const { match } = this.props;
-    movieAPI.excluiFilme(match.params.id);
+    movieAPI.deleteMovie(match.params.id);
   }
 
-  criaElementoFilme() {
+  renderMovieElement() {
     const { movie } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
-        <h4>{ `Title: ${title}` }</h4>
+        <p>{ `Title: ${title}` }</p>
         <p>{ `Subtitle: ${subtitle}` }</p>
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
-        <Link to="/">VOLTAR</Link>
-        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-        <Link to="/" onClick={ this.excluiFilme }>DELETAR</Link>
+        <Link to="/"> VOLTAR </Link>
+        <Link to={ `/movies/${id}/edit` }> EDITAR </Link>
+        <Link to="/" onClick={ this.deleteMovie }> DELETAR </Link>
       </div>
     );
   }
@@ -62,7 +66,7 @@ class MovieDetails extends Component {
   render() {
     const { loading } = this.state;
     return (
-      loading ? <Loading /> : this.criaElementoFilme()
+      loading ? <Loading /> : this.renderMovieElement()
     );
   }
 }

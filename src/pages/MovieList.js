@@ -20,14 +20,17 @@ class MovieList extends Component {
   }
 
   async getMovies() {
-    const movies = await movieAPI.getMovies();
-    this.setState({ movies });
+    try {
+      const movies = await movieAPI.getMovies();
+      this.setState({ movies });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   render() {
     const { movies } = this.state;
-
-    if (movies.length < 1) return <Loading />;
+    if (movies.length === 0) return <Loading />;
     return (
       <div data-testid="movie-list">
         { movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />) }
