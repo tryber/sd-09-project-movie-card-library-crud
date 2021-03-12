@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 class MovieForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { ...props.movie };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -18,7 +17,7 @@ class MovieForm extends React.Component {
   }
 
   renderTitleInput() {
-    const { title } = this.state;
+    const { title } = this.props;
 
     return (
       <div>
@@ -38,7 +37,7 @@ class MovieForm extends React.Component {
   }
 
   renderSubtitleInput() {
-    const { subtitle } = this.state;
+    const { subtitle } = this.props;
 
     return (
       <div>
@@ -57,7 +56,7 @@ class MovieForm extends React.Component {
   }
 
   renderImagePathInput() {
-    const { imagePath } = this.state;
+    const { imagePath } = this.props;
 
     return (
       <div className="row">
@@ -76,7 +75,7 @@ class MovieForm extends React.Component {
   }
 
   renderStorylineInput() {
-    const { storyline } = this.state;
+    const { storyline } = this.props;
 
     return (
       <div>
@@ -93,7 +92,7 @@ class MovieForm extends React.Component {
   }
 
   renderGenreSelection() {
-    const { genre } = this.state;
+    const { genre } = this.props;
     return (
       <div>
         <label htmlFor="movie_genre">
@@ -114,7 +113,7 @@ class MovieForm extends React.Component {
   }
 
   renderRatingInput() {
-    const { rating } = this.state;
+    const { rating } = this.props;
     return (
       <div>
         <label htmlFor="movie_rating">
@@ -163,5 +162,15 @@ class MovieForm extends React.Component {
     );
   }
 }
+
+MovieForm.propTypes = {
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+  storyline: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+  imagePath: PropTypes.string.isRequired,
+  genre: PropTypes.string.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default MovieForm;
