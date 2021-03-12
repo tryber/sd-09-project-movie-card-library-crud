@@ -15,7 +15,7 @@ class EditMovie extends Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.fetchReq = this.fetchReq.bind(this);
-    this.getElementMovie = this.getElementMovie.bind(this);
+    // this.getElementMovie = this.getElementMovie.bind(this);
   }
 
   componentDidMount() {
@@ -31,21 +31,21 @@ class EditMovie extends Component {
     return movie;
   }
 
-  getElementMovie() {
-    const { movie } = this.state;
-    const { title, storyline, imagePath, genre, rating, subtitle } = movie;
-    return (
-      <div data-testid="movie-details" className="edit-card">
-        <img alt="Movie Cover" src={ `../${imagePath}` } />
-        <div className="edit-content">
-          <p>{ `titles: ${title}` }</p>
-          <p>{ `Subtitle: ${subtitle}` }</p>
-          <p>{ `Storyline: ${storyline}` }</p>
-          <p>{ `Genre: ${genre}` }</p>
-          <p>{ `Rating: ${rating}` }</p>
-        </div>
-      </div>);
-  }
+  // getElementMovie() {
+  //   const { movie } = this.state;
+  //   const { title, storyline, imagePath, genre, rating, subtitle } = movie;
+  //   return (
+  //     <div data-testid="movie-details" className="edit-card">
+  //       <img alt="Movie Cover" src={ `../${imagePath}` } />
+  //       <div className="edit-content">
+  //         <p>{ `titles: ${title}` }</p>
+  //         <p>{ `Subtitle: ${subtitle}` }</p>
+  //         <p>{ `Storyline: ${storyline}` }</p>
+  //         <p>{ `Genre: ${genre}` }</p>
+  //         <p>{ `Rating: ${rating}` }</p>
+  //       </div>
+  //     </div>);
+  // }
 
   async fetchReq() {
     const { match } = this.props;
@@ -76,7 +76,7 @@ class EditMovie extends Component {
     return (
       <div data-testid="edit-movie" className="edit-movie">
         <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />
-        {this.getElementMovie()}
+        {/* {this.getElementMovie()} */}
       </div>
     );
   }
