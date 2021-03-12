@@ -1,0 +1,64 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.movie-details {
+  background-color: rgba(235, 241, 255, 0.9);
+  border-radius: 5px;
+  box-shadow: 1px 4px 6px rgb(134, 134, 134);
+  margin: 5px;
+  text-align: center;
+  width: 680px;
+}
+
+.links-details {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  justify-content: center;
+}
+
+.details-content {
+  margin: 5px;
+  padding: 0 20px 10px
+}
+
+.link-edit {
+  box-shadow: 1px 2px 2px rgb(134, 134, 134);
+  border-radius: 3px;
+  color: rgb(0, 165, 0);
+}
+
+.link-edit:hover {
+  box-shadow: 0 2px 6px rgb(134, 134, 134);
+  color: rgb(3, 119, 3);
+}
+
+.link-home {
+  box-shadow: 1px 2px 2px rgb(134, 134, 134);
+  border-radius: 3px;
+  color: rgb(38, 139, 221);
+}
+
+.link-home:hover {
+  box-shadow: 0 2px 6px rgb(134, 134, 134);
+  color: rgb(0, 87, 158);
+}
+
+.link-delet {
+  box-shadow: 1px 2px 2px rgb(134, 134, 134);
+  border-radius: 3px;
+  color: rgb(219, 44, 44);
+}
+
+.link-delet:hover {
+  box-shadow: 0 2px 6px rgb(134, 134, 134);
+  color: rgb(141, 1, 1);
+}

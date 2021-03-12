@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
+import '../styles/Details.css'
 
 class MovieDetails extends Component {
   constructor(props) {
@@ -34,13 +35,15 @@ class MovieDetails extends Component {
     const { movie } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle } = movie;
     return (
-      <div data-testid="movie-details">
+      <div data-testid="movie-details" className="details-card">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
-        <p>{ `titles: ${title}` }</p>
-        <p>{ `Subtitle: ${subtitle}` }</p>
-        <p>{ `Storyline: ${storyline}` }</p>
-        <p>{ `Genre: ${genre}` }</p>
-        <p>{ `Rating: ${rating}` }</p>
+        <div className="details-content">
+          <p>{ `titles: ${title}` }</p>
+          <p>{ `Subtitle: ${subtitle}` }</p>
+          <p>{ `Storyline: ${storyline}` }</p>
+          <p>{ `Genre: ${genre}` }</p>
+          <p>{ `Rating: ${rating}` }</p>
+        </div>
       </div>);
   }
 
@@ -58,20 +61,25 @@ class MovieDetails extends Component {
     });
   }
 
+  // tive uma luz vendo o projeto do amigo: miguel-dantas-project-
+  // movie-card-library-crud para criar o event no link
   render() {
     const { movie, loading, shouldRedirect } = this.state;
     const { id } = movie;
-    if (shouldRedirect) {
-      return <Redirect to="/" />;
-    }
-
+    if (shouldRedirect) return <Redirect to="/" />;
     if (loading) return <Loading />;
     return (
-      <div>
-        {this.getElementMovie()}
-        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-        <Link to="/">VOLTAR</Link>
-        <Link to="/" onClick={ () => this.handleDelet() }>DELETAR</Link>
+      <div className="card">
+        <div className="movie-details">
+          {this.getElementMovie()}
+          <div className="links-details">
+            <Link to={ `/movies/${id}/edit` } className="link-edit">EDITAR</Link>
+            <Link to="/" onClick={ () => this.handleDelet() } className="link-delet">
+              DELETAR
+            </Link>
+            <Link to="/" className="link-home">VOLTAR</Link>
+          </div>
+        </div>
       </div>
     );
   }

@@ -149,7 +149,7 @@ class MovieForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <section className="movie-form">
         <form>
           {this.renderTitleInput()}
           {this.renderSubtitleInput()}
@@ -159,7 +159,7 @@ class MovieForm extends React.Component {
           {this.renderRatingInput()}
           {this.renderSubmitButton()}
         </form>
-      </div>
+      </section>
     );
   }
 }
