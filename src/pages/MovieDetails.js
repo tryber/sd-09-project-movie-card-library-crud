@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
@@ -10,13 +10,24 @@ class MovieDetails extends Component {
     this.state = {
       movie: [],
       loading: true,
+      shouldRedirect: false,
     };
     this.fetchReq = this.fetchReq.bind(this);
     this.getElementMovie = this.getElementMovie.bind(this);
+    this.handleDelet = this.handleDelet.bind(this);
   }
 
   componentDidMount() {
     this.fetchReq();
+  }
+
+  async handleDelet() {
+    const { movie } = this.state;
+    const deletMovie = await movieAPI.deleteMovie(movie.id);
+    this.setState({
+      shouldRedirect: true,
+    });
+    return deletMovie;
   }
 
   getElementMovie() {
@@ -48,14 +59,19 @@ class MovieDetails extends Component {
   }
 
   render() {
-    const { movie, loading } = this.state;
+    const { movie, loading, shouldRedirect } = this.state;
     const { id } = movie;
+    if (shouldRedirect) {
+      return <Redirect to="/" />;
+    }
+
     if (loading) return <Loading />;
     return (
       <div>
         {this.getElementMovie()}
-        <Link to={ `/movies/${id}/edit` }> EDITAR </Link>
-        <Link to="/"> VOLTAR </Link>
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link to="/">VOLTAR</Link>
+        <Link to="/" onClick={ () => this.handleDelet() }>DELETAR</Link>
       </div>
     );
   }
