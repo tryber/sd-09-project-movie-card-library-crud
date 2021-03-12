@@ -1,12 +1,12 @@
 .edit.movie {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .edit-content {
   margin: 5px;
-  padding: 0 20px 10px
+  padding: 0 20px 10px;
 }
 
 .edit-card {
@@ -14,7 +14,7 @@
   border-radius: 5px;
   box-shadow: 1px 2px 4px rgb(134, 134, 134);
   margin: 10px auto;
-  padding: 10px 5px ;
+  padding: 10px 5px;
   text-align: center;
   width: 680px;
 }

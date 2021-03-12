@@ -31,8 +31,8 @@ body {
 }
 
 .link-edit {
-  box-shadow: 1px 2px 2px rgb(134, 134, 134);
   border-radius: 3px;
+  box-shadow: 1px 2px 2px rgb(134, 134, 134);
   color: rgb(0, 165, 0);
 }
 
@@ -42,8 +42,8 @@ body {
 }
 
 .link-home {
-  box-shadow: 1px 2px 2px rgb(134, 134, 134);
   border-radius: 3px;
+  box-shadow: 1px 2px 2px rgb(134, 134, 134);
   color: rgb(38, 139, 221);
 }
 
@@ -53,8 +53,8 @@ body {
 }
 
 .link-delet {
-  box-shadow: 1px 2px 2px rgb(134, 134, 134);
   border-radius: 3px;
+  box-shadow: 1px 2px 2px rgb(134, 134, 134);
   color: rgb(219, 44, 44);
 }
 
