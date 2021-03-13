@@ -3,8 +3,7 @@
   background: rgb(230, 230, 230);
   border-radius: 15px;
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  flex-flow: column wrap;
   justify-content: center;
   margin: 20px;
   padding: 20px;
