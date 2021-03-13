@@ -4,10 +4,10 @@
   border-radius: 15px;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
   margin: 20px;
   padding: 20px;
-  flex-wrap: wrap;
   width: 40%;
 }
 
