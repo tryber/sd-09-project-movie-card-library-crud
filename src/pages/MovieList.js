@@ -14,7 +14,7 @@ class MovieList extends Component {
     };
   }
 
-  // Muito obrigada Layo pela ajuda!
+  // Muito obrigada Layo, Henrique e Rafa pela ajuda!
   componentDidMount() {
     movieAPI.getMovies().then((result) => (
       this.setState({ movies: result, loading: false })));
@@ -27,7 +27,15 @@ class MovieList extends Component {
 
     return (
       <div data-testid="movie-list">
-        { movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />) }
+        { movies.map((movie) => (
+          <MovieCard
+            key={ movie.title }
+            movie={ movie }
+            image={ movie.imagePath }
+            title={ movie.title }
+            storyline={ movie.storyline }
+          />))
+        }
       </div>
     );
   }
