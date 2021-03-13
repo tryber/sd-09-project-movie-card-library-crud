@@ -1,0 +1,4 @@
+.cards-movies {
+  display: flex;
+  flex-wrap: wrap;
+}

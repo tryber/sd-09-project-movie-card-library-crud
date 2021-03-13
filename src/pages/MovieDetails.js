@@ -1,25 +1,60 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import MovieCardDetails from '../components/MovieCardDetails';
 
-// import * as movieAPI from '../services/movieAPI';
-// import { Loading } from '../components';
+import * as movieAPI from '../services/movieAPI';
+import { Loading } from '../components';
 
 class MovieDetails extends Component {
-  render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
+  constructor(props) {
+    super(props);
 
-    // const { title, storyline, imagePath, genre, rating, subtitle } = {};
+    this.addMovies = this.addMovies.bind(this);
+
+    this.state = {
+      movie: {},
+      loading: true,
+    };
+  }
+
+  componentDidMount() {
+    this.addMovies();
+  }
+
+  handleSubmit(id) {
+    movieAPI.deleteMovie(id);
+  }
+
+  async addMovies() {
+    const { match } = this.props;
+    const { id } = match.params;
+    const selectedMovie = await movieAPI.getMovie(id);
+    this.setState({ movie: selectedMovie });
+    this.setState({ loading: false });
+  }
+
+  render() {
+    const { movie, loading } = this.state;
 
     return (
-      <div data-testid="movie-details">
-        <img alt="Movie Cover" src={ `../${imagePath}` } />
-        <p>{ `Subtitle: ${subtitle}` }</p>
-        <p>{ `Storyline: ${storyline}` }</p>
-        <p>{ `Genre: ${genre}` }</p>
-        <p>{ `Rating: ${rating}` }</p>
+      <div>
+        {
+          (loading) ? <Loading /> : <MovieCardDetails
+            movie={ movie }
+            onSubmit={ this.handleSubmit }
+          />
+        }
       </div>
     );
   }
 }
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }).isRequired,
+};
 
 export default MovieDetails;
