@@ -39,12 +39,11 @@ class EditMovie extends Component {
   movieEdit() {
     this.setState(
       { status: 'loading' },
-      async (previous) => {
+      async () => {
         const { id } = this.state;
         const movie = await movieAPI.getMovie(id);
         this.setState({
-          ...previous,
-          status: 'ready',
+          status: false,
           movie,
         });
       },
@@ -55,7 +54,7 @@ class EditMovie extends Component {
     const { status, shouldRedirect, movie } = this.state;
     if (shouldRedirect) {
       // Redirect
-      return <Redirect to="/" />;
+      return <Redirect exact to="/" />;
     }
 
     if (status === 'loading') {
@@ -72,8 +71,8 @@ class EditMovie extends Component {
 }
 
 EditMovie.propTypes = {
-  match: PropTypes.objectOf({
-    params: PropTypes.objectOf({
+  match: PropTypes.shape({
+    params: PropTypes.shape({
       id: PropTypes.number.isRequired,
     }).isRequired,
   }).isRequired,
