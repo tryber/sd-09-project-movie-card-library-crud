@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MovieCard from '../components/MovieCard';
+import { Route } from 'react-router-dom';
 
 import * as movieAPI from '../services/movieAPI';
 
@@ -18,8 +19,15 @@ class MovieList extends Component {
     // Render Loading here if the request is still happening
 
     return (
-      <div data-testid="movie-list">
-        {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
+      <div>
+        <div data-testid="movie-list">
+          {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
+        </div>
+        <Route path="/" component="MovieList" />
+        <Route path="/movies/:id" component="MovieDetails" />
+        <Route path="/movies/new" component="NewMovie" />
+        <Route path="/movies/:id/edit" component="EditMovie" />
+        <Route path="" component="NotFound" />
       </div>
     );
   }
