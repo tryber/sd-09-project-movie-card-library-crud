@@ -1,0 +1,74 @@
+body {
+  background-image: url('https://img.wallpapic-br.com/i2827-629-223/medium/computador-bola-de-bilhar-jogos-imagem-de-fundo.jpg');
+  margin: 0;
+  padding: 0;
+}
+
+.movie-card {
+  background-color: rgba(235, 241, 255, 0.93);
+  border: 1px solid rgb(209, 209, 209);
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgb(134, 134, 134);
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  text-align: center;
+  width: 680px;
+}
+
+.movie-card-content {
+  margin: 5px;
+  padding: 0 20px 10px;
+}
+
+.list-movie-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
+}
+
+.link-add-card {
+  background-color: rgb(228, 228, 228);
+  border: 1px solid rgb(209, 209, 209);
+  border-radius: 3px;
+  box-shadow: 0 2px 6px rgb(134, 134, 134);
+  font-family: sans-serif;
+  font-size: 17px;
+  padding: 10px;
+}
+
+.link-add-card:hover {
+  box-shadow: 0 7px 6px rgb(134, 134, 134);
+  color: rgb(78, 78, 78);
+}
+
+.storyline-movie-card {
+  font-family: sans-serif;
+  font-size: 15px;
+}
+
+.title-movie-card {
+  font-family: fantasy;
+  font-size: 20px;
+  margin-bottom: 0;
+}
+
+a {
+  color: slategrey;
+  font-family: cursive;
+  font-size: 15px;
+  margin: 5px 5px 10px;
+  padding: 10px;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+section {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
