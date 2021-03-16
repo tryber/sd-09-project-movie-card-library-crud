@@ -1,0 +1,37 @@
+.movie-card {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  width: 300px;
+}
+
+.movie-card-title {
+  align-items: center;
+  display: flex;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 0 10px;
+}
+
+.movie-card-image img {
+  width: 300px;
+}
+
+.movie-card-storyline {
+  height: 120px;
+  padding: 0 10px;
+}
+
+.movie-card-details-button {
+  align-items: center;
+  background-color: #032541;
+  border-radius: 0 0 5px 5px;
+  display: flex;
+  height: 60px;
+  justify-content: center;
+}
+
+.movie-card-details-button a {
+  color: whitesmoke;
+  text-decoration: none;
+}

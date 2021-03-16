@@ -1,5 +1,16 @@
 body {
-  background-color: whitesmoke;
+  background-color: #bbaba4;
   box-sizing: border-box;
 }
 
+.main-header {
+  align-items: center;
+  background-color: #032541;
+  display: flex;
+  height: 64px;
+  justify-content: center;
+}
+
+.main-title {
+  color: white;
+}
