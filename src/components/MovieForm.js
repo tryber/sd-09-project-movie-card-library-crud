@@ -1,18 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 class MovieForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { ...props.movie };
+    // this.state = { ...props.movie };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit() {
+  /* handleSubmit() {
     const { onSubmit } = this.props;
     onSubmit(this.state);
   }
-
+*/
   updateMovie(field, newValue) {
     this.setState({ [field]: newValue });
   }
