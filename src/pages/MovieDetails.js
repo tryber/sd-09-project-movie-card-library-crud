@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
+import EditMovie from '../pages/EditMovie';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
@@ -49,6 +50,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}`}</p>
         <Link to="/">VOLTAR</Link>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <EditMovie />
       </div>
     );
   }
@@ -60,19 +62,19 @@ class MovieDetails extends Component {
   }
 }
 
-MovieDetails.propTypes = {
-  movie: PropTypes.shape({
-    title: PropTypes.string,
-    subtitle: PropTypes.string,
-    storyline: PropTypes.string,
-    imagePath: PropTypes.string,
-    id: PropTypes.number,
-  }).isRequired,
-  match: PropTypes.shape({
-    params: propTypes.shape({
-      id: PropTypes.string,
-    }).isRequired,
-  }).isRequired,
-};
+// MovieDetails.propTypes = {
+//   movie: PropTypes.shape({
+//     title: PropTypes.string,
+//     subtitle: PropTypes.string,
+//     storyline: PropTypes.string,
+//     imagePath: PropTypes.string,
+//     id: PropTypes.number,
+//   }).isRequired,
+//   match: PropTypes.shape({
+//     params: propTypes.shape({
+//       id: PropTypes.string,
+//     }).isRequired,
+//   }).isRequired,
+// };
 
 export default MovieDetails;
