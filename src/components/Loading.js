@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Loading extends Component {
   render() {
     return (
-      <div>Loading message</div>
+      <div><h1>Carregando...</h1></div>
     );
   }
 }
