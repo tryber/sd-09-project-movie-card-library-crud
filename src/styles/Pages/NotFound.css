@@ -1,0 +1,14 @@
+.error-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-weight: 700;
+  height: 100%;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+}
+
+.error-container > div {
+  margin-top: 20px;
+}

@@ -1,0 +1,38 @@
+.movie-container {
+  box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2) , 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 50px;
+  width: 350px;
+}
+
+.movie-container > div:nth-child( 1 ) {
+  align-items: flex-start;
+  display: flex;
+  height: 200px;
+}
+
+.movie-container > div:nth-child( 1 ) > span:nth-child( 1 ) {
+  color: white;
+  font-weight: 700;
+  margin: 20px 0 0 20px;
+  opacity: 1;
+  text-shadow: -1px 0 black , 0 1px black , 1px 0 black , 0 -1px black;
+}
+
+.movie-container > div:nth-child( 2 ) {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30px;
+  text-align: justify;
+}
+
+.movie-container > div:nth-child( 3 ) {
+  align-items: flex-end;
+  display: flex;
+  justify-content: flex-end;
+  max-height: 20px;
+  padding: 20px;
+}
