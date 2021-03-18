@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import propTypes from 'prop-types';
- import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { Loading, MovieForm } from '../components';
 import * as movieAPI from '../services/movieAPI';
 
@@ -8,44 +8,55 @@ class EditMovie extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      status: 'loading',
+      movie: {},
       shouldRedirect: false,
-      movie: [],
+      loading: true,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
+    const { getMovie } = movieAPI;
     const { match } = this.props;
-    const { param: { id } } = match;
-    movieAPI.getMovie(id).then((resolve) => {
-      this.setState({ movie: resolve, status: '' });
+    const { params } = match;
+    const { id } = params;
+    getMovie(id).then((movie) => this.setState(() => (
+      {
+        movie,
+        loading: false,
+      }
+    )));
+  }
+
+  handleSubmit(updatedMovie) {
+    movieAPI.updateMovie(updatedMovie).then((result) => {
+      console.log(result);
+      this.setState({ shouldRedirect: true });
     });
   }
 
-  handleSubmit(updateMovie) {
-    moviesAPI.updatedMovie(updateMovie);
-    this.setState({ shouldRedirect: true });
-  }
-
   render() {
-    const { status, shouldRedirect, movie } = this.state;
-    if (shouldRedirect) return <Redirect to="/" />;
-    if (status === 'loading') return <Loading />;
-
+    const { loading, shouldRedirect, movie } = this.state;
     return (
+      // Se o Loading for verdadeiro renderiza loading, senão, renderiza o form
       <div data-testid="edit-movie">
-        <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />
+        {loading
+          ? <Loading />
+          : <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />}
+        {shouldRedirect && <Redirect to="/" />}
       </div>
     );
   }
 }
+
 EditMovie.propTypes = {
-  match: propTypes.shape({
-    params: propTypes.shape({
-      id: propTypes.string,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.number,
     }),
-  }),
-}.isRequired;
+  }).isRequired,
+};
+
+// Usei o repositóio do colega Enio Nicael para me ajudar a estruturar a lógica
 
 export default EditMovie;
