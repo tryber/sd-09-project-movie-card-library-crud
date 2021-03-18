@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
-import EditMovie from '../pages/EditMovie';
 import { Loading } from '../components';
+import EditMovie from './EditMovie';
 
 class MovieDetails extends Component {
   constructor(props) {
@@ -69,19 +69,19 @@ class MovieDetails extends Component {
   }
 }
 
-// MovieDetails.propTypes = {
-//   movie: PropTypes.shape({
-//     title: PropTypes.string,
-//     subtitle: PropTypes.string,
-//     storyline: PropTypes.string,
-//     imagePath: PropTypes.string,
-//     id: PropTypes.number,
-//   }).isRequired,
-//   match: PropTypes.shape({
-//     params: propTypes.shape({
-//       id: PropTypes.string,
-//     }).isRequired,
-//   }).isRequired,
-// };
+MovieDetails.propTypes = {
+  movie: PropTypes.shape({
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    storyline: PropTypes.string,
+    imagePath: PropTypes.string,
+    id: PropTypes.number,
+  }).isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }).isRequired,
+  }).isRequired,
+};
 
 export default MovieDetails;
