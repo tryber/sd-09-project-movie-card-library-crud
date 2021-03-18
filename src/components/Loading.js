@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-class Loading extends Component {
+export default class Loading extends Component {
   render() {
+    const { message = 'Loading...' } = this.props;
     return (
-      <div>Loading message</div>
+      <div>{ message }</div>
     );
   }
 }
 
-export default Loading;
+Loading.propTypes = {
+  message: PropTypes.string,
+};
+
+Loading.defaultProps = {
+  message: 'Loading...',
+};
