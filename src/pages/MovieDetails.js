@@ -1,25 +1,87 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
+import EditMovie from './EditMovie';
 
 class MovieDetails extends Component {
-  render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
+  constructor(props) {
+    super(props);
+    this.deleteMovie = this.deleteMovie.bind(this);
+    this.getMovie = this.getMovie.bind(this);
+    this.renderizando = this.renderizando.bind(this);
+    this.state = {
+      movie: {},
+      isLoading: true,
+    };
+  }
 
-    const { title, storyline, imagePath, genre, rating, subtitle } = {};
+  componentDidMount() {
+    this.getMovie();
+  }
 
+  async getMovie() {
+    this.setState(
+      { isLoading: true }, // carregando
+      async () => {
+        const { match } = this.props;
+        try {
+          this.setState({
+            movie: await movieAPI.getMovie(match.params.id), // buscando os dados
+            isLoading: false, // deletando o carregamento
+          });
+        } catch (error) {
+          console.log(error);
+        }
+      },
+    );
+  }
+
+  deleteMovie() {
+    const { movie: { id } } = this.state;
+    movieAPI.deleteMovie(id);
+  }
+
+  renderizando() {
+    const { movie } = this.state;
+    const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
-        <p>{ `Subtitle: ${subtitle}` }</p>
-        <p>{ `Storyline: ${storyline}` }</p>
-        <p>{ `Genre: ${genre}` }</p>
-        <p>{ `Rating: ${rating}` }</p>
+        <p>{ `Title: ${title}`}</p>
+        <p>{ `Subtitle: ${subtitle}`}</p>
+        <p>{ `Storyline: ${storyline}`}</p>
+        <p>{ `Genre: ${genre}`}</p>
+        <p>{ `Rating: ${rating}`}</p>
+        <Link to="/">VOLTAR</Link>
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link to="/" onClick={ this.deleteMovie }>DELETAR</Link>
+        <EditMovie />
       </div>
     );
   }
+
+  render() {
+    const { isLoading } = this.state;
+    return isLoading ? <Loading /> : this.renderizando();
+    // caso is loading for false executa a função renderizando
+  }
 }
+
+MovieDetails.propTypes = {
+  movie: PropTypes.shape({
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    storyline: PropTypes.string,
+    imagePath: PropTypes.string,
+    id: PropTypes.number,
+  }).isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }).isRequired,
+  }).isRequired,
+};
 
 export default MovieDetails;
