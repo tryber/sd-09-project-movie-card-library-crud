@@ -15,13 +15,13 @@ class MovieDetails extends Component {
   }
 
   componentDidMount() {
-    this.fetchApiMovies();
+    this.fetchApiMovie();
   }
 
-  fetchApiMovies() {
+  fetchApiMovie() {
     this.setState({ loading: true }, async () => {
       const { match } = this.props;
-      const reqMovie = await movieAPI.getMovies(match.params.id);
+      const reqMovie = await movieAPI.getMovie(match.params.id);
       this.setState({ movie: reqMovie, loading: false });
     });
   }
