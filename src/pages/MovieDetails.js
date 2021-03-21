@@ -12,10 +12,16 @@ class MovieDetails extends Component {
       movie: {},
       loading: true,
     };
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
     this.fetchApiMovie();
+  }
+
+  handleClick() {
+    const { movie: { id } } = this.state;
+    movieAPI.deleteMovie(id);
   }
 
   fetchApiMovie() {
@@ -41,8 +47,8 @@ class MovieDetails extends Component {
             <p>{`Rating: ${rating}`}</p>
             <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
             <Link to="/">VOLTAR</Link>
-          </div>
-        )}
+            <Link to="/" onClick={ this.handleClick }>DELETAR</Link>
+          </div>)}
       </div>
     );
   }
