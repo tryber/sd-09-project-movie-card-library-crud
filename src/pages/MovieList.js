@@ -8,18 +8,30 @@ class MovieList extends Component {
     super();
 
     this.state = {
+      isLoaded: false,
       movies: [],
     };
   }
 
+  componentDidMount() {
+    movieAPI.getMovies()
+      .then(
+        (result) => this.setState({
+          isLoaded: true,
+          movies: [...result],
+        }),
+      );
+  }
+
   render() {
-    const { movies } = this.state;
+    const { movies, isLoaded } = this.state;
 
     // Render Loading here if the request is still happening
+    if (!isLoaded) return <div>Carregando...</div>;
 
     return (
       <div data-testid="movie-list">
-        {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
+        {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />) }
       </div>
     );
   }
