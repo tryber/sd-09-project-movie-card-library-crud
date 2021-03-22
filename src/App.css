@@ -3,3 +3,11 @@ body {
   box-sizing: border-box;
 }
 
+.movie-card {
+  width: 350px;
+}
+
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+}
