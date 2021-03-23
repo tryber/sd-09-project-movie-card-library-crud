@@ -283,7 +283,7 @@ describe('6 - Insira um link na página inicial para `NewMovie` para criar novos
     expect(addMovie.href).toBe('http://localhost/movies/new');
     unmount();
   })
-  it.only('"NewMovie" deverá conter um formulário que faz uma requisição para API para criar um novo filme. Após a criação, a pessoa usuária deverá ser redirecionada para a página inicial', async () => {
+  it('"NewMovie" deverá conter um formulário que faz uma requisição para API para criar um novo filme. Após a criação, a pessoa usuária deverá ser redirecionada para a página inicial', async () => {
     await cleanup();
     renderPath('/movies/new')
 
@@ -326,7 +326,7 @@ describe('7 - Adicione um link para deletar um cartão em `MovieDetails`', () =>
     }
   })
 
-  it('o botão "DELETAR" deverá fazer uma requisição para a API para excluir o filme em questão', async () => {
+  it.only('o botão "DELETAR" deverá fazer uma requisição para a API para excluir o filme em questão', async () => {
     resetStorage();
     const deletedMovie = readMovies()[2];
     renderPath('/movies/3');
