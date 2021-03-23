@@ -10,7 +10,7 @@ class MovieDetails extends Component {
     super(props);
 
     this.state = {
-      mve: {
+      movie: {
         title: '',
         storyline: '',
         imagePath: '',
@@ -36,12 +36,14 @@ class MovieDetails extends Component {
 
   async fetchMovie(id) {
     this.setState({ loading: true });
-    const mve = await movieAPI.getMovie(id);
-    this.setState({ loading: false, mve });
+    const movie = await movieAPI.getMovie(id);
+    this.setState({  movie, loading: false });
   }
 
   render() {
-    const { mve: { title, storyline, imagePath, genre, rating, subtitle } } = this.state;
+    const {
+      movie: { title, storyline, imagePath, genre, rating, subtitle },
+    } = this.state;
 
     const { loading } = this.state;
     if (loading) return <Loading />;
