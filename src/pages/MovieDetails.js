@@ -37,17 +37,15 @@ class MovieDetails extends Component {
   async fetchMovie(id) {
     this.setState({ loading: true });
     const movie = await movieAPI.getMovie(id);
-    this.setState({  movie, loading: false });
+    this.setState({ movie, loading: false });
   }
 
   render() {
     const {
       movie: { title, storyline, imagePath, genre, rating, subtitle },
     } = this.state;
-
     const { loading } = this.state;
     if (loading) return <Loading />;
-
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
