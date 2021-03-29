@@ -18,7 +18,6 @@ class MovieList extends Component {
 
   componentDidMount() {
     this.getMovieObjects();
-    console.log('teste');
   }
 
   async getMovieObjects() {
@@ -31,7 +30,6 @@ class MovieList extends Component {
 
   render() {
     const { movies, key } = this.state;
-    console.log(movies);
     return (
       <div data-testid="movie-list">
         { key
