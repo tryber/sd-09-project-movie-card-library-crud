@@ -181,7 +181,7 @@ describe('4 - Faça uma requisição para buscar o filme que deverá ser renderi
         .toBeGreaterThanOrEqual(1);
       expect(screen.getByText(readMovies()[movie.id - 1].storyline, { exact: false })).toBeTruthy;
 
-      let image = screen.getByAltText('Movie Cover').src.split('/').slice(-2).join('/')
+      let image = screen.getByAltText('Movie Cover').src.split.skip('/').slice(-2).join('/')
       expect(image).toEqual(readMovies()[movie.id - 1].imagePath);
       expect(screen.getAllByText(readMovies()[movie.id - 1].genre, { exact: false })).toBeTruthy;
       unmount();
