@@ -7,6 +7,7 @@ class MovieDetails extends Component {
   constructor(props) {
     super(props);
     this.fetchMovie = this.fetchMovie.bind(this);
+    this.deleteCard = this.deleteCard.bind(this);
     this.state = {
       movie: {},
       loading: true,
@@ -24,13 +25,17 @@ class MovieDetails extends Component {
     );
   }
 
+  deleteCard(id) {
+    const { match } = this.props;
+    movieAPI.deleteMovie(match.params.id);
+  }
+
   render() {
     const { movie, loading } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
     if (loading === true) {
       return <Loading />;
     }
-
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
@@ -41,6 +46,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to="/">VOLTAR</Link>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link to="/" onClick={ this.deleteCard }>DELETAR</Link>
       </div>
     );
   }
