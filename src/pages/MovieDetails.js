@@ -25,7 +25,7 @@ class MovieDetails extends Component {
     );
   }
 
-  deleteCard(id) {
+  deleteCard() {
     const { match } = this.props;
     movieAPI.deleteMovie(match.params.id);
   }
@@ -51,5 +51,13 @@ class MovieDetails extends Component {
     );
   }
 }
+
+MovieDetails.propTypes = {
+  match: Proptypes.shape({
+    params: Proptypes.shape({
+      id: Proptypes.string,
+    }),
+  }).isRequired,
+};
 
 export default MovieDetails;

@@ -52,4 +52,12 @@ class EditMovie extends Component {
   }
 }
 
+EditMovie.propTypes = {
+  match: Proptypes.shape({
+    params: Proptypes.shape({
+      id: Proptypes.string,
+    }),
+  }).isRequired,
+};
+
 export default EditMovie;
