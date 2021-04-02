@@ -1,5 +1,42 @@
 body {
-  background-color: whitesmoke;
+  background-color: black;
   box-sizing: border-box;
 }
 
+h4, h5 {
+  color: aliceblue;
+  padding: 5px;
+}
+
+p {
+  color: aquamarine;
+}
+
+a {
+  background-color: gray;
+  border: solid green;
+  color: greenyellow;
+}
+
+a:hover {
+  border: solid green;
+  color: yellow;
+}
+
+.movie-card {
+  align-content: space-between;
+  background-color: rgb(69, 70, 69);
+  display: flex;
+  flex-direction: row;
+}
+
+.movie-card-image {
+  border: solid white;
+  border-radius: 5%;
+  max-width: 40%;
+}
+
+.movie-card-body {
+  max-width: 50%;
+  padding: 15px;
+}
