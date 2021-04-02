@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
@@ -7,9 +7,19 @@ class MovieDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: props.location.state.id,
       movie: {},
-      loading: false,
+      loading: true,
     };
+  }
+
+  componentDidMount() {
+    const { id } = this.state;
+    movieAPI.getMovie(id)
+      .then((movie) => this.setState({
+        loading: false,
+        movie,
+      }));
   }
 
   movieInfo(movie) {
@@ -41,5 +51,13 @@ class MovieDetails extends Component {
     );
   }
 }
+
+MovieDetails.propTypes = {
+  location: PropTypes.shape({
+    state: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+  }),
+}.isRequired;
 
 export default MovieDetails;
