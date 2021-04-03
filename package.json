@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "acorn": ">=7.1.1",
+    "materialize-css": "^1.0.0-rc.2",
     "minimist": ">=1.2.3",
     "mutationobserver-shim": "^0.3.7",
     "react": "^16.11.0",
