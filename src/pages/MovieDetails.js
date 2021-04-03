@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import * as movieAPI from '../services/movieAPI';
-import { Loading } from '../components';
+// import * as movieAPI from '../services/movieAPI';
 
 class MovieDetails extends Component {
   render() {
     // Change the condition to check the state
     // if (true) return <Loading />;
-    const { id } = this.props.match.params.id;
-
-    const { title, storyline, imagePath, genre, rating, subtitle } = {};
+    const { match } = this.props;
+    const { params } = match;
+    const { id } = params;
+    console.log(id);
+    const { movie } = this.props;
+    const { storyline, imagePath, genre, rating, subtitle } = movie;
 
     return (
       <div data-testid="movie-details">
@@ -22,5 +25,13 @@ class MovieDetails extends Component {
     );
   }
 }
+
+MovieDetails.propTypes = {
+  movie: {},
+  image: PropTypes.string,
+  title: PropTypes.string,
+  storyline: PropTypes.string,
+  id: PropTypes.string,
+}.isRequired;
 
 export default MovieDetails;
