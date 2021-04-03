@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import movies from '../services/movieData';
 
 // import * as movieAPI from '../services/movieAPI';
 

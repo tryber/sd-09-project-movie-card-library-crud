@@ -10,3 +10,46 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+.movie-card {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  background-color: darkcyan;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.movie-card-info {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.movie-card img {
+  width: 100%;
+}
+
+.movie-card-details-link {
+  font-weight: 700;
+  text-decoration: none;
+  color: #000000;
+}
+
+.movie-card-details-link:hover {
+  background-color: whitesmoke;
+  padding: 4px;
+  border-radius: 4px;
+  transition: 0.2s ease-in-out;
+}
+
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  justify-content: center;
+  gap: 16px;
+  margin: 16px auto;
+}
