@@ -8,7 +8,7 @@ class MovieDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.location.state.id,
+      id: props.match.params.id,
       movie: {},
       loading: true,
     };
@@ -56,8 +56,8 @@ class MovieDetails extends Component {
 }
 
 MovieDetails.propTypes = {
-  location: PropTypes.shape({
-    state: PropTypes.shape({
+  match: PropTypes.shape({
+    params: PropTypes.shape({
       id: PropTypes.number,
     }),
   }),
