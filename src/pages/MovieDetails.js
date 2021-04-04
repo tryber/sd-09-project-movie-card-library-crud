@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
-import { Link } from 'react-router-dom';
 
 class MovieDetails extends Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class MovieDetails extends Component {
     if (loading === true) return <Loading />;
     return (
       <div>
-        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link to={ `/movies/${id}/edit` } movie={ movie }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
         <div data-testid="movie-details">
           <img alt="Movie Cover" src={ `../${imagePath}` } />
