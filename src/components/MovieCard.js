@@ -10,11 +10,13 @@ class MovieCard extends React.Component {
       <div data-testid="movie-card" className="movie-card">
         <img src={ image } alt={ title } />
         <div className="movie-card-info">
-          <p>
-            { title }
-          </p>
+          <p>{ title }</p>
           <p>{ storyline }</p>
-          <p><Link className="movie-card-details-link" to={ `/movies/${id}` }>VER DETALHES</Link></p>
+          <p>
+            <Link className="movie-card-details-link" to={ `/movies/${id}` }>
+              VER DETALHES
+            </Link>
+          </p>
         </div>
       </div>
     );
