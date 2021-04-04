@@ -34,13 +34,12 @@ class MovieDetails extends Component {
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ { pathname: `/movies/${id}/edit` } }>EDITAR</Link>
+        <Link to="/" onClick={ () => movieAPI.deleteMovie(id) }>DELETAR</Link>
       </div>
     );
   }
 
   render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
     const { loading, movie } = this.state;
     return (
       <div data-testid="movie-details">
