@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { Loading, MovieForm } from '../components';
+import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 
 export default class EditMovie extends Component {
@@ -37,11 +37,11 @@ export default class EditMovie extends Component {
   render() {
     const { shouldRedirect, movie, loading } = this.state;
 
-    if (loading) return <Loading />;
-
     if (shouldRedirect) {
       return <Redirect to={ `/movies/${movie.id}` } />;
     }
+
+    if (loading) return <Loading />;
 
     return (
       <div data-testid="edit-movie">
