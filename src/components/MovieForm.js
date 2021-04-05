@@ -97,7 +97,6 @@ export default class MovieForm extends React.Component {
 
   renderGenreSelection() {
     const { genre } = this.state;
-
     return (
       <div>
         <label htmlFor="movie_genre">
