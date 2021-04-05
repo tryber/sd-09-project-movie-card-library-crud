@@ -101,7 +101,7 @@ export default class MovieForm extends React.Component {
       <div>
         <label htmlFor="movie_genre">
           <select
-            className="browser-default"
+            id="movie_genre"
             value={ genre }
             onChange={ (event) => this.updateMovie('genre', event.target.value) }
           >
