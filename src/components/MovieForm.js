@@ -109,6 +109,7 @@ export default class MovieForm extends React.Component {
             <option value="action">Ação</option>
             <option value="comedy">Comédia</option>
             <option value="thriller">Suspense</option>
+            <option value="fantasy">Fantasia</option>
           </select>
           Genre Select
         </label>
@@ -169,23 +170,23 @@ export default class MovieForm extends React.Component {
 
 MovieForm.propTypes = {
   movie: PropTypes.shape({
-    genre: PropTypes.string.isRequired,
-    imagePath: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    storyline: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string.isRequired,
+    imagePath: PropTypes.string.isRequired,
+    storyline: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
   }),
   onSubmit: PropTypes.func.isRequired,
 };
 
 MovieForm.defaultProps = {
   movie: {
-    subtitle: '',
     title: '',
+    subtitle: '',
     imagePath: '',
     storyline: '',
-    rating: 0,
     genre: 'action',
+    rating: 0,
   },
 };
