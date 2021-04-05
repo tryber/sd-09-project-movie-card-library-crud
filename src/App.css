@@ -3,3 +3,53 @@ body {
   box-sizing: border-box;
 }
 
+.loading {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+}
+
+.movie-card {
+  background-color: darkcyan;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  width: 200px;
+}
+
+.movie-card-info {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.movie-card img {
+  width: 100%;
+}
+
+.movie-card-details-link {
+  color: black;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.movie-card-details-link:hover {
+  background-color: whitesmoke;
+  border-radius: 4px;
+  padding: 4px;
+  transition: 0.2s ease-in-out;
+}
+
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin: 16px auto;
+  width: 80%;
+}
