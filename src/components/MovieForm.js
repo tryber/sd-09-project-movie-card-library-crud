@@ -111,7 +111,7 @@ export default class MovieForm extends React.Component {
             <option value="thriller">Suspense</option>
             <option value="fantasy">Fantasia</option>
           </select>
-          Genre Select
+          Gênero
         </label>
       </div>
     );
