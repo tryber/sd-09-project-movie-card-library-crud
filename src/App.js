@@ -11,15 +11,15 @@ import NotFound from './pages/NotFound';
 function App() {
   return (
     <div>
-      <Switch>
-        <Router>
+      <Router>
+        <Switch>
           <Route path="/"><MovieList /></Route>
           <Route path="/movies/:id"><MovieDetails /></Route>
           <Route path="movies/new"><NewMovie /></Route>
           <Route path="movies/:id/edit"><EditMovie /></Route>
           <Route path="*"><NotFound /></Route>
-        </Router>
-      </Switch>
+        </Switch>
+      </Router>
     </div>
   );
 }
