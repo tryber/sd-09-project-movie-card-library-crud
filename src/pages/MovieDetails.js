@@ -22,6 +22,7 @@ class MovieDetails extends Component {
 
   render() {
     const { movie, loading } = this.state;
+    const { match: { params: { id } } } = this.props;
     const { title, storyline, imagePath, genre, rating, subtitle } = movie;
 
     return !loading ? (
@@ -32,7 +33,7 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
-        <Link to={ `/movie/${id}/edit` }>EDITAR</Link>
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
         <Link to="/" onClick={ () => movieAPI.deleteMovie(id) }>DELETAR</Link>
       </div>
