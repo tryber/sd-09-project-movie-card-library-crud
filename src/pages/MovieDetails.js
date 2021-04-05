@@ -23,12 +23,12 @@ class MovieDetails extends Component {
   render() {
     const { movie, loading } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
-
     if (loading === true) return <Loading />;
     return (
       <div>
         <Link to={ `/movies/${id}/edit` } movie={ movie }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
+        <Link to="/" onClick={ () => movieAPI.deleteMovie(id) }>DELETAR</Link>
         <div data-testid="movie-details">
           <img alt="Movie Cover" src={ `../${imagePath}` } />
           <p>{ `Title: ${title}` }</p>
