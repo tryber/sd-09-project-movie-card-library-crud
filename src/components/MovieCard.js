@@ -16,7 +16,9 @@ export default class MovieCard extends React.Component {
         <Link
           data-testid={ `${title}Details` }
           to={ `/movies/${id}` }
-        >Ver detalhes</Link>
+        >
+          Ver detalhes
+        </Link>
       </div>
     );
   }

@@ -31,7 +31,8 @@ export default class MovieForm extends React.Component {
             value={ title }
             onChange={ (event) => this.updateMovie('title', event.target.value) }
           />
-        Título</label>
+          Título
+        </label>
       </div>
     );
   }
@@ -50,7 +51,8 @@ export default class MovieForm extends React.Component {
             value={ subtitle }
             onChange={ (event) => this.updateMovie('subtitle', event.target.value) }
           />
-        Subtítulo</label>
+          Subtítulo
+        </label>
       </div>
     );
   }
@@ -69,7 +71,8 @@ export default class MovieForm extends React.Component {
             value={ imagePath }
             onChange={ (event) => this.updateMovie('imagePath', event.target.value) }
           />
-        Imagem</label>
+          Imagem
+        </label>
       </div>
     );
   }
@@ -86,7 +89,8 @@ export default class MovieForm extends React.Component {
             value={ storyline }
             onChange={ (event) => this.updateMovie('storyline', event.target.value) }
           />
-        Sinopse</label>
+          Sinopse
+        </label>
       </div>
     );
   }
@@ -106,14 +110,14 @@ export default class MovieForm extends React.Component {
             <option value="comedy">Comédia</option>
             <option value="thriller">Suspense</option>
           </select>
-        Genre Select</label>
+          Genre Select
+        </label>
       </div>
     );
   }
 
   renderRatingInput() {
     const { rating } = this.state;
-
     return (
       <div>
         <label className="active" htmlFor="movie_rating">
@@ -127,7 +131,8 @@ export default class MovieForm extends React.Component {
             value={ rating }
             onChange={ (event) => this.updateMovie('rating', event.target.value) }
           />
-        Avaliação</label>
+          Avaliação
+        </label>
       </div>
     );
   }

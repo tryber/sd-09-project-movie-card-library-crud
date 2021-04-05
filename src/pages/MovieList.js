@@ -31,7 +31,7 @@ export default class MovieList extends Component {
       <div data-testid="movie-list">
         <div className="movies">
           <div className="movie-list">
-            {movies.map(movie => (
+            {movies.map((movie) => (
               <MovieCard key={ movie.title } movie={ movie } />
             ))}
           </div>
