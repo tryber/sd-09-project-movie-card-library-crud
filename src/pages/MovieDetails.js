@@ -29,28 +29,20 @@ export default class MovieDetails extends Component {
   render() {
     const { movie, loading } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
-    
     if (loading) return <Loading />;
-
-
     return (
       <div data-testid="movie-details" className="card">
-        
-        <div>
           <img alt="Movie Cover" src={ `../${imagePath}` } />
           <p>{ `Title: ${title}` }</p>
-        </div>
-
         <div className="card-content">
           <p>{ `Subtitle: ${subtitle}` }</p>
           <p>{ `Storyline: ${storyline}` }</p>
           <p>{ `Genre: ${genre}` }</p>
           <p>{ `Rating: ${rating}` }</p>
         </div>
-
-        <Link to={ { pathname: `/movies/${id}/edit` } }>EDITAR</Link><br />
-        <Link to='/'>VOLTAR</Link>
-
+        <Link to={ { pathname: `/movies/${id}/edit` } }>EDITAR</Link>
+        <br />
+        <Link to="/">VOLTAR</Link>
       </div>
     );
   }

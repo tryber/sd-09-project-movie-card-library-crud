@@ -8,20 +8,15 @@ export default class MovieCard extends React.Component {
     const { id, title, storyline, imagePath } = movie;
     return (
       <div className="card movie-card">
-
-        <div>
-          <img alt="Movie Cover" className="movie-card-image" src={ imagePath } />
-          <p className="card-title">{ title }</p>
-        </div>
-
+        <img alt="Movie Cover" className="movie-card-image" src={ imagePath } />
+        <p className="card-title">{ title }</p>
         <div className="card-content">
           <p>{ storyline }</p>
         </div>
-
-        <div>
-          <Link data-testid={`${ title }Details`} to={`/movies/${ id }`}>Ver detalhes</Link>
-        </div>
-
+        <Link
+          data-testid={ `${title}Details` }
+          to={ `/movies/${id}` }
+        >Ver detalhes</Link>
       </div>
     );
   }
