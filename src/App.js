@@ -12,6 +12,7 @@ function App() {
   return (
     <div>
       <Router>
+        <div>Movie Card Library CRUD</div>
         <Switch>
           <Route path="/"><MovieList /></Route>
           <Route path="/movies/:id"><MovieDetails /></Route>
