@@ -9,6 +9,8 @@ export default class MovieDetails extends Component {
   constructor() {
     super();
     this.listMovies = this.listMovies.bind(this);
+    this.movieCard = this.movieCard.bind(this);
+
     this.state = {
       movie: [],
       loading: true,
@@ -26,7 +28,7 @@ export default class MovieDetails extends Component {
     this.setState(
       { loading: true },
       async () => {
-        const movieC = await movieAPI.getMovies(id);
+        const movieC = await movieAPI.getMovie(id);
         if (!movieC) {
           return (this.setState({ loading: false, notFound: false }));
         }
