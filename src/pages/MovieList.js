@@ -19,7 +19,7 @@ class MovieList extends Component {
   }
 
   readMovieApi() {
-    this.setState({ loaded: false })
+    this.setState({ loaded: false });
     movieAPI.getMovies()
       .then((movies) => {
         this.setState({ movies });
@@ -29,7 +29,6 @@ class MovieList extends Component {
 
   render() {
     const { movies, loaded } = this.state;
-    // Render Loading here if the request is still happening
     return (
       <div data-testid="movie-list">
         {loaded
