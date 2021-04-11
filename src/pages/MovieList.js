@@ -9,17 +9,33 @@ class MovieList extends Component {
 
     this.state = {
       movies: [],
+      loaded: false,
     };
+    this.readMovieApi = this.readMovieApi.bind(this);
+  }
+
+  componentDidMount() {
+    this.readMovieApi();
+  }
+
+  readMovieApi() {
+    this.setState({ loaded: false })
+    movieAPI.getMovies()
+      .then((movies) => {
+        this.setState({ movies });
+        this.setState({ loaded: true });
+      });
   }
 
   render() {
-    const { movies } = this.state;
-
+    const { movies, loaded } = this.state;
     // Render Loading here if the request is still happening
-
     return (
       <div data-testid="movie-list">
-        {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
+        {loaded
+          ? movies
+            .map((movie) => <MovieCard key={ movie.title } movie={ movie } />)
+          : <div>Carregando...</div>}
       </div>
     );
   }
