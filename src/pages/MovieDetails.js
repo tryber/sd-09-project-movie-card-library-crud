@@ -7,15 +7,15 @@ import { Loading } from '../components';
 class MovieDetails extends Component {
   constructor(props) {
     super(props);
-    this.fetchMovie = this.fetchMovie.bind(this);
-    this.requestDelete = this.requestDelete.bind(this);
+    this.fetchMovieList = this.fetchMovieList.bind(this);
+    this.requestDeleteMovie = this.requestDeleteMovie.bind(this);
   }
 
   componentDidMount() {
-    this.fetchMovie();
+    this.fetchMovieList();
   }
 
-  async requestDelete() {
+  async requestDeleteMovie() {
     const { match: { params } } = this.props;
     try {
       await deleteMovie(params.id);
@@ -24,7 +24,7 @@ class MovieDetails extends Component {
     }
   }
 
-  async fetchMovie() {
+  async fetchMovieList() {
     const { match: { params } } = this.props;
     try {
       const movie = await getMovie(params.id);
@@ -50,7 +50,7 @@ class MovieDetails extends Component {
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${params.id}/edit` }>EDITAR</Link>
-        <Link to="/" onClick={ this.requestDelete }>DELETAR</Link>
+        <Link to="/" onClick={ this.requestDeleteMovie }>DELETAR</Link>
         <Link to="/">VOLTAR</Link>
       </div>
     );
