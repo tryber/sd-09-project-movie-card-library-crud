@@ -18,17 +18,18 @@ class EditMovie extends Component {
   }
 
   async componentDidMount() {
-    this.movieRequisitionToEdit();
+    await this.movieRequisitionToEdit();
   }
 
   handleSubmit(updatedMovie) {
-    const { movie } = this.state;
-    movieAPI.updateMovie(movie);
+    // const { movie } = this.state;
+    movieAPI.updateMovie(updatedMovie);
     this.setState({ shouldRedirect: true });
   }
 
   async movieRequisitionToEdit() {
     const { match: { params: { id } } } = this.props;
+    // movieAPI.getMovies().then((resultGetMovie) => console.log(resultGetMovie));
     const resultGetMovie = await movieAPI.getMovie(id);
     this.setState({ movie: { ...resultGetMovie }, status: '', shouldRedirect: false });
   }

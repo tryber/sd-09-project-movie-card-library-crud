@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Loading from '../components/Loading';
 import MovieCard from '../components/MovieCard';
@@ -24,13 +24,15 @@ class MovieList extends Component {
 
   async requisitionOfFilms() {
     const resultsGetMovies = await movieAPI.getMovies();
-    // this.setState({ movies: [...resultsGetMovies], loadingCheck: false });
     this.setState(({ movies }) => ({
       movies: [...movies, ...resultsGetMovies],
       loadingCheck: false,
     }));
   }
 
+  // <button data-testid="new-movie" onClick={() => this.props.history.push("/movies/new")}>
+  //   ADICIONAR CARTÃO
+  // </button>
   render() {
     const { movies, loadingCheck } = this.state;
 
@@ -38,7 +40,6 @@ class MovieList extends Component {
 
     const moviesElement = (
       <div data-testid="movie-list">
-        {/* <button data-testid="new-movie" onClick={() => this.props.history.push("/movies/new")}>ADICIONAR CARTÃO</button> */}
         <Link to="/movies/new">ADICIONAR CARTÃO</Link>
         {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
       </div>
@@ -52,16 +53,16 @@ class MovieList extends Component {
   }
 }
 
-// MovieList.propTypes = {
-//   movie: PropTypes.shape({
-//     id: PropTypes.number.isRequired,
-//     title: PropTypes.string.isRequired,
-//     storyline: PropTypes.string.isRequired,
-//   }),
-// };
+MovieList.propTypes = {
+  movie: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    storyline: PropTypes.string.isRequired,
+  }),
+};
 
-// MovieList.defaultProps = {
-//   movie: 'Object not received',
-// };
+MovieList.defaultProps = {
+  movie: 'Object not received',
+};
 
 export default MovieList;

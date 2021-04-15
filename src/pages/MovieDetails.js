@@ -31,14 +31,16 @@ class MovieDetails extends Component {
   deletingMovie() {
     const { match: { params: { id } } } = this.props;
     movieAPI.deleteMovie(id);
-    return '/';
   }
 
+  // const { history } = this.props;
+  // <button onClick={ () => history.push(`/movies/${id}/edit`)}>EDITAR</button>
   movieElement(movie) {
-    const { id, storyline, imagePath, genre, rating, subtitle } = movie;
+    const { id, storyline, imagePath, genre, rating, subtitle, title } = movie;
     const movieElement = (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
+        <p>{ `title: ${title}` }</p>
         <p>{ `Subtitle: ${subtitle}` }</p>
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
@@ -47,7 +49,8 @@ class MovieDetails extends Component {
         <br />
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <br />
-        <Link to={ this.deletingMovie() }>DELETAR</Link>
+        {/* <Link to={ this.deletingMovie() }>DELETAR</Link> */}
+        <Link to="/" onClick={ this.deletingMovie }>DELETAR</Link>
       </div>
     );
     return movieElement;
