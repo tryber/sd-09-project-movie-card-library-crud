@@ -1,0 +1,25 @@
+.movieCardDetails {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 35rem;
+  padding: 10px;
+}
+
+.movieCardDetails p {
+  text-align: justify;
+}
+
+.movieCardDetails img {
+  width: 100%;
+}
+
+.movieCardDetails .linksContainer {
+  display: flex;
+}
+
+.movieCardDetails .linksContainer button {
+  border: none;
+  padding: 10px;
+}
