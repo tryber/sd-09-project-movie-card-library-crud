@@ -12,7 +12,6 @@ class MovieDetails extends Component {
       loaded: false,
       id: props.match.params.id,
     };
-
     this.getMovieApi = this.getMovieApi.bind(this);
     this.renderDetails = this.renderDetails.bind(this);
   }
@@ -45,6 +44,7 @@ class MovieDetails extends Component {
         </section>
         <Link to={ { pathname: `/movies/${id}/edit` } }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
+        <Link to="/" onClick={ () => movieAPI.deleteMovie(id) }>DELETAR</Link>
       </>
     );
   }
