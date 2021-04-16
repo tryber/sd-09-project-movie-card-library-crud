@@ -1,0 +1,21 @@
+.links-container {
+  background-color: black;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+  width: 100%;
+}
+
+.movie-details {
+  align-items: center;
+  background-color: lightskyblue;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 30px;
+  width: 80%;
+}
+
+.movie-details img {
+  height: 400px;
+  width: 700px;
+}
