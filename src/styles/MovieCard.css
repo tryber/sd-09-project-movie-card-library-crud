@@ -6,8 +6,8 @@
 
 .movie-card {
   animation: ease-in-out;
-  box-shadow: 0 0 15px -5px;
   background-color: whitesmoke;
+  box-shadow: 0 0 15px -5px;
   height: 500px;
   margin: 10px;
   overflow: hidden;

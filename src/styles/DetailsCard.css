@@ -5,15 +5,12 @@
 
 .detail-card {
   background-color: whitesmoke;
+  height: 50rem;
   justify-content: center;
   margin: 50px;
   max-width: 50rem;
-  height: 50rem;
 }
 
 .detail-image {
   width: 50rem;
-}
-
-.detail-inf-box {
 }
