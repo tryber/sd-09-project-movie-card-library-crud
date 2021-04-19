@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/MovieCard.css';
+import '../App.css';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 

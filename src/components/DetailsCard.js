@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import '../styles/DetailsCard.css';
+import '../App.css';
 import { Link } from 'react-router-dom';
 
 class DetailsCard extends Component {

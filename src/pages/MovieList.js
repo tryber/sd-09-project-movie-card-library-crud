@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Loading } from '../components';
 import MovieCard from '../components/MovieCard';
 import { getMovies } from '../services/movieAPI';
-import '../styles/MovieCard.css';
+import '../App.css';
 
 class MovieList extends Component {
   constructor(props) {
