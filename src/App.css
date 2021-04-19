@@ -1,5 +1,17 @@
 body {
-  background-color: whitesmoke;
+  background-color: rgb(26, 23, 23);
   box-sizing: border-box;
+  display: flex;
+  justify-content: center;
 }
 
+.header {
+  background-color: black;
+  color: whitesmoke;
+  display: flex;
+  justify-content: center;
+}
+
+.loading {
+  color: whitesmoke;
+}

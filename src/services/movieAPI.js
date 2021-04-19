@@ -37,6 +37,7 @@ export const getMovie = (movieId) => {
 
 export const updateMovie = (updatedMovie) => (
   new Promise((resolve) => {
+    console.log('pasosu');
     const movies = readMovies().map((movie) => {
       if (movie.id === parseInt(updatedMovie.id, 10)) {
         return { ...movie, ...updatedMovie };
