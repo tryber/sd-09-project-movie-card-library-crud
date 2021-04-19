@@ -23,7 +23,6 @@ class EditMovie extends Component {
   }
 
   handleSubmit(updatedMovie) {
-    console.log(updatedMovie);
     updateMovie(updatedMovie);
     this.setState({
       shouldRedirect: true,
