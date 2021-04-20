@@ -164,4 +164,12 @@ class MovieForm extends React.Component {
   }
 }
 
+MovieForm.propTypes = {
+  movie: {},
+  image: PropTypes.string,
+  title: PropTypes.string,
+  storyline: PropTypes.string,
+  id: PropTypes.string,
+}.isRequired;
+
 export default MovieForm;
