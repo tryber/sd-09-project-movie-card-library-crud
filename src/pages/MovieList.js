@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import MovieCard from '../components/MovieCard';
-
 import * as movieAPI from '../services/movieAPI';
 import Loading from '../components/Loading';
 
@@ -21,7 +21,9 @@ class MovieList extends Component {
   }
 
   async getMovieObjects() {
+    const { location: { state, index } } = this.props;
     const data = await movieAPI.getMovies();
+    data[index] = { ...data[index], ...state };
     this.setState({
       movies: data,
       key: false,
@@ -39,5 +41,9 @@ class MovieList extends Component {
     );
   }
 }
+
+MovieList.propTypes = {
+  location: PropTypes.objectOf(PropTypes.object).isRequired,
+};
 
 export default MovieList;
