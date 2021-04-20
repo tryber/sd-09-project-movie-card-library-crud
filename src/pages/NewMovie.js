@@ -27,8 +27,7 @@ class NewMovie extends Component {
         <MovieForm onSubmit={ this.handleSubmit } />
         {shouldRedirect
           ? <Redirect exact path="/" component={ MovieList } />
-          : <p>deu ruim</p>
-        }
+          : <p>deu ruim</p>}
       </div>
     );
   }
