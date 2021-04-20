@@ -15,10 +15,10 @@ class DetailsCard extends Component {
           <p>{ `Storyline: ${movie.storyline}` }</p>
           <p>{ `Genre: ${movie.genre}` }</p>
           <p>{ `Rating: ${movie.rating}` }</p>
-          <Link to={ `/movies/${movie.id}/edit` } id={ movie.id }>
-            <button type="button">EDITAR</button>
-          </Link>
-          <Link to="/"><button type="submit">VOLTAR</button></Link>
+          <button type="button">
+            <Link to={ `/movies/${movie.id}/edit` } id={ movie.id }>EDITAR</Link>
+          </button>
+          <button type="submit"><Link to="/">VOLTAR</Link></button>
         </div>
       </section>
     );

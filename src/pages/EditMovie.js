@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import MovieList from './MovieList';
 import { Loading, MovieForm } from '../components';
 import { getMovie, updateMovie } from '../services/movieAPI';
-import MovieList from './MovieList';
 import '../App.css';
 
 class EditMovie extends Component {
