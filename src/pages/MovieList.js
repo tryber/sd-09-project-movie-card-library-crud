@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import MovieCard from '../components/MovieCard';
 import * as movieAPI from '../services/movieAPI';
@@ -34,6 +35,7 @@ class MovieList extends Component {
     const { movies, key } = this.state;
     return (
       <div data-testid="movie-list">
+        <Link to="/movies/new">ADICIONAR CARTÃO</Link>
         { key
           ? <Loading />
           : movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}

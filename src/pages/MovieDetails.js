@@ -8,7 +8,7 @@ class MovieDetails extends Component {
   constructor() {
     super();
     this.state = {
-      movie: [],
+      movie: {},
       key: true,
     };
     this.getMovieDetails = this.getMovieDetails.bind(this);
@@ -24,7 +24,7 @@ class MovieDetails extends Component {
     const data = await movieAPI.getMovie(params.id);
 
     this.setState({
-      movie: data,
+      movie: { ...data },
       key: false,
     });
   }
