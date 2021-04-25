@@ -1,0 +1,48 @@
+hr {
+  margin: 20px;
+}
+
+.card-base {
+  background-color: whitesmoke;
+  border: 1px solid rgb(160, 150, 140);
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  margin: 50px;
+  width: 400px;
+}
+
+.card-image {
+  border-bottom: 1px solid rgb(160, 150, 140);
+  border-radius: 5px 5px 0 0;
+  position: relative;
+  width: 400px;
+}
+
+.card-link {
+  padding: 0 20px 20px;
+  text-align: left;
+}
+
+.card-link-txt {
+  color: darkgoldenrod;
+  text-decoration: none;
+}
+
+.card-link-txt:hover {
+  font-weight: 600;
+}
+
+.card-subtitle {
+  height: 0;
+  padding: 20px;
+  position: relative;
+  top: -50px;
+}
+
+.card-title {
+  color: antiquewhite;
+  left: 20px;
+  margin: 0;
+  position: relative;
+  top: -50px;
+}

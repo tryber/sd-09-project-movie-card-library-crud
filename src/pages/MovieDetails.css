@@ -1,0 +1,31 @@
+hr {
+  margin: 20px;
+}
+
+.card-detail-body {
+  background-color: white;
+  border: 1px solid rgb(160, 150, 140);
+  box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.2);
+  margin: 50px auto;
+  width: 60%;
+}
+
+.card-detail-context {
+  padding: 20px;
+}
+
+.card-detal-image {
+  width: 100%;
+}
+
+.card-detail-link {
+  bottom: 10px;
+  color: darkgoldenrod;
+  padding: 0 20px 20px;
+  position: relative;
+  text-decoration: none;
+}
+
+.card-detail-link:hover {
+  font-weight: 600;
+}
