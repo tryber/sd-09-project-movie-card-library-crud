@@ -35,19 +35,19 @@ class MovieDetails extends Component {
     const { movieFind } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movieFind;
 
-    return (
-      loading ? <Loading /> : (
-        <div data-testid="movie-details">
-          <img alt="Movie Cover" src={ `../${imagePath}` } />
-          <p>{ `Title: ${title}` }</p>
-          <p>{ `Subtitle: ${subtitle}` }</p>
-          <p>{ `Storyline: ${storyline}` }</p>
-          <p>{ `Genre: ${genre}` }</p>
-          <p>{ `Rating: ${rating}` }</p>
-          <Link to={ `/movies/${id}/edit` }>EDITAR </Link>
-          <Link to="/"> VOLTAR</Link>
-        </div>
-      )
+    return (loading ? <Loading /> : (
+      <div data-testid="movie-details">
+        <img alt="Movie Cover" src={ `../${imagePath}` } />
+        <p>{ `Title: ${title}` }</p>
+        <p>{ `Subtitle: ${subtitle}` }</p>
+        <p>{ `Storyline: ${storyline}` }</p>
+        <p>{ `Genre: ${genre}` }</p>
+        <p>{ `Rating: ${rating}` }</p>
+        <Link to={ `/movies/${id}/edit` }>EDITAR </Link>
+        <Link to="/"> VOLTAR</Link>
+        <Link to="/" onClick={ () => movieAPI.deleteMovie(id) }>DELETAR</Link>
+      </div>
+    )
     );
   }
 }
