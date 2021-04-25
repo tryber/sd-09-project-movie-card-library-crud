@@ -3,3 +3,45 @@ body {
   box-sizing: border-box;
 }
 
+form {
+  margin: 1em auto;
+}
+
+form label {
+  display: block;
+  padding: 5px 0 0 5px;
+}
+
+form label :first-child {
+  margin: 0 0 0 15px;
+}
+
+.error {
+  font: 900;
+}
+
+.loading {
+  margin: 12rem auto 1em;
+}
+
+.movie-card {
+  border: 1px solid lightgrey;
+  margin: 1em auto;
+  max-width: 400px;
+  padding: 1%;
+}
+
+.movie-details {
+  margin: 1em auto;
+  padding: 10px;
+}
+
+.movie-details button {
+  margin: 0 1em;
+  padding: 0 20px;
+}
+
+.movie-list {
+  display: flex;
+  flex-flow: wrap;
+}
