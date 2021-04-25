@@ -150,6 +150,7 @@ class MovieForm extends React.Component {
   render() {
     return (
       <div>
+        MovieForm rendered inside NewMovie
         <form>
           {this.renderTitleInput()}
           {this.renderSubtitleInput()}
@@ -163,5 +164,10 @@ class MovieForm extends React.Component {
     );
   }
 }
+
+MovieForm.propTypes = {
+  onSubmit: PropTypes.string.isRequired,
+  movie: PropTypes.string.isRequired,
+};
 
 export default MovieForm;

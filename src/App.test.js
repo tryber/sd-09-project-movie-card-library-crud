@@ -162,7 +162,7 @@ describe('3 - Insira um link para a página de detalhes de um filme dentro de `M
   })
 });
 
-describe('4 - Faça uma requisição para buscar o filme que deverá ser renderizado dentro de `Movie Details`', () => {
+describe.only('4 - Faça uma requisição para buscar o filme que deverá ser renderizado dentro de `Movie Details`', () => {
 
   it('deverá exibir o texto "Carregando..." enquanto estiver fazendo a requisição', async () => {
     for (const movie of readMovies()) {
@@ -274,7 +274,7 @@ describe('5 - Realize uma requisição para buscar o filme que será editado em 
 
 });
 
-describe('6 - Insira um link na página inicial para `NewMovie` para criar novos cartões', () => {
+describe.only('6 - Insira um link na página inicial para `NewMovie` para criar novos cartões', () => {
   it('a página inicial deverá conter um link "ADICIONAR CARTÃO". Esse link deve redirecionar para a página de criação de filmes', async () => {
     const { unmount } = renderPath('/');
     await waitFor(() => movieAPI.getMovies());
