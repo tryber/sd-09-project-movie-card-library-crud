@@ -7,12 +7,10 @@ import { Loading } from '../components';
 class MovieDetails extends Component {
   constructor() {
     super();
-
     this.state = {
       loading: true,
       movieFind: {},
     };
-
     this.getMovie = this.getMovie.bind(this);
   }
 
