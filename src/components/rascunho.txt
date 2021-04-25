@@ -1,0 +1,26 @@
+App
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+
+<Link to="/Component_1">link_1</Link>
+<Link to="/Component_2">link_2</Link>
+<Link to="/Component_3">link_3</Link>
+<Link to="/Component_4">link_4</Link>
+
+Content
+  constructor() {
+    super();
+    this.solutions = ['1', '2', '3', '4'];
+  }
+  <switch>
+    <Route path="/rota_1" component={ Component_1 } />
+    <Route path="/rota_2" component={ Component_2 } />
+    <Route path="/rota_3" component={ Component_3 } />
+    <Route psth="/solutions/:id" />
+    <Route
+      path="/rota_3"
+      render={(props) => (
+        <Component_4 { ...props } availableSolutions={ this.solutions } />
+      )} />
+  </switch>
