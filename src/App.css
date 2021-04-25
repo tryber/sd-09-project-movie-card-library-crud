@@ -3,3 +3,9 @@ body {
   box-sizing: border-box;
 }
 
+.movie-card {
+  background-color: antiquewhite;
+  border-radius: 6%;
+  text-align: center;
+  width: 300px;
+}
