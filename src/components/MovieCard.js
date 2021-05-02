@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { shape } from 'prop-types';
+import '../App.css';
 
 class MovieCard extends React.Component {
   render() {
@@ -8,12 +9,11 @@ class MovieCard extends React.Component {
 
     return (
       <div data-testid="movie-card">
-        <article>
-          <img src={ imagePath } alt={ imagePath } />
+        <article className="movieCard">
+          <img className="movieCardImg" src={ imagePath } alt={ imagePath } />
           <h3>{ title }</h3>
           <h4>{ subtitle }</h4>
           <p>{ storyline }</p>
-
           <Link to={ `/movies/${id}` }>VER DETALHES</Link>
         </article>
       </div>

@@ -5,8 +5,7 @@ import * as movieAPI from '../services/movieAPI';
 
 class EditMovie extends Component {
   constructor(props) {
-    super(props);
-    this.state = {};
+    super(props); this.state = { loading: true, movie: [] };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
