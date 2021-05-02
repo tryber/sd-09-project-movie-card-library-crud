@@ -10,6 +10,8 @@ class NewMovie extends Component {
   }
 
   handleSubmit(newMovie) {
+    // editar abaixo (não veio padrão)
+    return (newMovie, movieAPI);
   }
 
   render() {

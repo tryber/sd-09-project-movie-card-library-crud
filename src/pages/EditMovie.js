@@ -11,6 +11,8 @@ class EditMovie extends Component {
   }
 
   handleSubmit(updatedMovie) {
+    // editar abaixo (não veio padrão)
+    return (updatedMovie, movieAPI);
   }
 
   render() {
