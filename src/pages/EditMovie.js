@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
-import { MovieForm } from '../components';
+import MovieForm from '../components/MovieForm';
 import * as movieAPI from '../services/movieAPI';
 import Loading from '../components/Loading';
 
@@ -9,49 +9,40 @@ class EditMovie extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      shouldRedirect: false,
-      status: 'loading',
+      id: props.match.params.id,
       movie: {},
+      loading: true,
+      shouldRedirect: false,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.fetchMovie = this.fetchMovie.bind(this);
   }
 
   componentDidMount() {
-    this.fetchMovie();
+    const { id } = this.state;
+    movieAPI.getMovie(id)
+      .then((movie) => this.setState({ movie, loading: false }));
   }
 
-  async handleSubmit(updatedMovie) {
-    await movieAPI.updateMovie(updatedMovie);
-    this.setState({
-      shouldRedirect: true,
-    });
+  handleSubmit(updatedMovie) {
+    movieAPI.updateMovie(updatedMovie)
+      .then(() => this.setState({ shouldRedirect: true }));
   }
 
-  async fetchMovie() {
-    const { match } = this.props;
-    const { params } = match;
-    const { id } = params;
-    const movie = await movieAPI.getMovie(id);
-    this.setState({
-      status: 'loaded',
-      movie,
-    });
+  shouldRedirect() {
+    const { shouldRedirect } = this.state;
+    if (shouldRedirect) return (<Redirect to="/" />);
   }
 
   render() {
-    const { status, shouldRedirect, movie } = this.state;
-    if (shouldRedirect) {
-      return <Redirect to="/" />;
-    }
-
-    if (status === 'loading') {
-      return <Loading />;
-    }
-
+    const { loading, movie } = this.state;
     return (
       <div data-testid="edit-movie">
-        <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />
+        {this.shouldRedirect()}
+        {
+          loading
+            ? <Loading />
+            : <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />
+        }
       </div>
     );
   }
@@ -60,9 +51,9 @@ class EditMovie extends Component {
 EditMovie.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      id: PropTypes.string.isRequired,
-    }).isRequired,
-  }).isRequired,
-};
+      id: PropTypes.number,
+    }),
+  }),
+}.isRequired;
 
 export default EditMovie;
