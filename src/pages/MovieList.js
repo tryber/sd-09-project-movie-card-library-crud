@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import MovieCard from '../components/MovieCard';
-// import NewMovie from './NewMovie';
 import Loading from '../components/Loading';
 import '../App.css';
 

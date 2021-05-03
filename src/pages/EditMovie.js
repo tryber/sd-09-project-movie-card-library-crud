@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import { } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Loading from '../components/Loading';
 
@@ -19,8 +20,9 @@ class EditMovie extends Component {
   }
 
   handleSubmit(updatedMovie) {
-    // editar abaixo (não veio padrão)
-    return (updatedMovie, movieAPI);
+    const { history } = this.props;
+    movieAPI.updateMovie(updatedMovie);
+    history.push('/');
   }
 
   render() {
