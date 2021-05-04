@@ -19,7 +19,6 @@ class MovieCard extends React.Component {
   }
 }
 
-
 MovieCard.propTypes = {
   movie: PropTypes.shape({
     id: PropTypes.number,

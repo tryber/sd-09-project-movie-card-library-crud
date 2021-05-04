@@ -22,7 +22,6 @@ class MovieList extends Component {
       return <Loading />;
     }
 
-
     return (
       <div data-testid="movie-list">
         <Link to="/movies/new">ADICIONAR CARTÃO</Link>
