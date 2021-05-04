@@ -47,6 +47,12 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <button type="button"><Link to='/'>VOLTAR</Link></button>
         <button type="button"><Link to={ `/movies/${linkID}/edit` }>EDITAR</Link></button>
+        <button
+          type="button"
+          onClick={ () => movieAPI.deleteMovie(linkID) }
+        >
+          <Link to="/">DELETAR</Link>
+        </button>
       </div>
     );
   }
