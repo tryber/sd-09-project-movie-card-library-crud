@@ -8,22 +8,28 @@ class MovieDetails extends Component {
     super()
 
     this.state = {
+      movie: [],
       loading: true,
     }
   }
 
   componentDidMount() {
-    this.setState({
-      loading: false,
+    const { id } = this.props.match.params;
+
+    movieAPI.getMovie(id).then(response => {
+      this.setState({
+        movie: response,
+        loading: false,
+      })
     })
+
   }
 
   render() {
     // Change the condition to check the state
     // if (true) return <Loading />;
 
-    const { title, storyline, imagePath, genre, rating, subtitle } = {};
-
+    const { title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
     const { loading } = this.state;
     
     if (loading) {

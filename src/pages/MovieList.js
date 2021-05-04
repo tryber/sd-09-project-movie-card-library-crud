@@ -36,7 +36,12 @@ class MovieList extends Component {
         data-testid="movie-list"
         className="movie-list"
       >
-        {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
+        {movies.map((movie, index) => (
+          <MovieCard
+            key={ movie.title }
+            movie={ movie }
+            index={ index } 
+          />))}
       </div>
     );
   }
