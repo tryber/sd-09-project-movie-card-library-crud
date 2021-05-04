@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import MovieCard from '../components/MovieCard';
-
+import { MovieCard, Loading } from '../components';
 import * as movieAPI from '../services/movieAPI';
 
 class MovieList extends Component {
@@ -9,13 +8,24 @@ class MovieList extends Component {
 
     this.state = {
       movies: [],
+      loading: true,
     };
   }
 
-  render() {
-    const { movies } = this.state;
+  // componentDidMount(){
+  //   const userData = fetch(movieAPI.getMovies)
+  //  .then(response => response.json())
+  //  .then(data => console.log(data))
+  // }
 
-    // Render Loading here if the request is still happening
+  componentDidMount() {
+    movieAPI.getMovies()
+      .then((movies) => this.setState({ movies, loading: false }));
+  }
+
+  render() {
+    const { movies, loading } = this.state;
+    if (loading) return <Loading />;
 
     return (
       <div data-testid="movie-list">
@@ -24,5 +34,4 @@ class MovieList extends Component {
     );
   }
 }
-
 export default MovieList;
