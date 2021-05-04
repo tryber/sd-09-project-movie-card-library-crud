@@ -54,6 +54,9 @@ class EditMovie extends Component {
   }
 }
 
+// tirei duvidas de sintaxe da checagem de tipos no repo:
+// https://github.com/tryber/sd-09-project-movie-card-library-crud/blob/thamy-project-crud/src/pages/EditMovie.js
+
 EditMovie.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
